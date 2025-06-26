@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alward Hafez Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #1a252f 50%, #0d1117 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #333;
+            padding-top: 70px;
+        }
+
+        /* Sticky Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: #2c3e50;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #2c3e50;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: all 0.3s ease;
+        }
+
+        /* Fade-in Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .fade-in-delayed {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .fade-in-slow {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cover Photo Section */
+        .cover-section {
+            width: 100%;
+            height: 25vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a252f 0%, #0d1117 100%);
+        }
+
+        .cover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .cover-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cover-content p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2rem;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .project-text {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .project-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-text p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        .about-image {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .about-photo {
+            width: 300px;
+            height: 300px;
+            background: #ddd;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .custom-text {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid #2c3e50;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .skill-image {
+            width: 80px;
+            height: 80px;
+            background: #ddd;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .skill-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .skill-proficiency {
+            margin-bottom: 1rem;
+        }
+
+        .proficiency-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .proficiency-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            transition: width 1s ease;
+        }
+
+        .proficiency-text {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: right;
+        }
+
+        .skill-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        .contact-image {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .contact-photo {
+            width: 300px;
+            height: 300px;
+            background: #ddd;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .contact-details {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-details h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .contact-item strong {
+            width: 120px;
+            color: #333;
+        }
+
+        .contact-item a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Social Media Footer */
+        .social-footer {
+            background: #1a252f;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            background: #34495e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            background-color: #f0f0f0;
+        }
+
+        .modal-image:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-text {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .modal-text h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image,
+            .contact-image {
+                flex: none;
+            }
+
+            .about-photo,
+            .contact-photo {
+                width: 250px;
+                height: 250px;
+                margin: 0 auto 1rem;
+            }
+
+            .cover-content h1 {
+                font-size: 2rem;
+            }
+
+            .cover-content p {
+                font-size: 1.1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            /* Mobile Navigation */
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showSection('home')">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')" class="nav-link">Home</a></li>
+                <li><a href="#" onclick="showSection('about')" class="nav-link">About Me</a></li>
+                <li><a href="#" onclick="showSection('skills')" class="nav-link">Skills</a></li>
+                <li><a href="#" onclick="showSection('contact')" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <div id="home" class="page-section active">
+        <!-- Cover Photo Section -->
+        <div class="cover-section fade-in">
+            <div class="cover-overlay"></div>
+            <div class="cover-content">
+                <h1>My Portfolio</h1>
+                <p>Explore my creative projects and innovations</p>
+            </div>
+        </div>
+
+        <div class="container fade-in-delayed">
+            <div class="projects-grid fade-in-slow" id="projects-container">
+                <!-- Projects will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h3>Ready to Work Together?</h3>
+            <p>Let's create something amazing together. Get in touch to discuss your next project.</p>
+            <div class="cta-buttons">
+                <a href="#" onclick="showSection('contact')" class="cta-button">Get In Touch</a>
+                <a href="#" onclick="showSection('about')" class="cta-button">Learn More About Me</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="page-section">
+        <div class="cover-section fade-in">
+            <div class="cover-overlay"></div>
+            <div class="cover-content">
+                <h1>About Me</h1>
+                <p>Learn more about my background and experience</p>
+            </div>
+        </div>
+
+        <div class="container fade-in-delayed">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-photo" style="background-image: url('images/profile.jpg')">
+                        Your Photo Here
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>Hello, I'm Alward Hafez</h2>
+                    <p>I'm a passionate developer and designer with a love for creating innovative solutions that make a difference. With years of experience in web development, mobile app design, and data analytics, I bring a unique perspective to every project I work on.</p>
+                    <p>My journey in technology started with a curiosity about how things work and evolved into a career focused on building meaningful digital experiences. I believe in the power of technology to solve real-world problems and improve people's lives.</p>
+                    <p>When I'm not coding or designing, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                    
+                    <div class="custom-text">
+                        <strong>My Mission:</strong> To create digital solutions that are not only functional and beautiful but also accessible and user-friendly. I strive to bridge the gap between complex technology and everyday users.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h3>Want to Know More?</h3>
+            <p>Check out my skills and experience, or get in touch to discuss potential collaborations.</p>
+            <div class="cta-buttons">
+                <a href="#" onclick="showSection('skills')" class="cta-button">View My Skills</a>
+                <a href="#" onclick="showSection('contact')" class="cta-button">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills" class="page-section">
+        <div class="cover-section fade-in">
+            <div class="cover-overlay"></div>
+            <div class="cover-content">
+                <h1>My Skills</h1>
+                <p>Technologies and expertise I bring to every project</p>
+            </div>
+        </div>
+
+        <div class="container fade-in-delayed">
+            <div class="skills-grid" id="skills-container">
+                <!-- Skills will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h3>Let's Build Something Great</h3>
+            <p>Ready to put these skills to work on your next project? Let's discuss how I can help bring your ideas to life.</p>
+            <div class="cta-buttons">
+                <a href="#" onclick="showSection('contact')" class="cta-button">Start a Project</a>
+                <a href="#" onclick="showSection('home')" class="cta-button">View My Work</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="page-section">
+        <div class="cover-section fade-in">
+            <div class="cover-overlay"></div>
+            <div class="cover-content">
+                <h1>Get In Touch</h1>
+                <p>Let's discuss your next project or collaboration</p>
+            </div>
+        </div>
+
+        <div class="container fade-in-delayed">
+            <div class="contact-content">
+                <div class="contact-image">
+                    <div class="contact-photo" style="background-image: url('images/contact.jpg')">
+                        Contact Photo
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <h2>Let's Connect</h2>
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <a href="mailto:alward@example.com">alward@example.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong>
+                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong>
+                        <a href="https://linkedin.com/in/alwardhafez" target="_blank">linkedin.com/in/alwardhafez</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>GitHub:</strong>
+                        <a href="https://github.com/alwardhafez" target="_blank">github.com/alwardhafez</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Location:</strong>
+                        <span>Riyadh, Saudi Arabia</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Available:</strong>
+                        <span>For freelance and full-time opportunities</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h3>Ready to Start?</h3>
+            <p>Whether you have a project in mind or just want to say hello, I'd love to hear from you.</p>
+            <div class="cta-buttons">
+                <a href="mailto:alward@example.com" class="cta-button">Send Email</a>
+                <a href="#" onclick="showSection('home')" class="cta-button">View Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media Footer -->
+    <div class="social-footer">
+        <div class="social-links">
+            <a href="mailto:alward@example.com" class="social-link">
+                <div class="social-icon">✉</div>
+                <span>Email</span>
+            </a>
+            <a href="https://linkedin.com/in/alwardhafez" target="_blank" class="social-link">
+                <div class="social-icon">💼</div>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/alwardhafez" target="_blank" class="social-link">
+                <div class="social-icon">🐱</div>
+                <span>GitHub</span>
+            </a>
+            <a href="https://twitter.com/alwardhafez" target="_blank" class="social-link">
+                <div class="social-icon">🐦</div>
+                <span>Twitter</span>
+            </a>
+            <a href="https://instagram.com/alwardhafez" target="_blank" class="social-link">
+                <div class="social-icon">📷</div>
+                <span>Instagram</span>
+            </a>
+        </div>
+        <p>&copy; 2025 Alward Hafez. All rights reserved.</p>
+    </div>
+
+    <!-- Project Modals will be generated dynamically -->
+    <div id="modals-container"></div>
+
+    <script>
+        // Configuration data (this would typically be in a separate JSON file)
+        const portfolioData = {
+            projects: [
+                {
+                    id: 1,
+                    title: "Robot Arm",
+                    description: "A modern robotics project with advanced control systems and precision movement.",
+                    image: "images/project1.jpg",
+                    category: "Robotics",
+                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    overview: "This robotics project showcases advanced control systems and precision engineering. The robot arm features multiple degrees of freedom and can perform complex tasks with high accuracy.",
+                    features: [
+                        "6-axis movement control",
+                        "Computer vision integration",
+                        "Real-time path planning",
+                        "Safety collision detection",
+                        "Remote control interface",
+                        "Programmable task sequences"
+                    ],
+                    technologies: "Arduino, Python, OpenCV, ROS, C++, Machine Learning"
+                },
+                {
+                    id: 2,
+                    title: "Mobile App Design",
+                    description: "Intuitive mobile application design focused on user engagement and functionality.",
+                    image: "images/project2.jpg",
+                    category: "UI/UX Design",
+                    detailImages: ["images/project2-detail1.jpg", "images/project2-detail2.jpg", "images/project2-detail3.jpg"],
+                    overview: "This mobile app design project focused on creating an intuitive and engaging user experience. The design process included user research, wireframing, prototyping, and usability testing.",
+                    features: [
+                        "Clean and modern interface design",
+                        "Intuitive navigation patterns",
+                        "Accessibility-focused design decisions",
+                        "Cross-platform compatibility",
+                        "Interactive micro-animations",
+                        "Consistent design system"
+                    ],
+                    technologies: "Figma, Adobe XD, Sketch, InVision, Principle, After Effects"
+                },
+                {
+                    id: 3,
+                    title: "Data Analytics Dashboard",
+                    description: "Comprehensive dashboard for real-time data visualization and business insights.",
+                    image: "images/project3.jpg",
+                    category: "Data Analytics",
+                    detailImages: ["images/project3-detail1.jpg", "images/project3-detail2.jpg", "images/project3-detail3.jpg"],
+                    overview: "A comprehensive data analytics dashboard that provides real-time insights into business performance. The dashboard includes interactive charts, customizable reports, and automated alerts.",
+                    features: [
+                        "Real-time data visualization",
+                        "Custom report generation",
+                        "Interactive filtering and drilling",
+                        "Automated alerts and notifications",
+                        "Export functionality (PDF, Excel)",
+                        "Mobile-responsive design"
+                    ],
+                    technologies: "Python, Django, PostgreSQL, D3.js, Chart.js, Redis, Docker"
+                },
+                {
+                    id: 4,
+                    title: "Brand Identity Design",
+                    description: "Complete brand identity package including logo, colors, and marketing materials.",
+                    image: "images/project4.jpg",
+                    category: "Branding",
+                    detailImages: ["images/project4-detail1.jpg", "images/project4-detail2.jpg", "images/project4-detail3.jpg"],
+                    overview: "Complete brand identity development for a tech startup, including logo design, color palette, typography, and brand guidelines. The project aimed to create a modern, trustworthy, and memorable brand presence.",
+                    features: [
+                        "Logo design and variations",
+                        "Comprehensive brand guidelines",
+                        "Color palette and typography system",
+                        "Business card and stationery design",
+                        "Social media templates",
+                        "Website design mockups"
+                    ],
+                    technologies: "Adobe Illustrator, Photoshop, InDesign, Figma, Canva"
+                },
+                {
+                    id: 5,
+                    title: "AI-Powered Web App",
+                    description: "Intelligent web application leveraging machine learning for enhanced user experience.",
+                    image: "images/project5.jpg",
+                    category: "Machine Learning",
+                    detailImages: ["images/project5-detail1.jpg", "images/project5-detail2.jpg", "images/project5-detail3.jpg"],
+                    overview: "An innovative web application that leverages artificial intelligence to provide personalized user experiences. The app includes natural language processing, predictive analytics, and automated decision-making capabilities.",
+                    features: [
+                        "Natural language processing",
+                        "Predictive analytics and recommendations",
+                        "Automated content generation",
+                        "Intelligent user behavior analysis",
+                        "Machine learning model training",
+                        "Real-time decision making"
+                    ],
+                    technologies: "Python, TensorFlow, Flask, React, scikit-learn, OpenAI API, AWS"
+                },
+                {
+                    id: 6,
+                    title: "AI-Powered Web App",
+                    description: "Intelligent web application leveraging machine learning for enhanced user experience.",
+                    image: "images/project5.jpg",
+                    category: "Machine Learning",
+                    detailImages: ["images/project5-detail1.jpg", "images/project5-detail2.jpg", "images/project5-detail3.jpg"],
+                    overview: "An innovative web application that leverages artificial intelligence to provide personalized user experiences. The app includes natural language processing, predictive analytics, and automated decision-making capabilities.",
+                    features: [
+                        "Natural language processing",
+                        "Predictive analytics and recommendations",
+                        "Automated content generation",
+                        "Intelligent user behavior analysis",
+                        "Machine learning model training",
+                        "Real-time decision making"
+                    ],
+                    technologies: "Python, TensorFlow, Flask, React, scikit-learn, OpenAI API, AWS"
+                }
+            ],
+            skills: [
+                {
+                    id: 1,
+                    name: "JavaScript",
+                    proficiency: 90,
+                    image: "images/skill-js.jpg",
+                    description: "I've been working with JavaScript for over 5 years, starting with simple DOM manipulation and progressing to complex full-stack applications. I chose JavaScript because of its versatility and the ability to use it across different platforms. From vanilla JavaScript to modern frameworks like React and Node.js, I've built everything from interactive websites to real-time applications. What I love most about JavaScript is its dynamic nature and the vibrant community that constantly pushes the language forward.",
+                    learningPath: "Self-taught through online courses, bootcamps, and real-world projects"
+                },
+                {
+                    id: 2,
+                    name: "Python",
+                    proficiency: 85,
+                    image: "images/skill-python.jpg",
+                    description: "Python became my go-to language for data analysis, machine learning, and backend development. I was drawn to Python because of its clean syntax and powerful libraries. Over the past 4 years, I've used Python for everything from web scraping and data analysis to building AI models and APIs. The language's readability and extensive ecosystem make it perfect for rapid prototyping and production applications. I particularly enjoy using Python for machine learning projects with libraries like TensorFlow and scikit-learn.",
+                    learningPath: "University courses, online tutorials, and machine learning projects"
+                },
+                {
+                    id: 3,
+                    name: "React",
+                    proficiency: 88,
+                    image: "images/skill-react.jpg",
+                    description: "React revolutionized how I approach frontend development. I started learning React 3 years ago when I needed to build more dynamic and interactive user interfaces. The component-based architecture and virtual DOM make it incredibly efficient for building complex applications. I've used React to build everything from simple landing pages to complex dashboards with real-time data. The ecosystem around React, including Redux for state management and Next.js for server-side rendering, makes it a complete solution for modern web development.",
+                    learningPath: "Official documentation, practical projects, and React community resources"
+                },
+                {
+                    id: 4,
+                    name: "UI/UX Design",
+                    proficiency: 80,
+                    image: "images/skill-design.jpg",
+                    description: "My journey into UI/UX design started from a frustration with poorly designed interfaces. I believe that good design is invisible - users should be able to accomplish their goals without thinking about the interface. Over 3 years, I've learned to balance aesthetics with functionality, always keeping the user at the center of the design process. I use tools like Figma and Adobe XD to create wireframes, prototypes, and design systems. My approach combines user research, iterative design, and usability testing to create interfaces that are both beautiful and functional.",
+                    learningPath: "Design courses, studying great designs, and user feedback from real projects"
+                },
+                {
+                    id: 5,
+                    name: "Node.js",
+                    proficiency: 82,
+                    image: "images/skill-nodejs.jpg",
+                    description: "Node.js opened up the possibility of using JavaScript on the server-side, which was a game-changer for me. I've been working with Node.js for 3 years, building APIs, real-time applications, and microservices. The non-blocking I/O model makes it perfect for building scalable network applications. I particularly enjoy using Express.js for building RESTful APIs and Socket.io for real-time communication. The npm ecosystem provides solutions for almost any problem, making development faster and more efficient.",
+                    learningPath: "Hands-on projects, Express.js documentation, and building full-stack applications"
+                },
+                {
+                    id: 6,
+                    name: "Machine Learning",
+                    proficiency: 75,
+                    image: "images/skill-ml.jpg",
+                    description: "Machine learning represents the future of technology, and I've been passionate about it for the past 2 years. I started with basic algorithms and gradually moved to deep learning and neural networks. What fascinates me about ML is its ability to find patterns in data that humans might miss. I've worked on projects involving natural language processing, computer vision, and predictive analytics. Using libraries like TensorFlow, PyTorch, and scikit-learn, I've built models that can classify images, predict trends, and automate decision-making processes.",
+                    learningPath: "Online courses, research papers, Kaggle competitions, and practical AI projects"
+                }
+            ]
+        };
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Section navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Find and activate current nav link
+            const currentLink = document.querySelector(`[onclick="showSection('${sectionName}')"]`);
+            if (currentLink && currentLink.classList.contains('nav-link')) {
+                currentLink.classList.add('active');
+            }
+
+            // Close mobile menu if open
+            const navLinksContainer = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            navLinksContainer.classList.remove('active');
+            mobileMenu.classList.remove('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Load projects dynamically
+        function loadProjects() {
+            const container = document.getElementById('projects-container');
+            const modalsContainer = document.getElementById('modals-container');
+            
+            container.innerHTML = '';
+            modalsContainer.innerHTML = '';
+
+            portfolioData.projects.forEach(project => {
+                // Create project card
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.onclick = () => openModal(`modal${project.id}`);
+                
+                projectCard.innerHTML = `
+                    <div class="project-image" style="background-image: url('${project.image}')"></div>
+                    <div class="project-text">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(projectCard);
+
+                // Create modal
+                const modal = document.createElement('div');
+                modal.id = `modal${project.id}`;
+                modal.className = 'modal';
+                
+                const detailImagesHtml = project.detailImages.map(img => 
+                    `<div class="modal-image" style="background-image: url('${img}')"></div>`
+                ).join('');
+
+                const featuresHtml = project.features.map(feature => `• ${feature}`).join('<br>');
+                
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close" onclick="closeModal('modal${project.id}')">&times;</span>
+                            <h2>${project.title}</h2>
+                            <p>${project.category}</p>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-images">
+                                ${detailImagesHtml}
+                            </div>
+                            <div class="modal-text">
+                                <h3>Project Overview</h3>
+                                <p>${project.overview}</p>
+                                
+                                <h3>Key Features</h3>
+                                <p>${featuresHtml}</p>
+                                
+                                <h3>Technologies Used</h3>
+                                <p>${project.technologies}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                modalsContainer.appendChild(modal);
+            });
+        }
+
+        // Load skills dynamically
+        function loadSkills() {
+            const container = document.getElementById('skills-container');
+            container.innerHTML = '';
+
+            portfolioData.skills.forEach(skill => {
+                const skillCard = document.createElement('div');
+                skillCard.className = 'skill-card';
+                
+                skillCard.innerHTML = `
+                    <div class="skill-image" style="background-image: url('${skill.image}')">
+                        ${skill.name}
+                    </div>
+                    <div class="skill-name">${skill.name}</div>
+                    <div class="skill-proficiency">
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: ${skill.proficiency}%"></div>
+                        </div>
+                        <div class="proficiency-text">${skill.proficiency}%</div>
+                    </div>
+                    <div class="skill-description">
+                        <p><strong>Learning Path:</strong> ${skill.learningPath}</p>
+                        <p>${skill.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(skillCard);
+            });
+
+            // Animate proficiency bars
+            setTimeout(() => {
+                const bars = document.querySelectorAll('.proficiency-fill');
+                bars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }, 500);
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target === modals[i]) {
+                    modals[i].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (modals[i].style.display === 'block') {
+                        modals[i].style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            }
+        });
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProjects();
+            loadSkills();
+            
+            // Set initial active nav link
+            const homeLink = document.querySelector(`[onclick="showSection('home')"]`);
+            if (homeLink && homeLink.classList.contains('nav-link')) {
+                homeLink.classList.add('active');
+            }
+        });
+
+        // Function to add new project (for demonstration)
+        function addProject(projectData) {
+            portfolioData.projects.push(projectData);
+            loadProjects();
+        }
+
+        // Function to add new skill (for demonstration)
+        function addSkill(skillData) {
+            portfolioData.skills.push(skillData);
+            loadSkills();
+        }
+
+        // Example of how to add a new project dynamically:
+        /*
+        const newProject = {
+            id: 6,
+            title: "New Project",
+            description: "Description of the new project",
+            image: "images/new-project.jpg",
+            category: "Web Development",
+            detailImages: ["images/new-project-detail1.jpg"],
+            overview: "Detailed overview of the project",
+            features: ["Feature 1", "Feature 2"],
+            technologies: "HTML, CSS, JavaScript"
+        };
+        addProject(newProject);
+        */
+    </script>
+</body>
+</html>
