@@ -5,6 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alward Hafez Portfolio</title>
     <style>
+        .hero-carousel {
+        width: 100%;
+        height: 60vh;
+        position: relative;
+        overflow: hidden;
+        }
+
+        .carousel-track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.8s ease-in-out;
+        will-change: transform;
+
+        }
+
+        .carousel-slide {
+        width: 100%;
+        flex-shrink: 0;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: flex-end; /* move text to bottom */
+        justify-content: center;
+        }
+
+        .slide-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        max-width: 800px;
+        padding: 1rem 2rem 3rem; /* bottom padding to not overlap dots */
+        }
+
+        .slide-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 3;
+        }
+
+        .carousel-dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+        background: white;
+        transform: scale(1.2);
+        }
+
+
+
+
         * {
             margin: 0;
             padding: 0;
@@ -744,6 +816,45 @@
 
     <!-- Home Section -->
     <div id="home" class="page-section active">
+
+        <div class="hero-carousel">
+        <div class="carousel-track" id="carousel-track">
+            <div class="carousel-slide" style="background-image: url('images/hero1.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h2>Welcome to My Portfolio</h2>
+                <p>Explore my latest projects and skills</p>
+                <a href="#" class="slide-learn-more" onclick="showSection('projects')">View Projects</a>
+            </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('images/hero2.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h2>Creative Solutions</h2>
+                <p>Bringing innovation and design together</p>
+                <a href="#" class="slide-learn-more" onclick="showSection('about')">About Me</a>
+            </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('images/hero3.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h2>Let’s Collaborate</h2>
+                <p>I'm open for freelance and full-time opportunities</p>
+                <a href="#" class="slide-learn-more" onclick="showSection('contact')">Contact Me</a>
+            </div>
+            </div>
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots" id="carousel-dots"></div>
+        </div>
+
+
+
+
+
+
+
         <!-- Cover Photo Section -->
         <div class="cover-section fade-in">
             <div class="cover-overlay"></div>
@@ -761,11 +872,11 @@
 
         <!-- Call to Action -->
         <div class="cta-section">
-            <h3>Ready to Work Together?</h3>
-            <p>Let's create something amazing together. Get in touch to discuss your next project.</p>
+            <h3>R88?</h3>
+            <p>Let's create something 645</p>
             <div class="cta-buttons">
-                <a href="#" onclick="showSection('contact')" class="cta-button">Get In Touch</a>
-                <a href="#" onclick="showSection('about')" class="cta-button">Learn More About Me</a>
+                <a href="#" onclick="showSection('contact')" class="cta-button">G777</a>
+                <a href="#" onclick="showSection('about')" class="cta-button">L7789</a>
             </div>
         </div>
     </div>
@@ -776,7 +887,7 @@
             <div class="cover-overlay"></div>
             <div class="cover-content">
                 <h1>About Me</h1>
-                <p>Learn more about my background and experience</p>
+                <p>L45</p>
             </div>
         </div>
 
@@ -789,12 +900,12 @@
                 </div>
                 <div class="about-text">
                     <h2>Hello, I'm Alward Hafez</h2>
-                    <p>I'm a passionate developer and designer with a love for creating innovative solutions that make a difference. With years of experience in web development, mobile app design, and data analytics, I bring a unique perspective to every project I work on.</p>
-                    <p>My journey in technology started with a curiosity about how things work and evolved into a career focused on building meaningful digital experiences. I believe in the power of technology to solve real-world problems and improve people's lives.</p>
-                    <p>When I'm not coding or designing, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                    <p>xx.</p>
+                    <p>xxx</p>
+                    <p>xxxx.</p>
                     
                     <div class="custom-text">
-                        <strong>My Mission:</strong> To create digital solutions that are not only functional and beautiful but also accessible and user-friendly. I strive to bridge the gap between complex technology and everyday users.
+                        <strong>My Mission:</strong> xx
                     </div>
                 </div>
             </div>
@@ -803,7 +914,7 @@
         <!-- Call to Action -->
         <div class="cta-section">
             <h3>Want to Know More?</h3>
-            <p>Check out my skills and experience, or get in touch to discuss potential collaborations.</p>
+            <p>xxxxx.</p>
             <div class="cta-buttons">
                 <a href="#" onclick="showSection('skills')" class="cta-button">View My Skills</a>
                 <a href="#" onclick="showSection('contact')" class="cta-button">Contact Me</a>
@@ -817,7 +928,7 @@
             <div class="cover-overlay"></div>
             <div class="cover-content">
                 <h1>My Skills</h1>
-                <p>Technologies and expertise I bring to every project</p>
+                <p>7555</p>
             </div>
         </div>
 
@@ -830,7 +941,7 @@
         <!-- Call to Action -->
         <div class="cta-section">
             <h3>Let's Build Something Great</h3>
-            <p>Ready to put these skills to work on your next project? Let's discuss how I can help bring your ideas to life.</p>
+            <p>789</p>
             <div class="cta-buttons">
                 <a href="#" onclick="showSection('contact')" class="cta-button">Start a Project</a>
                 <a href="#" onclick="showSection('home')" class="cta-button">View My Work</a>
@@ -843,8 +954,8 @@
         <div class="cover-section fade-in">
             <div class="cover-overlay"></div>
             <div class="cover-content">
-                <h1>Get In Touch</h1>
-                <p>Let's discuss your next project or collaboration</p>
+                <h1>963</h1>
+                <p>999</p>
             </div>
         </div>
 
@@ -879,7 +990,7 @@
                     </div>
                     <div class="contact-item">
                         <strong>Available:</strong>
-                        <span>For freelance and full-time opportunities</span>
+                        <span>7896</span>
                     </div>
                 </div>
             </div>
@@ -933,160 +1044,160 @@
                 {
                     id: 1,
                     title: "Robot Arm",
-                    description: "A modern robotics project with advanced control systems and precision movement.",
+                    description: "xx",
                     image: "images/project1.jpg",
                     category: "Robotics",
                     detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
-                    overview: "This robotics project showcases advanced control systems and precision engineering. The robot arm features multiple degrees of freedom and can perform complex tasks with high accuracy.",
+                    overview: "xx",
                     features: [
-                        "6-axis movement control",
-                        "Computer vision integration",
-                        "Real-time path planning",
-                        "Safety collision detection",
-                        "Remote control interface",
-                        "Programmable task sequences"
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx"
                     ],
-                    technologies: "Arduino, Python, OpenCV, ROS, C++, Machine Learning"
+                    technologies: "xx"
                 },
                 {
                     id: 2,
-                    title: "Mobile App Design",
-                    description: "Intuitive mobile application design focused on user engagement and functionality.",
-                    image: "images/project2.jpg",
-                    category: "UI/UX Design",
-                    detailImages: ["images/project2-detail1.jpg", "images/project2-detail2.jpg", "images/project2-detail3.jpg"],
-                    overview: "This mobile app design project focused on creating an intuitive and engaging user experience. The design process included user research, wireframing, prototyping, and usability testing.",
+                    title: "Robot Arm",
+                    description: "xx",
+                    image: "images/project1.jpg",
+                    category: "Robotics",
+                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    overview: "xx",
                     features: [
-                        "Clean and modern interface design",
-                        "Intuitive navigation patterns",
-                        "Accessibility-focused design decisions",
-                        "Cross-platform compatibility",
-                        "Interactive micro-animations",
-                        "Consistent design system"
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx"
                     ],
-                    technologies: "Figma, Adobe XD, Sketch, InVision, Principle, After Effects"
+                    technologies: "xx"
                 },
                 {
                     id: 3,
-                    title: "Data Analytics Dashboard",
-                    description: "Comprehensive dashboard for real-time data visualization and business insights.",
-                    image: "images/project3.jpg",
-                    category: "Data Analytics",
-                    detailImages: ["images/project3-detail1.jpg", "images/project3-detail2.jpg", "images/project3-detail3.jpg"],
-                    overview: "A comprehensive data analytics dashboard that provides real-time insights into business performance. The dashboard includes interactive charts, customizable reports, and automated alerts.",
+                    title: "Robot Arm",
+                    description: "xx",
+                    image: "images/project1.jpg",
+                    category: "Robotics",
+                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    overview: "xx",
                     features: [
-                        "Real-time data visualization",
-                        "Custom report generation",
-                        "Interactive filtering and drilling",
-                        "Automated alerts and notifications",
-                        "Export functionality (PDF, Excel)",
-                        "Mobile-responsive design"
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx"
                     ],
-                    technologies: "Python, Django, PostgreSQL, D3.js, Chart.js, Redis, Docker"
+                    technologies: "xx"
                 },
                 {
                     id: 4,
-                    title: "Brand Identity Design",
-                    description: "Complete brand identity package including logo, colors, and marketing materials.",
-                    image: "images/project4.jpg",
-                    category: "Branding",
-                    detailImages: ["images/project4-detail1.jpg", "images/project4-detail2.jpg", "images/project4-detail3.jpg"],
-                    overview: "Complete brand identity development for a tech startup, including logo design, color palette, typography, and brand guidelines. The project aimed to create a modern, trustworthy, and memorable brand presence.",
+                    title: "Robot Arm",
+                    description: "xx",
+                    image: "images/project1.jpg",
+                    category: "Robotics",
+                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    overview: "xx",
                     features: [
-                        "Logo design and variations",
-                        "Comprehensive brand guidelines",
-                        "Color palette and typography system",
-                        "Business card and stationery design",
-                        "Social media templates",
-                        "Website design mockups"
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx"
                     ],
-                    technologies: "Adobe Illustrator, Photoshop, InDesign, Figma, Canva"
+                    technologies: "xx"
                 },
                 {
                     id: 5,
-                    title: "AI-Powered Web App",
-                    description: "Intelligent web application leveraging machine learning for enhanced user experience.",
-                    image: "images/project5.jpg",
-                    category: "Machine Learning",
-                    detailImages: ["images/project5-detail1.jpg", "images/project5-detail2.jpg", "images/project5-detail3.jpg"],
-                    overview: "An innovative web application that leverages artificial intelligence to provide personalized user experiences. The app includes natural language processing, predictive analytics, and automated decision-making capabilities.",
+                    title: "Robot Arm",
+                    description: "xx",
+                    image: "images/project1.jpg",
+                    category: "Robotics",
+                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    overview: "xx",
                     features: [
-                        "Natural language processing",
-                        "Predictive analytics and recommendations",
-                        "Automated content generation",
-                        "Intelligent user behavior analysis",
-                        "Machine learning model training",
-                        "Real-time decision making"
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx"
                     ],
-                    technologies: "Python, TensorFlow, Flask, React, scikit-learn, OpenAI API, AWS"
+                    technologies: "xx"
                 },
                 {
                     id: 6,
-                    title: "AI-Powered Web App",
-                    description: "Intelligent web application leveraging machine learning for enhanced user experience.",
-                    image: "images/project5.jpg",
-                    category: "Machine Learning",
-                    detailImages: ["images/project5-detail1.jpg", "images/project5-detail2.jpg", "images/project5-detail3.jpg"],
-                    overview: "An innovative web application that leverages artificial intelligence to provide personalized user experiences. The app includes natural language processing, predictive analytics, and automated decision-making capabilities.",
+                    title: "Robot Arm",
+                    description: "xx",
+                    image: "images/project1.jpg",
+                    category: "Robotics",
+                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    overview: "xx",
                     features: [
-                        "Natural language processing",
-                        "Predictive analytics and recommendations",
-                        "Automated content generation",
-                        "Intelligent user behavior analysis",
-                        "Machine learning model training",
-                        "Real-time decision making"
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx",
+                        "xx"
                     ],
-                    technologies: "Python, TensorFlow, Flask, React, scikit-learn, OpenAI API, AWS"
+                    technologies: "xx"
                 }
             ],
             skills: [
                 {
                     id: 1,
                     name: "JavaScript",
-                    proficiency: 90,
+                    proficiency: 100,
                     image: "images/skill-js.jpg",
-                    description: "I've been working with JavaScript for over 5 years, starting with simple DOM manipulation and progressing to complex full-stack applications. I chose JavaScript because of its versatility and the ability to use it across different platforms. From vanilla JavaScript to modern frameworks like React and Node.js, I've built everything from interactive websites to real-time applications. What I love most about JavaScript is its dynamic nature and the vibrant community that constantly pushes the language forward.",
-                    learningPath: "Self-taught through online courses, bootcamps, and real-world projects"
+                    description: "xx",
+                    learningPath: "xx"
                 },
                 {
                     id: 2,
-                    name: "Python",
-                    proficiency: 85,
+                    name: "xx",
+                    proficiency: 100,
                     image: "images/skill-python.jpg",
-                    description: "Python became my go-to language for data analysis, machine learning, and backend development. I was drawn to Python because of its clean syntax and powerful libraries. Over the past 4 years, I've used Python for everything from web scraping and data analysis to building AI models and APIs. The language's readability and extensive ecosystem make it perfect for rapid prototyping and production applications. I particularly enjoy using Python for machine learning projects with libraries like TensorFlow and scikit-learn.",
-                    learningPath: "University courses, online tutorials, and machine learning projects"
+                    description: "xx",
+                    learningPath: "xx"
                 },
                 {
                     id: 3,
-                    name: "React",
-                    proficiency: 88,
+                    name: "xx",
+                    proficiency: 100,
                     image: "images/skill-react.jpg",
-                    description: "React revolutionized how I approach frontend development. I started learning React 3 years ago when I needed to build more dynamic and interactive user interfaces. The component-based architecture and virtual DOM make it incredibly efficient for building complex applications. I've used React to build everything from simple landing pages to complex dashboards with real-time data. The ecosystem around React, including Redux for state management and Next.js for server-side rendering, makes it a complete solution for modern web development.",
-                    learningPath: "Official documentation, practical projects, and React community resources"
+                    description: "xx",
+                    learningPath: "xx"
                 },
                 {
                     id: 4,
-                    name: "UI/UX Design",
-                    proficiency: 80,
+                    name: "xx",
+                    proficiency: 100,
                     image: "images/skill-design.jpg",
-                    description: "My journey into UI/UX design started from a frustration with poorly designed interfaces. I believe that good design is invisible - users should be able to accomplish their goals without thinking about the interface. Over 3 years, I've learned to balance aesthetics with functionality, always keeping the user at the center of the design process. I use tools like Figma and Adobe XD to create wireframes, prototypes, and design systems. My approach combines user research, iterative design, and usability testing to create interfaces that are both beautiful and functional.",
-                    learningPath: "Design courses, studying great designs, and user feedback from real projects"
+                    description: "xx",
+                    learningPath: "xx"
                 },
                 {
                     id: 5,
                     name: "Node.js",
-                    proficiency: 82,
+                    proficiency: 100,
                     image: "images/skill-nodejs.jpg",
-                    description: "Node.js opened up the possibility of using JavaScript on the server-side, which was a game-changer for me. I've been working with Node.js for 3 years, building APIs, real-time applications, and microservices. The non-blocking I/O model makes it perfect for building scalable network applications. I particularly enjoy using Express.js for building RESTful APIs and Socket.io for real-time communication. The npm ecosystem provides solutions for almost any problem, making development faster and more efficient.",
-                    learningPath: "Hands-on projects, Express.js documentation, and building full-stack applications"
+                    description: "xx",
+                    learningPath: "xx"
                 },
                 {
                     id: 6,
                     name: "Machine Learning",
-                    proficiency: 75,
+                    proficiency: 100,
                     image: "images/skill-ml.jpg",
-                    description: "Machine learning represents the future of technology, and I've been passionate about it for the past 2 years. I started with basic algorithms and gradually moved to deep learning and neural networks. What fascinates me about ML is its ability to find patterns in data that humans might miss. I've worked on projects involving natural language processing, computer vision, and predictive analytics. Using libraries like TensorFlow, PyTorch, and scikit-learn, I've built models that can classify images, predict trends, and automate decision-making processes.",
-                    learningPath: "Online courses, research papers, Kaggle competitions, and practical AI projects"
+                    description: "xx",
+                    learningPath: "xx"
                 }
             ]
         };
@@ -1111,6 +1222,7 @@
 
         // Section navigation
         function showSection(sectionName) {
+
             // Hide all sections
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(section => {
@@ -1119,6 +1231,9 @@
 
             // Show selected section
             document.getElementById(sectionName).classList.add('active');
+            if (sectionName === 'skills') {
+            loadSkills();
+            }
 
             // Update navigation
             const navLinks = document.querySelectorAll('.nav-link');
@@ -1206,12 +1321,12 @@
             });
         }
 
-        // Load skills dynamically
+    // Load skills dynamically
         function loadSkills() {
             const container = document.getElementById('skills-container');
             container.innerHTML = '';
 
-            portfolioData.skills.forEach(skill => {
+            portfolioData.skills.forEach((skill, index) => {
                 const skillCard = document.createElement('div');
                 skillCard.className = 'skill-card';
                 
@@ -1222,7 +1337,8 @@
                     <div class="skill-name">${skill.name}</div>
                     <div class="skill-proficiency">
                         <div class="proficiency-bar">
-                            <div class="proficiency-fill" style="width: ${skill.proficiency}%"></div>
+                            <div class="proficiency-fill" data-width="${skill.proficiency}" style="width: 0%"></div>
+
                         </div>
                         <div class="proficiency-text">${skill.proficiency}%</div>
                     </div>
@@ -1239,20 +1355,52 @@
             setTimeout(() => {
                 const bars = document.querySelectorAll('.proficiency-fill');
                 bars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
+                        const targetWidth = bar.getAttribute('data-width');
+                        setTimeout(() => {
+                            bar.style.width = targetWidth + '%';
+                }, 100);
                 });
             }, 500);
-        }
 
-        // Modal functions
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+    // Animate skill percentage count
+    animateSkillNumbers();
+}
+
+function animateSkillBarsAndNumbers() {
+    const bars = document.querySelectorAll('.proficiency-fill');
+    const texts = document.querySelectorAll('.proficiency-text');
+
+    bars.forEach(bar => {
+        const target = bar.getAttribute('data-target');
+        bar.style.width = target + '%';
+    });
+
+    texts.forEach(text => {
+        const target = parseInt(text.getAttribute('data-target'));
+        let count = 0;
+        text.textContent = '0%';
+
+        const interval = setInterval(() => {
+            count++;
+            text.textContent = count + '%';
+            if (count >= target) {
+                clearInterval(interval);
+            }
+        }, 20); // slower animation
+    });
+}
+
+
+
+
+
+
+// Modal functions
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
@@ -1287,6 +1435,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadProjects();
             loadSkills();
+            startCarousel();
+
             
             // Set initial active nav link
             const homeLink = document.querySelector(`[onclick="showSection('home')"]`);
@@ -1301,27 +1451,79 @@
             loadProjects();
         }
 
+
+        function startCarousel() {
+            const track   = document.getElementById('carousel-track');
+            const slides  = document.querySelectorAll('.carousel-slide');
+            const dotsBox = document.getElementById('carousel-dots');
+            let   current = 0;
+            const total   = slides.length;
+            let   timer;               // holds our setInterval id
+
+            // ---- create dots ----
+            dotsBox.innerHTML = '';
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => {
+                    current = i;
+                    updateCarousel(true);   // true = manual click
+                });
+                dotsBox.appendChild(dot);
+            });
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            // ---- helpers ----
+            function updateCarousel(manual = false) {
+                track.style.transform = `translateX(-${current * 100}%)`;
+                dots.forEach(d => d.classList.remove('active'));
+                dots[current].classList.add('active');
+
+                // reset timer if user clicked
+                if (manual) resetTimer();
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(nextSlide, 5000); // 5 s
+            }
+
+            function nextSlide() {
+                current = (current + 1) % total;
+                updateCarousel();
+            }
+
+            // ---- start everything ----
+            resetTimer();    // sets the first interval + saves id
+            updateCarousel(); // initial paint
+        }
+
+
+
         // Function to add new skill (for demonstration)
         function addSkill(skillData) {
             portfolioData.skills.push(skillData);
             loadSkills();
         }
+        // Function to animate skill numbers counting from 0 to target percentage
+        function animateSkillNumbers() {
+            const texts = document.querySelectorAll('.proficiency-text');
+            texts.forEach(text => {
+                const target = parseInt(text.textContent);
+                text.textContent = '0%';
+                let count = 0;
+                const interval = setInterval(() => {
+                    if (count >= target) {
+                        clearInterval(interval);
+                    } else {
+                        count++;
+                        text.textContent = count + '%';
+            }
+        }, 15);
+    });
+}
 
-        // Example of how to add a new project dynamically:
-        /*
-        const newProject = {
-            id: 6,
-            title: "New Project",
-            description: "Description of the new project",
-            image: "images/new-project.jpg",
-            category: "Web Development",
-            detailImages: ["images/new-project-detail1.jpg"],
-            overview: "Detailed overview of the project",
-            features: ["Feature 1", "Feature 2"],
-            technologies: "HTML, CSS, JavaScript"
-        };
-        addProject(newProject);
-        */
+
     </script>
 </body>
 </html>
