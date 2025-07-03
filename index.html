@@ -9,7 +9,7 @@
     <style>
         .hero-carousel {
         width: 100%;
-        height: 70vh;
+        height: 65vh;
         position: relative;
         overflow: hidden;
         }
@@ -1538,10 +1538,11 @@ function openModal(modalId) {
                 }, 5000);
             }
 
-            // Drag variables
+            // DRAG LOGIC
             let isDragging = false;
             let startX = 0;
             let deltaX = 0;
+            let hasMoved = false;
             const threshold = 50;
 
             function getPositionX(e) {
@@ -1552,14 +1553,18 @@ function openModal(modalId) {
                 isDragging = true;
                 startX = getPositionX(e);
                 deltaX = 0;
+                hasMoved = false;
                 track.style.transition = 'none';
             }
 
             function dragMove(e) {
                 if (!isDragging) return;
-                deltaX = getPositionX(e) - startX;
+                const currentX = getPositionX(e);
+                deltaX = currentX - startX;
+                hasMoved = true;
                 const movePercent = (deltaX / window.innerWidth) * 100;
                 track.style.transform = `translateX(${(-currentIndex * 100) + movePercent}%)`;
+                e.preventDefault();
             }
 
             function dragEnd() {
@@ -1576,22 +1581,21 @@ function openModal(modalId) {
                 updateCarousel(true);
             }
 
-            // Event listeners for drag
+            // Mouse
             track.addEventListener('mousedown', dragStart);
-            track.addEventListener('touchstart', dragStart);
-
             track.addEventListener('mousemove', dragMove);
-            track.addEventListener('touchmove', dragMove);
-
             track.addEventListener('mouseup', dragEnd);
             track.addEventListener('mouseleave', dragEnd);
+
+            // Touch
+            track.addEventListener('touchstart', dragStart, { passive: true });
+            track.addEventListener('touchmove', dragMove, { passive: false });
             track.addEventListener('touchend', dragEnd);
 
-            // Initialize carousel
+            // Init
             updateCarousel();
             resetCarouselTimer();
         }
-
 
 
 
