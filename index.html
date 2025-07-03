@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alward Hafez Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
     <style>
         .hero-carousel {
         width: 100%;
-        height: 60vh;
+        height: 70vh;
         position: relative;
         overflow: hidden;
         }
@@ -41,14 +43,7 @@
         padding: 1rem 2rem 3rem; /* bottom padding to not overlap dots */
         }
 
-        .slide-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        }
+        
 
         .carousel-dots {
         position: absolute;
@@ -84,7 +79,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #1a252f 50%, #0d1117 100%);
             background-attachment: fixed;
             min-height: 100vh;
@@ -119,6 +114,21 @@
             align-items: center;
         }
 
+        .quote-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInQuote 1.2s ease-out 1.5s forwards;
+        }
+
+        @keyframes fadeInQuote {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -416,6 +426,7 @@
             color: #666;
         }
 
+
         .skill-name {
             font-size: 1.3rem;
             font-weight: bold;
@@ -709,97 +720,118 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .about-content,
-            .contact-content {
-                flex-direction: column;
-                text-align: center;
-            }
+    /* Fixed About and Contact sections for mobile */
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-            .about-image,
-            .contact-image {
-                flex: none;
-            }
+    /* Only center titles, not body text */
+    .about-content h2,
+    .contact-content h2 {
+        text-align: center;
+    }
+    .about-image,
+    .contact-image {
+        flex: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-            .about-photo,
-            .contact-photo {
-                width: 250px;
-                height: 250px;
-                margin: 0 auto 1rem;
-            }
+    /* Consistent photo sizing and centering for both about and contact */
+    .about-photo,
+    .contact-photo {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-            .cover-content h1 {
-                font-size: 2rem;
-            }
+    .cover-content h1 {
+        font-size: 2rem;
+    }
 
-            .cover-content p {
-                font-size: 1.1rem;
-            }
+    .cover-content p {
+        font-size: 1.1rem;
+    }
 
-            .modal-content {
-                width: 95%;
-                margin: 10% auto;
-            }
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
 
-            .social-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
+    .social-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-            /* Mobile Navigation */
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                flex-direction: column;
-                padding: 1rem 2rem;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-                gap: 1rem;
-            }
+    /* Mobile Navigation */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        padding: 1rem 2rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        gap: 1rem;
+    }
 
-            .nav-links.active {
-                display: flex;
-            }
+    .nav-links.active {
+        display: flex;
+    }
 
-            .mobile-menu {
-                display: flex;
-            }
+    .mobile-menu {
+        display: flex;
+    }
 
-            .mobile-menu.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
+    .mobile-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
 
-            .mobile-menu.active span:nth-child(2) {
-                opacity: 0;
-            }
+    .mobile-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
 
-            .mobile-menu.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
-            }
-        }
+    .mobile-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
     </style>
 </head>
 <body>
+
+    
     <!-- Sticky Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo" onclick="showSection('home')">Portfolio</a>
+            <a href="#" class="logo" onclick="showSection('home')">Alward Portfolio</a>
             <ul class="nav-links">
                 <li><a href="#" onclick="showSection('home')" class="nav-link">Home</a></li>
                 <li><a href="#" onclick="showSection('about')" class="nav-link">About Me</a></li>
@@ -822,25 +854,19 @@
             <div class="carousel-slide" style="background-image: url('images/hero1.jpg');">
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <h2>Welcome to My Portfolio</h2>
-                <p>Explore my latest projects and skills</p>
-                <a href="#" class="slide-learn-more" onclick="showSection('projects')">View Projects</a>
+                <!--<a href="#" class="slide-learn-more" onclick="showSection('projects')">View Projects</a> -->
             </div>
             </div>
             <div class="carousel-slide" style="background-image: url('images/hero2.jpg');">
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <h2>Creative Solutions</h2>
-                <p>Bringing innovation and design together</p>
-                <a href="#" class="slide-learn-more" onclick="showSection('about')">About Me</a>
+                 <!--<a href="#" class="slide-learn-more" onclick="showSection('about')">About Me</a> -->
             </div>
             </div>
             <div class="carousel-slide" style="background-image: url('images/hero3.jpg');">
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <h2>Let’s Collaborate</h2>
-                <p>I'm open for freelance and full-time opportunities</p>
-                <a href="#" class="slide-learn-more" onclick="showSection('contact')">Contact Me</a>
+                <!--<a href="#" class="slide-learn-more" onclick="showSection('contact')">Contact Me</a> -->
             </div>
             </div>
         </div>
@@ -859,7 +885,7 @@
         <div class="cover-section fade-in">
             <div class="cover-overlay"></div>
             <div class="cover-content">
-                <h1>My Portfolio</h1>
+                <h1>Alward Hafez Portfolio</h1>
                 <p>Explore my creative projects and innovations</p>
             </div>
         </div>
@@ -872,11 +898,11 @@
 
         <!-- Call to Action -->
         <div class="cta-section">
-            <h3>R88?</h3>
-            <p>Let's create something 645</p>
+            <h3>Get in Touch</h3>
+            <p>Let's create something special</p>
             <div class="cta-buttons">
-                <a href="#" onclick="showSection('contact')" class="cta-button">G777</a>
-                <a href="#" onclick="showSection('about')" class="cta-button">L7789</a>
+                <a href="#" onclick="showSection('contact')" class="cta-button">Contact</a>
+                <a href="#" onclick="showSection('about')" class="cta-button">About Me</a>
             </div>
         </div>
     </div>
@@ -887,7 +913,7 @@
             <div class="cover-overlay"></div>
             <div class="cover-content">
                 <h1>About Me</h1>
-                <p>L45</p>
+                <p>Learn more about my background</p>
             </div>
         </div>
 
@@ -900,21 +926,24 @@
                 </div>
                 <div class="about-text">
                     <h2>Hello, I'm Alward Hafez</h2>
-                    <p>xx.</p>
-                    <p>xxx</p>
+                    <p>Recent Mechatronics Engineering graduate from UCSI University with hands on experience in robotics, smart agriculture, AI based image processing, and IoT system development. I’ve completed multiple internships and projects including an AI based helmet detection system and a smart palm tree monitoring platform using YOLOv8 and Google Cloud.</p>
+                    <p> At Control Easy Technology Sdn Bhd, as a Research and Development Engineer, I applied problem-solving to enhance product development, leveraging my expertise in mechatronics. The experience enriched my capacity to devise solutions that bridge the gap between theoretical knowledge and practical application.</p>
                     <p>xxxx.</p>
                     
-                    <div class="custom-text">
-                        <strong>My Mission:</strong> xx
+                    <div class="custom-text quote-fade">
+                        <strong>"Nothing’s scary if you face it first." — GT</strong>
+                        <br>
+                        <em>Fear only lives in what we haven’t faced yet</em>
                     </div>
+
                 </div>
             </div>
         </div>
 
         <!-- Call to Action -->
         <div class="cta-section">
-            <h3>Want to Know More?</h3>
-            <p>xxxxx.</p>
+            <h3>Get in Touch</h3>
+            <p>Check out my skills and experience, or get in touch to discuss potential collaborations.</p>
             <div class="cta-buttons">
                 <a href="#" onclick="showSection('skills')" class="cta-button">View My Skills</a>
                 <a href="#" onclick="showSection('contact')" class="cta-button">Contact Me</a>
@@ -928,7 +957,7 @@
             <div class="cover-overlay"></div>
             <div class="cover-content">
                 <h1>My Skills</h1>
-                <p>7555</p>
+                <p>My technical skill set</p>
             </div>
         </div>
 
@@ -941,7 +970,7 @@
         <!-- Call to Action -->
         <div class="cta-section">
             <h3>Let's Build Something Great</h3>
-            <p>789</p>
+            <p>Let's discuss how I can help bring your ideas to life.</p>
             <div class="cta-buttons">
                 <a href="#" onclick="showSection('contact')" class="cta-button">Start a Project</a>
                 <a href="#" onclick="showSection('home')" class="cta-button">View My Work</a>
@@ -954,8 +983,8 @@
         <div class="cover-section fade-in">
             <div class="cover-overlay"></div>
             <div class="cover-content">
-                <h1>963</h1>
-                <p>999</p>
+                <h1>Let's Get in Touch</h1>
+                <p>Let's discuss your next project or collaboration</p>
             </div>
         </div>
 
@@ -999,7 +1028,7 @@
         <!-- Call to Action -->
         <div class="cta-section">
             <h3>Ready to Start?</h3>
-            <p>Whether you have a project in mind or just want to say hello, I'd love to hear from you.</p>
+            <p>Have a project in mind I'd love to hear from you.</p>
             <div class="cta-buttons">
                 <a href="mailto:alward@example.com" class="cta-button">Send Email</a>
                 <a href="#" onclick="showSection('home')" class="cta-button">View Portfolio</a>
@@ -1022,138 +1051,157 @@
                 <div class="social-icon">🐱</div>
                 <span>GitHub</span>
             </a>
-            <a href="https://twitter.com/alwardhafez" target="_blank" class="social-link">
-                <div class="social-icon">🐦</div>
-                <span>Twitter</span>
-            </a>
-            <a href="https://instagram.com/alwardhafez" target="_blank" class="social-link">
-                <div class="social-icon">📷</div>
-                <span>Instagram</span>
-            </a>
         </div>
-        <p>&copy; 2025 Alward Hafez. All rights reserved.</p>
+
     </div>
 
     <!-- Project Modals will be generated dynamically -->
     <div id="modals-container"></div>
 
     <script>
+
         // Configuration data (this would typically be in a separate JSON file)
         const portfolioData = {
             projects: [
                 {
+
                     id: 1,
-                    title: "Robot Arm",
-                    description: "xx",
-                    image: "images/project1.jpg",
-                    category: "Robotics",
-                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
-                    overview: "xx",
+                    title: "Robotic Arm: 6 Degree of Freedom Gesture-Controlled System",
+                    description: "A responsive 6-DOF robotic arm programmed to detect and follow user hand gestures using OpenCV and Python.",
+                    image: "images/project4.jpg",
+                    category: "Robotics, Computer Vision, Embedded Systems",
+                    detailImages: ["images/project4-detail1.jpg", "images/project4-detail2.jpg", "images/project4-detail3.jpg"],
+                    overview: "In May 2023, I designed and programmed a 6-degree-of-freedom robotic arm that tracks and responds to hand movements in real-time using OpenCV. The system translates visual input into mechanical control, demonstrating a fusion of vision processing and embedded actuation, suitable for human-robot interaction experiments.",
                     features: [
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx"
+                        "Developed a 6-DOF robotic arm controlled by real-time hand tracking.",
+                        "Implemented gesture detection using Python and OpenCV.",
+                        "Designed the interaction loop between visual input and arm movement.",
+                        "Demonstrated real-world application of computer vision in robotics.",
+                        "Built a scalable and modular structure for further development.",
+                        "Tested for responsiveness and accuracy in various lighting conditions."
                     ],
-                    technologies: "xx"
+                    technologies: "Python, OpenCV, Arduino, Servo Motors, Robotics"
+
+
+
                 },
                 {
                     id: 2,
-                    title: "Robot Arm",
-                    description: "xx",
-                    image: "images/project1.jpg",
-                    category: "Robotics",
-                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
-                    overview: "xx",
+                    title: "Holistic and Integrated Smart System for Safeguarding Motorcyclists",
+                    description: "An AI and IoT-based safety system to monitor helmet use and riding behavior for improved motorcyclist safety.",
+                    image: "images/project3.jpg",
+                    category: "IoT, AI, Safety Systems",
+                    detailImages: ["images/project3-detail1.jpg", "images/project3-detail2.jpg", "images/project3-detail3.jpg"],
+                    overview: "In April 2024, I worked on a smart safety system for motorcyclists combining object detection, sensor integration, and IoT. A YOLOv8 model was trained to detect helmet usage in real-time, while onboard sensors monitored riding behavior such as acceleration, braking, and lean angle. The system provided employers with actionable insights through a live IoT dashboard.",
                     features: [
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx"
+                        "Trained a YOLOv8 object detection model to ensure motorcyclists are wearing helmets.",
+                        "Monitored acceleration, braking, and lean angle using integrated sensors.",
+                        "Developed an IoT platform for real-time data collection and analysis.",
+                        "Visualized riding performance through interactive dashboards.",
+                        "Enabled employers to track and promote safer riding behavior.",
+                        "Contributed to reducing risks and improving road safety for motorcyclists."
                     ],
-                    technologies: "xx"
+                    technologies: "YOLOv8, IoT, Embedded Systems, Python, Sensor Integration"
+
+
+
+
                 },
                 {
                     id: 3,
-                    title: "Robot Arm",
-                    description: "xx",
-                    image: "images/project1.jpg",
-                    category: "Robotics",
-                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
-                    overview: "xx",
+                    title: "Portable Real-Time Monitoring System for Palm Tree",
+                    description: "A smart agriculture system for monitoring palm tree health and growth using AI and IoT.",
+                    image: "images/project2.jpg",
+                    category: "IoT, Computer Vision, Smart Agriculture",
+                    detailImages: ["images/project2-detail1.jpg", "images/project2-detail2.jpg", "images/project2-detail3.jpg"],
+                    overview: "In August 2024, I developed a portable real-time monitoring system focused on palm trees for smart agriculture applications. The system collects environmental and growth data and provides alerts to caretakers. It also uses a YOLOv8 segmentation model to analyze plant growth from images and integrates with a cloud-based IoT platform for live monitoring and management.",
                     features: [
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx"
+                        "Developed a portable real-time system to monitor palm tree environmental and growth parameters.",
+                        "Trained and deployed a YOLOv8 segmentation model to analyze plant growth through pixel analysis.",
+                        "Designed an interactive IoT dashboard using Google Cloud for live monitoring and alerts.",
+                        "Integrated Raspberry Pi with multiple sensors for real-time data acquisition.",
+                        "Enabled remote plant management with visual insights and alert thresholds.",
+                        "Focused on supporting sustainable smart agriculture practices."
                     ],
-                    technologies: "xx"
+                    technologies: "YOLOv8, Raspberry Pi, Google Cloud, Python, IoT, Computer Vision"
+
+
+
+
                 },
                 {
                     id: 4,
-                    title: "Robot Arm",
-                    description: "xx",
-                    image: "images/project1.jpg",
-                    category: "Robotics",
-                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
-                    overview: "xx",
+                    title: "IMechE Training Series: Hands-On Robotics for University Students",
+                    description: "Led a robotics training series to teach students how to build and program a gesture-controlled robotic arm.",
+                    image: "images/project7.jpg",
+                    category: "STEM Education, Robotics Training, Technical Communication",
+                    detailImages: ["images/project7-detail1.jpg", "images/project7-detail2.jpg", "images/project7-detail3.jpg"],
+                    overview: "Alongside the development of the robotic arm, I conducted a hands-on robotics training series in May 2023 at UCSI University. The series guided students through each stage of building the robotic system — from hardware to software — and helped them understand core principles of vision-based control and mechatronics.",
                     features: [
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx"
+                        "Prepared and delivered a structured robotics training series for students.",
+                        "Explained key concepts like servo control, OpenCV tracking, and motion mapping.",
+                        "Engaged participants with live demonstrations and build-along sessions.",
+                        "Encouraged student experimentation and adaptation of the original project.",
+                        "Used the robotic arm project as an educational tool and engineering mascot.",
+                        "Strengthened my communication and mentoring skills in technical topics."
                     ],
-                    technologies: "xx"
+                    technologies: "Python, OpenCV, Arduino, Robotics, Presentation Tools"
+
+
+
+
                 },
                 {
                     id: 5,
-                    title: "Robot Arm",
-                    description: "xx",
-                    image: "images/project1.jpg",
-                    category: "Robotics",
-                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
-                    overview: "xx",
+                    title: "IoT Training Series: Real-Time Monitoring with Raspberry Pi and Google Cloud",
+                    description: "Co-led an IoT training series focused on building real-time sensor-based monitoring systems using Raspberry Pi and Google Sheets.",
+                    image: "images/project6.jpg",
+                    category: "IoT, Training, Cloud Integration",
+                    detailImages: ["images/project6-detail1.jpg", "images/project6-detail2.jpg", "images/project6-detail3.jpg"],
+                    overview: "As part of my internship at Control Easy Technology in late 2023, I collaborated with my supervisor to design and deliver an IoT training program for external clients. The training focused on building real-time monitoring systems using Raspberry Pi, various sensors, and integration with Google Cloud and Google Sheets. I created instructional materials and led hands-on sessions to guide participants through system setup, data flow, and cloud-based visualization.",
                     features: [
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx"
+                        "Designed and delivered IoT training sessions using Raspberry Pi and sensors.",
+                        "Demonstrated real-time data collection and cloud integration with Google Sheets.",
+                        "Created clear and engaging instructional materials for technical and non-technical audiences.",
+                        "Conducted live sessions, assisting participants in building and testing their systems.",
+                        "Enabled attendees to deploy their own monitoring systems for practical use.",
+                        "Focused on low-cost, scalable IoT solutions for beginners and professionals alike."
                     ],
-                    technologies: "xx"
+                    technologies: "Raspberry Pi, Sensors, Google Sheets, Google Cloud, Python"
+
+
+
                 },
                 {
                     id: 6,
-                    title: "Robot Arm",
-                    description: "xx",
+                    title: "Modular Prototyping Box for Multi-Project Applications",
+                    description: "A reusable and customizable 3D-printed enclosure designed to accelerate prototyping for R&D.",
                     image: "images/project1.jpg",
-                    category: "Robotics",
+                    category: "3D design, R&D",
                     detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
-                    overview: "xx",
+                    overview: "From May 2023 to August 2024, I designed and 3D printed a modular enclosure to support rapid development and testing of electronic systems. The box accommodated various sensors, microcontrollers, and components, and was reused across five unique projects, proving its effectiveness and adaptability.",
                     features: [
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx",
-                        "xx"
+                        "3D printed a versatile and aesthetically pleasing modular box to house sensors, microcontrollers, and other components.",
+                        "Expandable through modular design for different project needs.",
+                        "Successfully used in five distinct electronics projects.",
+                        "Saves prototyping time and improves workflow efficiency.",
+                        "Tool-free assembly and easy internal reconfiguration.",
+                        "Designed with both functionality and visual appeal in mind."
                     ],
-                    technologies: "xx"
+                    technologies: "3D design, 3D printing"
+
+
+
+
+
+
+
                 }
             ],
             skills: [
                 {
                     id: 1,
-                    name: "JavaScript",
+                    name: "xx",
                     proficiency: 100,
                     image: "images/skill-js.jpg",
                     description: "xx",
@@ -1185,7 +1233,7 @@
                 },
                 {
                     id: 5,
-                    name: "Node.js",
+                    name: "xx",
                     proficiency: 100,
                     image: "images/skill-nodejs.jpg",
                     description: "xx",
@@ -1193,7 +1241,7 @@
                 },
                 {
                     id: 6,
-                    name: "Machine Learning",
+                    name: "xx",
                     proficiency: 100,
                     image: "images/skill-ml.jpg",
                     description: "xx",
@@ -1451,52 +1499,99 @@ function openModal(modalId) {
             loadProjects();
         }
 
+        let currentIndex = 0;
+        let carouselTimer;
 
         function startCarousel() {
-            const track   = document.getElementById('carousel-track');
-            const slides  = document.querySelectorAll('.carousel-slide');
+            const track = document.getElementById('carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
             const dotsBox = document.getElementById('carousel-dots');
-            let   current = 0;
-            const total   = slides.length;
-            let   timer;               // holds our setInterval id
+            const total = slides.length;
 
-            // ---- create dots ----
+            // Create dots
             dotsBox.innerHTML = '';
             slides.forEach((_, i) => {
                 const dot = document.createElement('div');
                 dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
                 dot.addEventListener('click', () => {
-                    current = i;
-                    updateCarousel(true);   // true = manual click
+                    currentIndex = i;
+                    updateCarousel(true);
                 });
                 dotsBox.appendChild(dot);
             });
+
             const dots = document.querySelectorAll('.carousel-dot');
 
-            // ---- helpers ----
             function updateCarousel(manual = false) {
-                track.style.transform = `translateX(-${current * 100}%)`;
+                track.style.transition = 'transform 0.8s ease-in-out';
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
                 dots.forEach(d => d.classList.remove('active'));
-                dots[current].classList.add('active');
-
-                // reset timer if user clicked
-                if (manual) resetTimer();
+                if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+                if (manual) resetCarouselTimer();
             }
 
-            function resetTimer() {
-                clearInterval(timer);
-                timer = setInterval(nextSlide, 5000); // 5 s
+            function resetCarouselTimer() {
+                clearInterval(carouselTimer);
+                carouselTimer = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % total;
+                    updateCarousel();
+                }, 5000);
             }
 
-            function nextSlide() {
-                current = (current + 1) % total;
-                updateCarousel();
+            // Drag variables
+            let isDragging = false;
+            let startX = 0;
+            let deltaX = 0;
+            const threshold = 50;
+
+            function getPositionX(e) {
+                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
             }
 
-            // ---- start everything ----
-            resetTimer();    // sets the first interval + saves id
-            updateCarousel(); // initial paint
+            function dragStart(e) {
+                isDragging = true;
+                startX = getPositionX(e);
+                deltaX = 0;
+                track.style.transition = 'none';
+            }
+
+            function dragMove(e) {
+                if (!isDragging) return;
+                deltaX = getPositionX(e) - startX;
+                const movePercent = (deltaX / window.innerWidth) * 100;
+                track.style.transform = `translateX(${(-currentIndex * 100) + movePercent}%)`;
+            }
+
+            function dragEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.transition = 'transform 0.8s ease-in-out';
+
+                if (deltaX < -threshold && currentIndex < total - 1) {
+                    currentIndex++;
+                } else if (deltaX > threshold && currentIndex > 0) {
+                    currentIndex--;
+                }
+
+                updateCarousel(true);
+            }
+
+            // Event listeners for drag
+            track.addEventListener('mousedown', dragStart);
+            track.addEventListener('touchstart', dragStart);
+
+            track.addEventListener('mousemove', dragMove);
+            track.addEventListener('touchmove', dragMove);
+
+            track.addEventListener('mouseup', dragEnd);
+            track.addEventListener('mouseleave', dragEnd);
+            track.addEventListener('touchend', dragEnd);
+
+            // Initialize carousel
+            updateCarousel();
+            resetCarouselTimer();
         }
+
 
 
 
