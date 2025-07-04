@@ -835,74 +835,64 @@
 <body>
 
     
-    <!-- Sticky Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo" onclick="showSection('home')">Alward Portfolio</a>
-            <ul class="nav-links">
-                <li><a href="#" onclick="showSection('home')" class="nav-link">Home</a></li>
-                <li><a href="#" onclick="showSection('about')" class="nav-link">About Me</a></li>
-                <li><a href="#" onclick="showSection('skills')" class="nav-link">Skills</a></li>
-                <li><a href="#" onclick="showSection('contact')" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="mobile-menu" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+<!-- Sticky Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo" onclick="showSection('home')">Alward Portfolio</a>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showSection('home')" class="nav-link">Home</a></li>
+            <li><a href="#" onclick="showSection('about')" class="nav-link">About Me</a></li>
+            <li><a href="#" onclick="showSection('skills')" class="nav-link">Skills</a></li>
+            <li><a href="#" onclick="showSection('contact')" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Home Section -->
-    <div id="home" class="page-section active">
-
-        <!-- Home Section -->
-        <div id="home" class="page-section active">
-        <div class="hero-carousel swiper mySwiper">
-            <div class="swiper-wrapper">
+<!-- Home Section -->
+<div id="home" class="page-section active">
+    <div class="hero-carousel swiper mySwiper">
+        <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url('images/hero1.jpg');" data-target="projects"></div>
             <div class="swiper-slide" style="background-image: url('images/hero2.jpg');" data-target="about"></div>
             <div class="swiper-slide" style="background-image: url('images/hero3.jpg');" data-target="contact"></div>
-            </div>
-            <div class="swiper-pagination"></div>
         </div>
-        </div>
+        <div class="swiper-pagination"></div>
+    </div>
 
-        <!-- Carousel Dots -->
-        <div class="carousel-dots" id="carousel-dots"></div>
-        </div>
+    <!-- Carousel Dots -->
+    <div class="carousel-dots" id="carousel-dots"></div>
 
-
-
-
-
-
-
-        <!-- Cover Photo Section -->
-        <div class="cover-section fade-in">
-            <div class="cover-overlay"></div>
-            <div class="cover-content">
-                <h1>Alward Hafez Portfolio</h1>
-                <p>Explore my creative projects and innovations</p>
-            </div>
-        </div>
-
-        <div class="container fade-in-delayed">
-            <div class="projects-grid fade-in-slow" id="projects-container">
-                <!-- Projects will be loaded dynamically -->
-            </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="cta-section">
-            <h3>Get in Touch</h3>
-            <p>Let's create something special</p>
-            <div class="cta-buttons">
-                <a href="#" onclick="showSection('contact')" class="cta-button">Contact</a>
-                <a href="#" onclick="showSection('about')" class="cta-button">About Me</a>
-            </div>
+    <!-- Cover Photo Section -->
+    <div class="cover-section fade-in">
+        <div class="cover-overlay"></div>
+        <div class="cover-content">
+            <h1>Alward Hafez Portfolio</h1>
+            <p>Explore my creative projects and innovations</p>
         </div>
     </div>
+
+    <div class="container fade-in-delayed">
+        <div class="projects-grid fade-in-slow" id="projects-container">
+            <!-- Projects will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+        <h3>Get in Touch</h3>
+        <p>Let's create something special</p>
+        <div class="cta-buttons">
+            <a href="#" onclick="showSection('contact')" class="cta-button">Contact</a>
+            <a href="#" onclick="showSection('about')" class="cta-button">About Me</a>
+        </div>
+    </div>
+</div>
+
 
     <!-- About Section -->
     <div id="about" class="page-section">
