@@ -636,6 +636,7 @@
             max-width: 800px;
             max-height: 80vh;
             overflow-y: auto;
+            position: relative;
             animation: modalSlideIn 0.3s ease;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
@@ -784,6 +785,7 @@
     .modal-content {
         width: 95%;
         margin: 10% auto;
+        position: relative;
     }
 
     .cta-buttons {
@@ -1027,15 +1029,12 @@
     <div class="social-footer">
         <div class="social-links">
             <a href="mailto:alward@example.com" class="social-link">
-                <div class="social-icon">✉</div>
                 <span>Email</span>
             </a>
             <a href="https://linkedin.com/in/alwardhafez" target="_blank" class="social-link">
-                <div class="social-icon">💼</div>
                 <span>LinkedIn</span>
             </a>
             <a href="https://github.com/alwardhafez" target="_blank" class="social-link">
-                <div class="social-icon">🐱</div>
                 <span>GitHub</span>
             </a>
         </div>
@@ -1044,6 +1043,12 @@
 
     <!-- Project Modals will be generated dynamically -->
     <div id="modals-container"></div>
+
+
+    <div id="fullscreen-image-overlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; cursor:pointer;">
+        <span id="fullscreen-close" style="position:absolute;top:30px;right:30px;font-size:40px;color:white;cursor:pointer;z-index:10; background:rgba(0,0,0,0.2); width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:50%;">&times;</span>
+        <img id="fullscreen-image" src="" style="max-width:90vw; max-height:90vh; box-shadow:0 0 30px #000;">
+    </div>
 
     <script>
 
@@ -1055,9 +1060,9 @@
                     id: 1,
                     title: "Robotic Arm: 6 Degree of Freedom Gesture-Controlled System",
                     description: "A responsive 6-DOF robotic arm programmed to detect and follow user hand gestures using OpenCV and Python.",
-                    image: "images/project4.jpg",
+                    image: "images/project1.jpg",
                     category: "Robotics, Computer Vision, Embedded Systems",
-                    detailImages: ["images/project4-detail1.jpg", "images/project4-detail2.jpg", "images/project4-detail3.jpg"],
+                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
                     overview: "In May 2023, I designed and programmed a 6-degree-of-freedom robotic arm that tracks and responds to hand movements in real-time using OpenCV. The system translates visual input into mechanical control, demonstrating a fusion of vision processing and embedded actuation, suitable for human-robot interaction experiments.",
                     features: [
                         "Developed a 6-DOF robotic arm controlled by real-time hand tracking.",
@@ -1076,9 +1081,9 @@
                     id: 2,
                     title: "Holistic and Integrated Smart System for Safeguarding Motorcyclists",
                     description: "An AI and IoT-based safety system to monitor helmet use and riding behavior for improved motorcyclist safety.",
-                    image: "images/project3.jpg",
+                    image: "images/project2.jpg",
                     category: "IoT, AI, Safety Systems",
-                    detailImages: ["images/project3-detail1.jpg", "images/project3-detail2.jpg", "images/project3-detail3.jpg"],
+                    detailImages: ["images/project2-detail1.jpg", "images/project2-detail2.jpg", "images/project2-detail3.jpg"],
                     overview: "In April 2024, I worked on a smart safety system for motorcyclists combining object detection, sensor integration, and IoT. A YOLOv8 model was trained to detect helmet usage in real-time, while onboard sensors monitored riding behavior such as acceleration, braking, and lean angle. The system provided employers with actionable insights through a live IoT dashboard.",
                     features: [
                         "Trained a YOLOv8 object detection model to ensure motorcyclists are wearing helmets.",
@@ -1098,9 +1103,9 @@
                     id: 3,
                     title: "Portable Real-Time Monitoring System for Palm Tree",
                     description: "A smart agriculture system for monitoring palm tree health and growth using AI and IoT.",
-                    image: "images/project2.jpg",
+                    image: "images/project3.jpg",
                     category: "IoT, Computer Vision, Smart Agriculture",
-                    detailImages: ["images/project2-detail1.jpg", "images/project2-detail2.jpg", "images/project2-detail3.jpg"],
+                    detailImages: ["images/project3-detail1.jpg", "images/project3-detail2.jpg", "images/project3-detail3.jpg"],
                     overview: "In August 2024, I developed a portable real-time monitoring system focused on palm trees for smart agriculture applications. The system collects environmental and growth data and provides alerts to caretakers. It also uses a YOLOv8 segmentation model to analyze plant growth from images and integrates with a cloud-based IoT platform for live monitoring and management.",
                     features: [
                         "Developed a portable real-time system to monitor palm tree environmental and growth parameters.",
@@ -1401,6 +1406,13 @@
     animateSkillNumbers();
 }
 
+    document.getElementById('fullscreen-close').onclick = function(e) {
+        e.stopPropagation(); // Prevent also closing by overlay
+        document.getElementById('fullscreen-image-overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+
+
 function animateSkillBarsAndNumbers() {
     const bars = document.querySelectorAll('.proficiency-fill');
     const texts = document.querySelectorAll('.proficiency-text');
@@ -1497,6 +1509,21 @@ function openModal(modalId) {
             if (homeLink && homeLink.classList.contains('nav-link')) {
                 homeLink.classList.add('active');
             }
+
+
+                // For every modal
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                // Listen for both click and touchend
+                ['click', 'touchend'].forEach(function(eventType) {
+                    modal.addEventListener(eventType, function(e) {
+                        // Only close if the click/tap is on the overlay, NOT inside modal-content
+                        if (e.target === modal) {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                });
+            });
         });
 
         // Function to add new project (for demonstration)
@@ -1543,6 +1570,38 @@ function openModal(modalId) {
                     updateCarousel();
                 }, 5000);
             }
+
+
+            // Open image fullscreen in overlay
+            document.addEventListener('click', function(event) {
+                // Only act if clicking a modal-image
+                if (event.target.classList.contains('modal-image')) {
+                    const bg = event.target.style.backgroundImage;
+                    const urlMatch = bg.match(/url\(['"]?(.*?)['"]?\)/);
+                    if (urlMatch && urlMatch[1]) {
+                        const overlay = document.getElementById('fullscreen-image-overlay');
+                        const img = document.getElementById('fullscreen-image');
+                        img.src = urlMatch[1];
+                        overlay.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            });
+
+            // Close overlay on click
+            document.getElementById('fullscreen-image-overlay').onclick = function() {
+                this.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+            // Close overlay with esc
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    document.getElementById('fullscreen-image-overlay').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+
 
             // Drag variables
             let isDragging = false;
