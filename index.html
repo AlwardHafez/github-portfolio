@@ -430,7 +430,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
+            color: #666666;
         }
 
 
@@ -486,14 +486,12 @@
         .contact-photo {
             width: 300px;
             height: 300px;
-            background: #ddd;
             background-size: cover;
             background-position: center;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
             font-size: 1.2rem;
         }
 
@@ -798,7 +796,7 @@
         position: fixed !important;
         top: 20px !important;
         right: 20px !important;
-        z-index: 2001 !important; /* higher than modal-content */
+        z-index: 2010 !important; /* higher than modal-content */
         background: rgba(0,0,0,0.3);
         color: white;
         border-radius: 50%;
@@ -932,7 +930,6 @@
             <div class="about-content">
                 <div class="about-image">
                     <div class="about-photo" style="background-image: url('images/profile.jpg')">
-                        Your Photo Here
                     </div>
                 </div>
                 <div class="about-text">
@@ -1002,8 +999,7 @@
         <div class="container fade-in-delayed">
             <div class="contact-content">
                 <div class="contact-image">
-                    <div class="contact-photo" style="background-image: url('images/contact.jpg')">
-                        Contact Photo
+                    <div class="contact-photo" style="background-image: url('images/contact.png')">
                     </div>
                 </div>
                 <div class="contact-details">
@@ -1061,6 +1057,13 @@
             </a>
         </div>
 
+        <!-- Credit line with only Icons8 underlined, not blue -->
+        <div class="credit-line">
+            <span>
+                Designed by Alward Hafez. Icons by 
+                <a href="https://icons8.com/" target="_blank" style="color: inherit; text-decoration: underline;">Icons8</a>
+            </span>
+        </div>
     </div>
 
     <!-- Project Modals will be generated dynamically -->
@@ -1084,7 +1087,7 @@
                     description: "A responsive 6-DOF robotic arm programmed to detect and follow user hand gestures using OpenCV and Python.",
                     image: "images/project1.jpg",
                     category: "Robotics, Computer Vision, Embedded Systems",
-                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    detailImages: ["images/project1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
                     overview: "In May 2023, I designed and programmed a 6-degree-of-freedom robotic arm that tracks and responds to hand movements in real-time using OpenCV. The system translates visual input into mechanical control, demonstrating a fusion of vision processing and embedded actuation, suitable for human-robot interaction experiments.",
                     features: [
                         "Developed a 6-DOF robotic arm controlled by real-time hand tracking.",
@@ -1105,7 +1108,7 @@
                     description: "An AI and IoT-based safety system to monitor helmet use and riding behavior for improved motorcyclist safety.",
                     image: "images/project2.jpg",
                     category: "IoT, AI, Safety Systems",
-                    detailImages: ["images/project2-detail1.jpg", "images/project2-detail2.jpg", "images/project2-detail3.jpg"],
+                    detailImages: ["images/project2.jpg", "images/project2-detail2.jpg", "images/project2-detail3.jpg"],
                     overview: "In April 2024, I worked on a smart safety system for motorcyclists combining object detection, sensor integration, and IoT. A YOLOv8 model was trained to detect helmet usage in real-time, while onboard sensors monitored riding behavior such as acceleration, braking, and lean angle. The system provided employers with actionable insights through a live IoT dashboard.",
                     features: [
                         "Trained a YOLOv8 object detection model to ensure motorcyclists are wearing helmets.",
@@ -1127,7 +1130,7 @@
                     description: "A smart agriculture system for monitoring palm tree health and growth using AI and IoT.",
                     image: "images/project3.jpg",
                     category: "IoT, Computer Vision, Smart Agriculture",
-                    detailImages: ["images/project3-detail1.jpg", "images/project3-detail2.jpg", "images/project3-detail3.jpg"],
+                    detailImages: ["images/project3.jpg", "images/project3-detail2.jpg", "images/project3-detail3.jpg"],
                     overview: "In August 2024, I developed a portable real-time monitoring system focused on palm trees for smart agriculture applications. The system collects environmental and growth data and provides alerts to caretakers. It also uses a YOLOv8 segmentation model to analyze plant growth from images and integrates with a cloud-based IoT platform for live monitoring and management.",
                     features: [
                         "Developed a portable real-time system to monitor palm tree environmental and growth parameters.",
@@ -1147,9 +1150,9 @@
                     id: 4,
                     title: "IMechE Training Series: Hands-On Robotics for University Students",
                     description: "Led a robotics training series to teach students how to build and program a gesture-controlled robotic arm.",
-                    image: "images/project7.jpg",
+                    image: "images/project4.jpg",
                     category: "STEM Education, Robotics Training, Technical Communication",
-                    detailImages: ["images/project7-detail1.jpg", "images/project7-detail2.jpg", "images/project7-detail3.jpg"],
+                    detailImages: ["images/project4.jpg", "images/project4-detail2.jpg", "images/project4-detail3.jpg"],
                     overview: "Alongside the development of the robotic arm, I conducted a hands-on robotics training series in May 2023 at UCSI University. The series guided students through each stage of building the robotic system — from hardware to software — and helped them understand core principles of vision-based control and mechatronics.",
                     features: [
                         "Prepared and delivered a structured robotics training series for students.",
@@ -1169,9 +1172,9 @@
                     id: 5,
                     title: "IoT Training Series: Real-Time Monitoring with Raspberry Pi and Google Cloud",
                     description: "Co-led an IoT training series focused on building real-time sensor-based monitoring systems using Raspberry Pi and Google Sheets.",
-                    image: "images/project6.jpg",
+                    image: "images/project5.jpg",
                     category: "IoT, Training, Cloud Integration",
-                    detailImages: ["images/project6-detail1.jpg", "images/project6-detail2.jpg", "images/project6-detail3.jpg"],
+                    detailImages: ["images/project5.jpg", "images/project5-detail2.jpg", "images/project5-detail3.jpg"],
                     overview: "As part of my internship at Control Easy Technology in late 2023, I collaborated with my supervisor to design and deliver an IoT training program for external clients. The training focused on building real-time monitoring systems using Raspberry Pi, various sensors, and integration with Google Cloud and Google Sheets. I created instructional materials and led hands-on sessions to guide participants through system setup, data flow, and cloud-based visualization.",
                     features: [
                         "Designed and delivered IoT training sessions using Raspberry Pi and sensors.",
@@ -1190,9 +1193,9 @@
                     id: 6,
                     title: "Modular Prototyping Box for Multi-Project Applications",
                     description: "A reusable and customizable 3D-printed enclosure designed to accelerate prototyping for R&D.",
-                    image: "images/project1.jpg",
+                    image: "images/project6.jpg",
                     category: "3D design, R&D",
-                    detailImages: ["images/project1-detail1.jpg", "images/project1-detail2.jpg", "images/project1-detail3.jpg"],
+                    detailImages: ["images/project6.jpg", "images/project6-detail2.jpg", "images/project6-detail3.jpg"],
                     overview: "From May 2023 to August 2024, I designed and 3D printed a modular enclosure to support rapid development and testing of electronic systems. The box accommodated various sensors, microcontrollers, and components, and was reused across five unique projects, proving its effectiveness and adaptability.",
                     features: [
                         "3D printed a versatile and aesthetically pleasing modular box to house sensors, microcontrollers, and other components.",
@@ -1215,51 +1218,51 @@
             skills: [
                 {
                     id: 1,
-                    name: "xx",
-                    proficiency: 100,
-                    image: "images/skill-js.jpg",
-                    description: "xx",
-                    learningPath: "xx"
+                    name: "Microcontroller Programming & Hardware Integration",
+                    proficiency: 80,
+                    image: "images/skill1.png",
+                    description: "I’ve designed and built embedded systems using Arduino and Raspberry Pi, integrating sensors, displays, motors, and communication protocols. I’ve handled serial communication, real-time feedback, and sensor data processing across multiple projects.",
+                    learningPath: "Final Year Project, Integrated Design project, Robotic arm project"
                 },
                 {
                     id: 2,
-                    name: "xx",
-                    proficiency: 100,
-                    image: "images/skill-python.jpg",
-                    description: "xx",
-                    learningPath: "xx"
+                    name: "C++ & Python Programming for Embedded Systems",
+                    proficiency: 75,
+                    image: "images/skill2.png",
+                    description: "Python is my primary language for prototyping AI, IoT, and embedded logic. I’ve written full systems in Python for data logging, decision-making, and cloud comms. I’m growing stronger in C++ through Arduino projects and expect improvement through hands-on applications. I'm currently expanding my Python fundamentals by completing Harvard’s CS50 course.",
+                    learningPath: "YOLOv8 integration, sensor control, UI systems, file handling"
                 },
                 {
                     id: 3,
-                    name: "xx",
-                    proficiency: 100,
-                    image: "images/skill-react.jpg",
-                    description: "xx",
-                    learningPath: "xx"
+                    name: "End-to-End IoT System Development",
+                    proficiency: 85,
+                    image: "images/skill3.png",
+                    description: "Built complete IoT systems, from sensor data acquisition using Raspberry Pi and microcontrollers to cloud-based storage using Google Sheets and Google Cloud APIs. I’ve also trained industry clients on deploying these systems. I understand how to build, troubleshoot, and deploy scalable, real-time monitoring platforms.",
+                    learningPath: "Final Year Project, Integrated Design project, Internship (IoT workshops, Raspberry Pi training )"
                 },
                 {
                     id: 4,
-                    name: "xx",
-                    proficiency: 100,
-                    image: "images/skill-design.jpg",
-                    description: "xx",
-                    learningPath: "xx"
+                    name: "AI & Computer Vision Integration",
+                    proficiency: 80,
+                    image: "images/skill4.png",
+                    description: "I specialize in applying AI models such as YOLOv8 and OpenCV for real-world object detection tasks. My academic background in AI helped me understand both theory and practice. I’ve implemented models in Python that detect helmets, interpret hand gestures, and measure plant growth, combining vision and hardware control.",
+                    learningPath: "FYP: Used YOLOv8 segmentation to analyze palm tree growth IDP: Helmet detection using YOLOv8 object detection Robotic Arm: Used OpenCV to detect hand movement and interact through games"
                 },
                 {
                     id: 5,
-                    name: "xx",
-                    proficiency: 100,
-                    image: "images/skill-nodejs.jpg",
-                    description: "xx",
-                    learningPath: "xx"
+                    name: "Embedded UI/UX & Display Systems",
+                    proficiency: 75,
+                    image: "images/skill5.png",
+                    description: "I’ve developed compact, intuitive interfaces using OLED screens and tactile buttons, allowing standalone systems to be monitored and controlled without a PC. My designs include animated displays, sensor feedback, and status messages. ",
+                    learningPath: "FYP: Designed a standalone system interface using a small OLED screen and buttons Displayed sensor values, Wi-Fi status, and control options Used LED and screen feedback for interactive debugging"
                 },
                 {
                     id: 6,
-                    name: "xx",
-                    proficiency: 100,
-                    image: "images/skill-ml.jpg",
-                    description: "xx",
-                    learningPath: "xx"
+                    name: "3D Design & Printing",
+                    proficiency: 75,
+                    image: "images/skill6.png",
+                    description: "I’ve created functional and visually polished 3D-printed parts using CAD tools like SolidWorks and OnShape. My designs have supported both academic and external R&D projects. I also trained colleagues on 3D printing tools, showing my confidence in both technical skill and teamwork.",
+                    learningPath: "Designed enclosures, mounting systems, and sensor boxes Printed custom components for functional prototypes Provided 3D printing and design services to other students and staff"
                 }
             ]
         };
@@ -1393,21 +1396,22 @@
                 skillCard.className = 'skill-card';
                 
                 skillCard.innerHTML = `
-                    <div class="skill-image" style="background-image: url('${skill.image}')">
-                        ${skill.name}
+                    <div class="skill-image" style="background-image: url('${skill.image}'); background-color: transparent; background-size: cover; background-position: center;"></div>
+
                     </div>
                     <div class="skill-name">${skill.name}</div>
                     <div class="skill-proficiency">
                         <div class="proficiency-bar">
                             <div class="proficiency-fill" data-width="${skill.proficiency}" style="width: 0%"></div>
-
                         </div>
                         <div class="proficiency-text">${skill.proficiency}%</div>
                     </div>
                     <div class="skill-description">
                         <p><strong>Learning Path:</strong> ${skill.learningPath}</p>
-                        <p>${skill.description}</p>
+                        <br> <!-- Add a line break here for spacing -->
+                        <p><strong>description:</strong> ${skill.description}</p>
                     </div>
+                    
                 `;
                 
                 container.appendChild(skillCard);
