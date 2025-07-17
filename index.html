@@ -1584,6 +1584,35 @@ function openModal(modalId) {
 
         let currentIndex = 0;
 
+            // Open image fullscreen in overlay
+            document.addEventListener('click', function(event) {
+                // Only act if clicking a modal-image
+                if (event.target.classList.contains('modal-image')) {
+                    const bg = event.target.style.backgroundImage;
+                    const urlMatch = bg.match(/url\(['"]?(.*?)['"]?\)/);
+                    if (urlMatch && urlMatch[1]) {
+                        const overlay = document.getElementById('fullscreen-image-overlay');
+                        const img = document.getElementById('fullscreen-image');
+                        img.src = urlMatch[1];
+                        overlay.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            });
+
+            // Close overlay on click
+            document.getElementById('fullscreen-image-overlay').onclick = function() {
+                this.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+            // Close overlay with esc
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    document.getElementById('fullscreen-image-overlay').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
 
 
         // Function to add new skill (for demonstration)
