@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alward Hafez Portfolio</title>
+    <title>Alward Hafez — Portfolio</title>
+    <meta name="description" content="Mechatronics engineer specializing in robotics, IoT, and computer vision. Projects include robotic arm control, AI-based safety systems, and smart agriculture monitoring.">
+    <meta name="theme-color" content="#0d1117">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Alward Hafez — Portfolio">
+    <meta property="og:description" content="Robotics, IoT, and computer vision projects with real-world impact.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/profile.webp">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -559,17 +569,22 @@
 
         .cta-button {
             background: linear-gradient(45deg, #2c3e50, #34495e);
-            color: white;
-            padding: 1rem 2rem;
+            color: #fff;
+            padding: 0.875rem 1.5rem;
             text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            transition: all 0.2s ease;
             display: inline-block;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            letter-spacing: 0.2px;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            filter: brightness(1.02);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.28);
         }
 
         /* Social Media Footer */
@@ -612,6 +627,53 @@
             justify-content: center;
             font-size: 1.2rem;
         }
+
+        /* Experience Timeline */
+        .timeline { position: relative; margin: 2rem 0 3rem; padding-left: 1.2rem; }
+        .timeline::before { content: ''; position: absolute; left: 0.4rem; top: 0; bottom: 0; width: 2px; background: #dfe6e9; }
+        .timeline-item { position: relative; margin-bottom: 1.5rem; background: #fff; padding: 1rem 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .timeline-item::before { content: ''; position: absolute; left: -0.1rem; top: 1rem; width: 10px; height: 10px; border-radius: 50%; background: #34495e; }
+        .timeline-item h4 { margin-bottom: 0.2rem; color: #2c3e50; }
+        .timeline-item .meta { color: #666; font-size: 0.95rem; margin-bottom: 0.6rem; }
+        .timeline-item ul { margin-left: 1rem; color: #444; }
+
+        /* Contact form */
+        .contact-form { margin-top: 1.5rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+        .form-group label { font-weight: 600; margin-bottom: 0.4rem; color: #333; }
+        .form-group input, .form-group textarea { padding: 0.75rem 0.9rem; border: 1px solid #dcdcdc; background: #fafafa; }
+        .form-actions { margin-top: 0.5rem; }
+        .submit-button { border: none; cursor: pointer; }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 2rem;
+        }
+        .filter-button {
+            background: #ecf0f1;
+            color: #2c3e50;
+            border: 1px solid #dfe6e9;
+            padding: 0.55rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 999px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .filter-button:hover { filter: brightness(0.98); transform: translateY(-1px); }
+        .filter-button.active {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Single project centering after filter */
+        .projects-grid.single { justify-items: center; }
+        .projects-grid.single .project-card { width: 100%; max-width: 420px; }
 
         /* Modal Styles */
         .modal {
@@ -836,6 +898,10 @@
         gap: 1rem;
     }
 
+    .filter-bar { justify-content: center; }
+
+    .form-row { grid-template-columns: 1fr; }
+
     /* Mobile Navigation */
     .nav-links {
         display: none;
@@ -878,12 +944,13 @@
 <!-- Sticky Navigation -->
 <nav class="navbar">
     <div class="nav-container">
-        <a href="#" class="logo" onclick="showSection('home')">Alward Portfolio</a>
+        <a href="#home" class="logo">Alward Hafez</a>
         <ul class="nav-links">
-            <li><a href="#" onclick="showSection('home')" class="nav-link">Home</a></li>
-            <li><a href="#" onclick="showSection('about')" class="nav-link">About Me</a></li>
-            <li><a href="#" onclick="showSection('skills')" class="nav-link">Skills</a></li>
-            <li><a href="#" onclick="showSection('contact')" class="nav-link">Contact</a></li>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About Me</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <div class="mobile-menu" onclick="toggleMobileMenu()">
             <span></span>
@@ -927,6 +994,7 @@
     </div>
 
     <div class="container fade-in-delayed">
+        <div class="filter-bar" id="filter-bar"></div>
         <div class="projects-grid fade-in-slow" id="projects-container">
             <!-- Projects will be loaded dynamically -->
         </div>
@@ -937,8 +1005,8 @@
         <h3>Get in Touch</h3>
         <p>Let's create something special</p>
         <div class="cta-buttons">
-            <a href="#" onclick="showSection('contact')" class="cta-button">Contact</a>
-            <a href="#" onclick="showSection('about')" class="cta-button">About Me</a>
+            <a href="#contact" class="cta-button">Contact</a>
+            <a href="#about" class="cta-button">About Me</a>
         </div>
     </div>
 </div>
@@ -981,8 +1049,48 @@
             <h3>Get in Touch</h3>
             <p>Check out my skills and experience, or get in touch to discuss potential collaborations.</p>
             <div class="cta-buttons">
-                <a href="#" onclick="showSection('skills')" class="cta-button">View My Skills</a>
-                <a href="#" onclick="showSection('contact')" class="cta-button">Contact Me</a>
+                <a href="#skills" class="cta-button">View My Skills</a>
+                <a href="#contact" class="cta-button">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <div id="experience" class="page-section">
+        <div class="cover-section fade-in">
+            <div class="cover-overlay"></div>
+            <div class="cover-content">
+                <h1>Experience</h1>
+                <p>Roles, internships, and impactful contributions</p>
+            </div>
+        </div>
+
+        <div class="container fade-in-delayed">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Research and Development Engineer</h4>
+                    <div class="meta">Control Easy Technology Sdn Bhd — 2023</div>
+                    <ul>
+                        <li>Delivered IoT training and built real-time monitoring demos with Raspberry Pi and Google Cloud.</li>
+                        <li>Accelerated prototyping with reusable 3D-printed modular enclosures used across multiple projects.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4>Mechatronics Projects — UCSI University</h4>
+                    <div class="meta">2019–2024</div>
+                    <ul>
+                        <li>Built a 6-DOF gesture-controlled robotic arm using OpenCV and Arduino.</li>
+                        <li>Developed AI helmet detection and smart palm tree monitoring with YOLOv8 and cloud dashboards.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cta-section">
+                <h3>Download Resume</h3>
+                <p>Get the full story of my experience and skills.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-button">Download PDF</a>
+                    <a href="#contact" class="cta-button">Hire Me</a>
+                </div>
             </div>
         </div>
     </div>
@@ -1008,8 +1116,8 @@
             <h3>Let's Build Something Great</h3>
             <p>Let's discuss how I can help bring your ideas to life.</p>
             <div class="cta-buttons">
-                <a href="#" onclick="showSection('contact')" class="cta-button">Start a Project</a>
-                <a href="#" onclick="showSection('home')" class="cta-button">View My Projects</a>
+                <a href="#contact" class="cta-button">Start a Project</a>
+                <a href="#home" class="cta-button">View My Projects</a>
             </div>
         </div>
     </div>
@@ -1034,7 +1142,7 @@
                     <h2>Let's Connect</h2>
                     <div class="contact-item">
                         <strong>Email:</strong>
-                        <a href="mailto:alward.hafez.01@gmail.com">alward.hafez.01@gmail.com</a>
+                        <a href="mailto:Alward.hafez.01@gmail.com">Alward.hafez.01@gmail.com</a>
                     </div>
                     <div class="contact-item">
                         <strong>Phone:</strong>
@@ -1042,17 +1150,36 @@
                     </div>
                     <div class="contact-item">
                         <strong>LinkedIn:</strong>
-                        <a href="https://www.linkedin.com/in/alward-hafez-24b1541b1/" target="_blank">linkedin.com/in/alwardhafez</a>
+                        <a href="https://www.linkedin.com/in/Alward-Hafez-24b1541b1/" target="_blank">linkedin.com/in/AlwardHafez</a>
                     </div>
                     <div class="contact-item">
                         <strong>GitHub:</strong>
-                        <a href="https://github.com/alwardhafez" target="_blank">github.com/alwardhafez</a>
+                        <a href="https://github.com/AlwardHafez" target="_blank">github.com/AlwardHafez</a>
                     </div>
                     <div class="contact-item">
                         <strong>Location:</strong>
                         <span>Riyadh, Saudi Arabia</span>
                     </div>
-
+                    <form class="contact-form" method="POST" action="https://formspree.io/f/your_form_id">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input id="name" name="name" type="text" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="cta-button submit-button">Send Message</button>
+                            <small style="display:block;color:#777;margin-top:0.5rem;">Submissions are sent to the configured email in Formspree.</small>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1062,8 +1189,8 @@
             <h3>Ready to Start?</h3>
             <p>Have a project in mind I'd love to hear from you.</p>
             <div class="cta-buttons">
-                <a href="mailto:alward.hafez.01@gmail.com" class="cta-button">Send Email</a>
-                <a href="#" onclick="showSection('home')" class="cta-button">View My Projects</a>
+                <a href="mailto:Alward.hafez.01@gmail.com" class="cta-button">Send Email</a>
+                <a href="#home" class="cta-button">View My Projects</a>
             </div>
         </div>
     </div>
@@ -1071,13 +1198,13 @@
     <!-- Social Media Footer -->
     <div class="social-footer">
         <div class="social-links">
-            <a href="mailto:alward.hafez.01@gmail.com" class="social-link">
+            <a href="mailto:Alward.hafez.01@gmail.com" class="social-link">
                 <span>Email</span>
             </a>
-            <a href="https://www.linkedin.com/in/alward-hafez-24b1541b1/" target="_blank" class="social-link">
+            <a href="https://www.linkedin.com/in/Alward-Hafez-24b1541b1/" target="_blank" class="social-link">
                 <span>LinkedIn</span>
             </a>
-            <a href="https://github.com/alwardhafez" target="_blank" class="social-link">
+            <a href="https://github.com/AlwardHafez" target="_blank" class="social-link">
                 <span>GitHub</span>
             </a>
         </div>
@@ -1103,7 +1230,7 @@
     <script>
 
         // Configuration data (this would typically be in a separate JSON file)
-        const portfolioData = {
+        let portfolioData = {
             projects: [
                 {
 
@@ -1292,6 +1419,56 @@
             ]
         };
 
+        async function loadData() {
+            try {
+                const res = await fetch('data.json', { cache: 'no-cache' });
+                const json = await res.json();
+                portfolioData = json;
+                // Apply top-level content
+                const titleEl = document.querySelector('#home .cover-content h1');
+                const subEl = document.querySelector('#home .cover-content p');
+                if (json.site) {
+                    if (json.site.heroTitle && titleEl) titleEl.textContent = json.site.heroTitle;
+                    if (json.site.heroSubtitle && subEl) subEl.textContent = json.site.heroSubtitle;
+                }
+                if (json.about) {
+                    const aboutH2 = document.querySelector('#about .about-text h2');
+                    if (json.about.greeting && aboutH2) aboutH2.textContent = json.about.greeting;
+                    if (Array.isArray(json.about.paragraphs)) {
+                        const aboutText = document.querySelector('#about .about-text');
+                        const existingParas = aboutText.querySelectorAll('p');
+                        existingParas.forEach(p => p.remove());
+                        const anchor = aboutText.querySelector('h2');
+                        json.about.paragraphs.forEach(t => {
+                            const p = document.createElement('p');
+                            p.textContent = t;
+                            anchor.insertAdjacentElement('afterend', p);
+                        });
+                    }
+                    if (json.about.quote) {
+                        const quoteBox = document.querySelector('#about .custom-text');
+                        if (quoteBox) quoteBox.innerHTML = `<strong>"${json.about.quote.text}" — ${json.about.quote.author}</strong><br><em>${json.about.quote.sub || ''}</em>`;
+                    }
+                }
+                if (json.contact) {
+                    const emailLink = document.querySelector('#contact a[href^="mailto:"]');
+                    const phoneLink = document.querySelector('#contact a[href^="tel:"]');
+                    const linkedinLink = document.querySelector('#contact a[href*="linkedin"]');
+                    const githubLink = document.querySelector('#contact a[href*="github.com"]');
+                    const locSpan = document.querySelector('#contact .contact-item span');
+                    const form = document.querySelector('#contact form.contact-form');
+                    if (json.contact.email && emailLink) { emailLink.href = `mailto:${json.contact.email}`; emailLink.textContent = json.contact.email; }
+                    if (json.contact.phone && phoneLink) { phoneLink.href = `tel:${json.contact.phone.replace(/\s+/g,'')}`; phoneLink.textContent = json.contact.phone; }
+                    if (json.contact.linkedin && linkedinLink) linkedinLink.href = json.contact.linkedin;
+                    if (json.contact.github && githubLink) githubLink.href = json.contact.github;
+                    if (json.contact.location && locSpan) locSpan.textContent = json.contact.location;
+                    if (json.contact.formEndpoint && form) form.action = json.contact.formEndpoint;
+                }
+            } catch (err) {
+                console.error('Failed to load data.json', err);
+            }
+        }
+
         // Mobile menu toggle
         function toggleMobileMenu() {
             const navLinks = document.querySelector('.nav-links');
@@ -1310,38 +1487,37 @@
             }
         });
 
-        // Section navigation
+        // Section navigation with hash routing
         function showSection(sectionName) {
-
             // Hide all sections
             const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+            sections.forEach(section => section.classList.remove('active'));
 
             // Show selected section
-            document.getElementById(sectionName).classList.add('active');
+            const target = document.getElementById(sectionName);
+            if (target) {
+                target.classList.add('active');
+            }
             if (sectionName === 'skills') {
-            loadSkills();
+                loadSkills();
             }
 
-            // Update navigation
+            // Update navigation (based on #hash hrefs)
             const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Find and activate current nav link
-            const currentLink = document.querySelector(`[onclick="showSection('${sectionName}')"]`);
-            if (currentLink && currentLink.classList.contains('nav-link')) {
-                currentLink.classList.add('active');
-            }
+            navLinks.forEach(link => link.classList.remove('active'));
+            const currentLink = document.querySelector(`.nav-link[href="#${sectionName}"]`);
+            if (currentLink) currentLink.classList.add('active');
 
             // Close mobile menu if open
             const navLinksContainer = document.querySelector('.nav-links');
             const mobileMenu = document.querySelector('.mobile-menu');
             navLinksContainer.classList.remove('active');
             mobileMenu.classList.remove('active');
+
+            // Update hash without duplicating events
+            if (location.hash.replace('#','') !== sectionName) {
+                history.replaceState(null, '', `#${sectionName}`);
+            }
 
             // Scroll to top
             window.scrollTo(0, 0);
@@ -1359,7 +1535,17 @@
                 // Create project card
                 const projectCard = document.createElement('div');
                 projectCard.className = 'project-card';
-                projectCard.onclick = () => openModal(`modal${project.id}`);
+                projectCard.setAttribute('role', 'button');
+                projectCard.setAttribute('tabindex', '0');
+                projectCard.dataset.tags = (project.category || '').toLowerCase();
+                const modalId = `modal${project.id}`;
+                projectCard.onclick = () => openModal(modalId);
+                projectCard.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openModal(modalId);
+                    }
+                });
                 
                 projectCard.innerHTML = `
                     <div class="project-image" style="background-image: url('${project.image}')"></div>
@@ -1381,6 +1567,10 @@
                 ).join('');
 
                 const featuresHtml = project.features.map(feature => `• ${feature}`).join('<br>');
+                const linksHtml = `
+                    ${project.github ? `<a href="${project.github}" target="_blank" class="cta-button" style="margin-right:0.5rem;">View Code</a>` : ''}
+                    ${project.demo ? `<a href="${project.demo}" target="_blank" class="cta-button">Live Demo</a>` : ''}
+                `;
                 
                 modal.innerHTML = `
                     <div class="modal-content">
@@ -1402,6 +1592,7 @@
                                 
                                 <h3>Technologies Used</h3>
                                 <p>${project.technologies}</p>
+                                <div style="margin-top:1rem;">${linksHtml}</div>
                             </div>
                         </div>
                     </div>
@@ -1409,6 +1600,55 @@
                 
                 modalsContainer.appendChild(modal);
             });
+        }
+
+        // Build filter buttons and enable filtering
+        function buildFilters() {
+            const bar = document.getElementById('filter-bar');
+            if (!bar) return;
+            // Collect unique tags
+            const tagSet = new Set();
+            portfolioData.projects.forEach(p => {
+                (p.category || '').split(',').map(t => t.trim()).filter(Boolean).forEach(t => tagSet.add(t));
+            });
+            const tags = ['All', ...Array.from(tagSet)];
+            bar.innerHTML = '';
+            tags.forEach((tag, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-button' + (idx === 0 ? ' active' : '');
+                btn.textContent = tag;
+                btn.addEventListener('click', () => applyFilter(tag));
+                bar.appendChild(btn);
+            });
+        }
+
+        function applyFilter(tag) {
+            const buttons = document.querySelectorAll('.filter-button');
+            buttons.forEach(b => b.classList.remove('active'));
+            const active = Array.from(buttons).find(b => b.textContent === tag);
+            if (active) active.classList.add('active');
+
+            const cards = document.querySelectorAll('#projects-container .project-card');
+            const grid = document.getElementById('projects-container');
+            if (tag === 'All') {
+                cards.forEach(c => (c.style.display = ''));
+                grid.classList.remove('single');
+                return;
+            }
+            const needle = tag.toLowerCase();
+            const visible = [];
+            cards.forEach(c => {
+                const tags = c.dataset.tags || '';
+                const match = tags.includes(needle);
+                c.style.display = match ? '' : 'none';
+                if (match) visible.push(c);
+            });
+            // If only one visible, center it and keep card size
+            if (visible.length === 1) {
+                grid.classList.add('single');
+            } else {
+                grid.classList.remove('single');
+            }
         }
 
     // Load skills dynamically
@@ -1422,8 +1662,6 @@
                 
                 skillCard.innerHTML = `
                     <div class="skill-image" style="background-image: url('${skill.image}'); background-color: transparent; background-size: cover; background-position: center;"></div>
-
-                    </div>
                     <div class="skill-name">${skill.name}</div>
                     <div class="skill-proficiency">
                         <div class="proficiency-bar">
@@ -1433,10 +1671,9 @@
                     </div>
                     <div class="skill-description">
                         <p><strong>Learning Path:</strong> ${skill.learningPath}</p>
-                        <br> <!-- Add a line break here for spacing -->
-                        <p><strong>description:</strong> ${skill.description}</p>
+                        <br>
+                        <p><strong>Description:</strong> ${skill.description}</p>
                     </div>
-                    
                 `;
                 
                 container.appendChild(skillCard);
@@ -1454,7 +1691,7 @@
             }, 500);
 
     // Animate skill percentage count
-    animateSkillNumbers();
+    animateSkill581192214bers();
 }
 
     document.getElementById('fullscreen-close').onclick = function(e) {
@@ -1464,7 +1701,7 @@
     };
 
 
-function animateSkillBarsAndNumbers() {
+function animateSkillBarsAnd581192214bers() {
     const bars = document.querySelectorAll('.proficiency-fill');
     const texts = document.querySelectorAll('.proficiency-text');
 
@@ -1495,14 +1732,18 @@ function animateSkillBarsAndNumbers() {
 
 // Modal functions
 function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 }
 
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = '';
         }
 
         // Close modal when clicking outside of it
@@ -1512,6 +1753,7 @@ function openModal(modalId) {
                 if (event.target === modals[i]) {
                     modals[i].style.display = 'none';
                     document.body.style.overflow = 'auto';
+                    document.documentElement.style.overflow = '';
                 }
             }
         }
@@ -1531,34 +1773,21 @@ function openModal(modalId) {
 
         // Initialize the website
         document.addEventListener('DOMContentLoaded', function() {
-            const swiper = new Swiper('.mySwiper', {
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                });
+            (async () => {
+                await loadData();
+                loadProjects();
+                buildFilters();
+                loadSkills();
+            })();
 
-                // Scroll to section on tap
-                swiper.on('tap', () => {
-                const activeSlide = swiper.slides[swiper.activeIndex];
-                const targetId = activeSlide.dataset.target;
-                if (targetId) {
-                    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-                }
-                });
-            loadProjects();
-            loadSkills();
+            // Navigate to section from hash on load
+            const initialSection = location.hash.replace('#','') || 'home';
+            showSection(initialSection);
 
             
             // Set initial active nav link
-            const homeLink = document.querySelector(`[onclick="showSection('home')"]`);
-            if (homeLink && homeLink.classList.contains('nav-link')) {
-                homeLink.classList.add('active');
-            }
+            const homeLink = document.querySelector(`.nav-link[href="#home"]`);
+            if (homeLink) homeLink.classList.add('active');
 
 
                 // For every modal
@@ -1570,9 +1799,16 @@ function openModal(modalId) {
                         if (e.target === modal) {
                             modal.style.display = 'none';
                             document.body.style.overflow = 'auto';
+                            document.documentElement.style.overflow = '';
                         }
                     });
                 });
+            });
+
+            // Update section on hash change
+            window.addEventListener('hashchange', () => {
+                const s = location.hash.replace('#','') || 'home';
+                showSection(s);
             });
         });
 
@@ -1596,6 +1832,7 @@ function openModal(modalId) {
                         img.src = urlMatch[1];
                         overlay.style.display = 'flex';
                         document.body.style.overflow = 'hidden';
+                        document.documentElement.style.overflow = 'hidden';
                     }
                 }
             });
@@ -1604,12 +1841,14 @@ function openModal(modalId) {
             document.getElementById('fullscreen-image-overlay').onclick = function() {
                 this.style.display = 'none';
                 document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = '';
             };
             // Close overlay with esc
             document.addEventListener('keydown', function(event) {
                 if (event.key === 'Escape') {
                     document.getElementById('fullscreen-image-overlay').style.display = 'none';
                     document.body.style.overflow = 'auto';
+                    document.documentElement.style.overflow = '';
                 }
             });
 
@@ -1620,8 +1859,8 @@ function openModal(modalId) {
             portfolioData.skills.push(skillData);
             loadSkills();
         }
-        // Function to animate skill numbers counting from 0 to target percentage
-        function animateSkillNumbers() {
+        // Function to animate skill 581192214bers counting from 0 to target percentage
+        function animateSkill581192214bers() {
             const texts = document.querySelectorAll('.proficiency-text');
             texts.forEach(text => {
                 const target = parseInt(text.textContent);
@@ -1642,6 +1881,21 @@ function openModal(modalId) {
     </script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alward Hafez",
+      "jobTitle": "Mechatronics Engineer",
+      "url": "",
+      "image": "images/profile.webp",
+      "sameAs": [
+        "https://www.linkedin.com/in/Alward-Hafez-24b1541b1/",
+        "https://github.com/AlwardHafez"
+      ]
+    }
+    </script>
     <script>
     // Desktop Swiper
     const desktopSwiper = new Swiper('#desktop-swiper', {
