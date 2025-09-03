@@ -675,6 +675,314 @@
         .projects-grid.single { justify-items: center; }
         .projects-grid.single .project-card { width: 100%; max-width: 420px; }
 
+        /* Courses & Progress Section Styles */
+        .roadmap-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .roadmap-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #2c3e50; /* fallback */
+        }
+
+        .roadmap-intro p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Timeline */
+        .roadmap-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* Central timeline line */
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #2c3e50, #34495e, #5d6d7e, #85929e);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(44, 62, 80, 0.2);
+        }
+
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .roadmap-item.left {
+            justify-content: flex-end;
+        }
+
+        .roadmap-item.right {
+            justify-content: flex-start;
+        }
+
+        .roadmap-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            width: 45%;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        /* Status indicators */
+        .roadmap-card.in-progress {
+            border-left: 5px solid #2c3e50;
+        }
+
+        .roadmap-card.planning {
+            border-left: 5px solid #5d6d7e;
+        }
+
+        .roadmap-card.ongoing {
+            border-left: 5px solid #34495e;
+        }
+
+        /* Timeline dot */
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #2c3e50;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(44, 62, 80, 0.3);
+            z-index: 2;
+        }
+
+        .roadmap-item.completed::before {
+            background: #34495e;
+            border-color: #34495e;
+        }
+
+        .roadmap-item.planning::before {
+            background: #5d6d7e;
+            border-color: #5d6d7e;
+        }
+
+        /* Course icon */
+        .course-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .course-header h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-platform {
+            font-size: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .course-category {
+            display: inline-block;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-progress {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .progress-text {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .progress-percentage {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border-radius: 10px;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: progressShine 2.5s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .course-skills {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            background: rgba(44, 62, 80, 0.1);
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(44, 62, 80, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .course-completion {
+            font-size: 0.9rem;
+            color: #5d6d7e;
+            font-weight: 600;
+            text-align: right;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(44, 62, 80, 0.1);
+        }
+
+        /* Learning Goals - keeping same style */
+        .learning-goals {
+            background: linear-gradient(145deg, #f8f9fa, #ffffff);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-left: 5px solid #2c3e50;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .learning-goals h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .goals-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .goals-list li {
+            padding: 1rem;
+            background: rgba(44, 62, 80, 0.05);
+            border-radius: 15px;
+            position: relative;
+            padding-left: 3rem;
+            color: #555;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .goals-list li:hover {
+            background: rgba(44, 62, 80, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .goals-list li::before {
+            content: '🎯';
+            position: absolute;
+            left: 1rem;
+            font-size: 1.5rem;
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -902,6 +1210,52 @@
 
     .form-row { grid-template-columns: 1fr; }
 
+    /* Courses & Progress responsive */
+    .roadmap-intro {
+        margin: 0 1rem 2rem;
+        padding: 1.5rem;
+    }
+
+    .roadmap-intro h2 {
+        font-size: 2rem;
+    }
+
+    .roadmap-timeline::before {
+        left: 2rem;
+        width: 3px;
+    }
+
+    .roadmap-item {
+        margin-bottom: 3rem;
+        justify-content: flex-start !important;
+    }
+
+    .roadmap-item::before {
+        left: 2rem;
+        width: 15px;
+        height: 15px;
+        border-width: 3px;
+    }
+
+    .roadmap-card {
+        width: calc(100% - 4rem);
+        margin-left: 4rem;
+        padding: 1.5rem;
+    }
+
+    .course-icon {
+        font-size: 2.5rem;
+    }
+
+    .learning-goals {
+        margin: 2rem 1rem 0;
+        padding: 1.5rem;
+    }
+
+    .goals-list {
+        grid-template-columns: 1fr;
+    }
+
     /* Mobile Navigation */
     .nav-links {
         display: none;
@@ -947,9 +1301,10 @@
         <a href="#home" class="logo">Alward Hafez</a>
         <ul class="nav-links">
             <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About Me</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#courses-progress" class="nav-link">Courses & Progress</a></li>
+            <li><a href="#about" class="nav-link">About Me</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <div class="mobile-menu" onclick="toggleMobileMenu()">
@@ -1011,6 +1366,41 @@
     </div>
 </div>
 
+<!-- Courses & Progress Section -->
+<div id="courses-progress" class="page-section">
+    <div class="cover-section fade-in">
+        <div class="cover-overlay"></div>
+        <div class="cover-content">
+            <h1>Courses & Progress</h1>
+            <p>My learning roadmap and continuous development</p>
+        </div>
+    </div>
+
+    <div class="container fade-in-delayed">
+        <div class="roadmap-intro">
+            <h2>Learning Roadmap</h2>
+            <p>I believe in continuous learning and staying updated with the latest technologies. Here's my structured learning roadmap to enhance my expertise and build innovative solutions.</p>
+        </div>
+
+        <div class="roadmap-timeline" id="roadmap-container">
+            <!-- Roadmap items will be loaded dynamically -->
+        </div>
+
+        <div class="learning-goals" id="learning-goals-container">
+            <!-- Learning goals will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+        <h3>Let's Learn Together</h3>
+        <p>Interested in collaborating on learning projects or sharing knowledge?</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="cta-button">Connect With Me</a>
+            <a href="#skills" class="cta-button">View My Skills</a>
+        </div>
+    </div>
+</div>
 
     <!-- About Section -->
     <div id="about" class="page-section">
@@ -1229,243 +1619,129 @@
 
     <script>
 
-        // Configuration data (this would typically be in a separate JSON file)
+        // Portfolio data will be loaded from JSON files
         let portfolioData = {
-            projects: [
-                {
-
-                    id: 1,
-                    title: "Robotic Arm: 6 Degree of Freedom Gesture-Controlled System",
-                    description: "A modern robotics project with advanced control systems and precision movement.",
-                    image: "images/project1.webp",
-                    category: "Robotics, Computer Vision, Embedded Systems",
-                    detailImages: ["images/project1.webp", "images/project1-detail2.webp", "images/project1-detail3.webp"],
-                    overview: "This robotics project showcases advanced control systems and precision engineering. The robot arm features multiple degrees of freedom and can perform complex tasks with high accuracy.",
-                    features: [
-                        "Developed a 6-DOF robotic arm controlled by real-time hand tracking.",
-                        "Implemented gesture detection using Python and OpenCV.",
-                        "Designed the interaction loop between visual input and arm movement.",
-                        "Demonstrated real-world application of computer vision in robotics.",
-                        "Built a scalable and modular structure for further development.",
-                        "Tested for responsiveness and accuracy in various lighting conditions."
-                    ],
-                    technologies: "Python, OpenCV, Arduino, Servo Motors, Robotics"
-
-
-
-                },
-                {
-                    id: 2,
-                    title: "Holistic and Integrated Smart System for Safeguarding Motorcyclists",
-                    description: "An AI and IoT-based safety system to monitor helmet use and riding behavior for improved motorcyclist safety.",
-                    image: "images/project2.webp",
-                    category: "IoT, AI, Safety Systems",
-                    detailImages: ["images/project2-detail1.webp", "images/project2-detail2.webp", "images/project2-detail3.webp"],
-                    overview: "In April 2024, I worked on a smart safety system for motorcyclists combining object detection, sensor integration, and IoT. A YOLOv8 model was trained to detect helmet usage in real-time, while onboard sensors monitored riding behavior such as acceleration, braking, and lean angle. The system provided employers with actionable insights through a live IoT dashboard.",
-                    features: [
-                        "Trained a YOLOv8 object detection model to ensure motorcyclists are wearing helmets.",
-                        "Monitored acceleration, braking, and lean angle using integrated sensors.",
-                        "Developed an IoT platform for real-time data collection and analysis.",
-                        "Visualized riding performance through interactive dashboards.",
-                        "Enabled employers to track and promote safer riding behavior.",
-                        "Contributed to reducing risks and improving road safety for motorcyclists."
-                    ],
-                    technologies: "YOLOv8, IoT, Embedded Systems, Python, Sensor Integration"
-
-
-
-
-                },
-                {
-                    id: 3,
-                    title: "Portable Real-Time Monitoring System for Palm Tree",
-                    description: "A smart agriculture system for monitoring palm tree health and growth using AI and IoT.",
-                    image: "images/project3.webp",
-                    category: "IoT, Computer Vision, Smart Agriculture",
-                    detailImages: ["images/project3.webp", "images/project3-detail2.webp", "images/project3-detail3.webp", "images/project3-detail4.webp", "images/project3-detail5.webp", "images/project3-detail6.webp"],
-                    overview: "In August 2024, I developed a portable real-time monitoring system focused on palm trees for smart agriculture applications. The system collects environmental and growth data and provides alerts to caretakers. It also uses a YOLOv8 segmentation model to analyze plant growth from images and integrates with a cloud-based IoT platform for live monitoring and management.",
-                    features: [
-                        "Developed a portable real-time system to monitor palm tree environmental and growth parameters.",
-                        "Trained and deployed a YOLOv8 segmentation model to analyze plant growth through pixel analysis.",
-                        "Designed an interactive IoT dashboard using Google Cloud for live monitoring and alerts.",
-                        "Integrated Raspberry Pi with multiple sensors for real-time data acquisition.",
-                        "Enabled remote plant management with visual insights and alert thresholds.",
-                        "Focused on supporting sustainable smart agriculture practices."
-                    ],
-                    technologies: "YOLOv8, Raspberry Pi, Google Cloud, Python, IoT, Computer Vision"
-
-
-
-
-                },
-                {
-                    id: 4,
-                    title: "IMechE Training Series: Hands-On Robotics for University Students",
-                    description: "Led a robotics training series to teach students how to build and program a gesture-controlled robotic arm.",
-                    image: "images/project4.webp",
-                    category: "STEM Education, Robotics Training, Technical Communication",
-                    detailImages: ["images/project4.webp", "images/project4-detail2.webp", "images/project4-detail3.webp"],
-                    overview: "Alongside the development of the robotic arm, I conducted a hands-on robotics training series in May 2023 at UCSI University. The series guided students through each stage of building the robotic system — from hardware to software — and helped them understand core principles of vision-based control and mechatronics.",
-                    features: [
-                        "Prepared and delivered a structured robotics training series for students.",
-                        "Explained key concepts like servo control, OpenCV tracking, and motion mapping.",
-                        "Engaged participants with live demonstrations and build-along sessions.",
-                        "Encouraged student experimentation and adaptation of the original project.",
-                        "Used the robotic arm project as an educational tool and engineering mascot.",
-                        "Strengthened my communication and mentoring skills in technical topics."
-                    ],
-                    technologies: "Python, OpenCV, Arduino, Robotics, Presentation Tools"
-
-
-
-
-                },
-                {
-                    id: 5,
-                    title: "IoT Training Series: Real-Time Monitoring with Raspberry Pi and Google Cloud",
-                    description: "Co-led an IoT training series focused on building real-time sensor-based monitoring systems using Raspberry Pi and Google Sheets.",
-                    image: "images/project5.webp",
-                    category: "IoT, Training, Cloud Integration",
-                    detailImages: ["images/project5.webp", "images/project5-detail2.webp"],
-                    overview: "As part of my internship at Control Easy Technology in late 2023, I collaborated with my supervisor to design and deliver an IoT training program for external clients. The training focused on building real-time monitoring systems using Raspberry Pi, various sensors, and integration with Google Cloud and Google Sheets. I created instructional materials and led hands-on sessions to guide participants through system setup, data flow, and cloud-based visualization.",
-                    features: [
-                        "Designed and delivered IoT training sessions using Raspberry Pi and sensors.",
-                        "Demonstrated real-time data collection and cloud integration with Google Sheets.",
-                        "Created clear and engaging instructional materials for technical and non-technical audiences.",
-                        "Conducted live sessions, assisting participants in building and testing their systems.",
-                        "Enabled attendees to deploy their own monitoring systems for practical use.",
-                        "Focused on low-cost, scalable IoT solutions for beginners and professionals alike."
-                    ],
-                    technologies: "Raspberry Pi, Sensors, Google Sheets, Google Cloud, Python"
-
-
-
-                },
-                {
-                    id: 6,
-                    title: "Modular Prototyping Box for Multi-Project Applications",
-                    description: "A reusable and customizable 3D-printed enclosure designed to accelerate prototyping for R&D.",
-                    image: "images/project6.webp",
-                    category: "3D design, R&D",
-                    detailImages: ["images/project6.webp", "images/project6-detail2.webp", "images/project6-detail3.webp"],
-                    overview: "From May 2023 to August 2024, I designed and 3D printed a modular enclosure to support rapid development and testing of electronic systems. The box accommodated various sensors, microcontrollers, and components, and was reused across five unique projects, proving its effectiveness and adaptability.",
-                    features: [
-                        "3D printed a versatile and aesthetically pleasing modular box to house sensors, microcontrollers, and other components.",
-                        "Expandable through modular design for different project needs.",
-                        "Successfully used in five distinct electronics projects.",
-                        "Saves prototyping time and improves workflow efficiency.",
-                        "Tool-free assembly and easy internal reconfiguration.",
-                        "Designed with both functionality and visual appeal in mind."
-                    ],
-                    technologies: "3D design, 3D printing"
-
-
-
-
-
-
-
-                }
-            ],
-            skills: [
-                {
-                    id: 1,
-                    name: "Microcontroller Programming & Hardware Integration",
-                    proficiency: 80,
-                    image: "images/skill1.png",
-                    description: "I’ve designed and built embedded systems using Arduino and Raspberry Pi, integrating sensors, displays, motors, and communication protocols. I’ve handled serial communication, real-time feedback, and sensor data processing across multiple projects.",
-                    learningPath: "Final Year Project, Integrated Design project, Robotic arm project"
-                },
-                {
-                    id: 2,
-                    name: "C++ & Python Programming for Embedded Systems",
-                    proficiency: 70,
-                    image: "images/skill2.png",
-                    description: "Python is my primary language for prototyping AI, IoT, and embedded logic. I’ve written full systems in Python for data logging, decision-making, and cloud comms. I’m growing stronger in C++ through Arduino projects and expect improvement through hands-on applications. I'm currently expanding my Python fundamentals by completing Harvard’s CS50 course.",
-                    learningPath: "YOLOv8 integration, sensor control, UI systems, file handling"
-                },
-                {
-                    id: 3,
-                    name: "End-to-End IoT System Development",
-                    proficiency: 85,
-                    image: "images/skill3.png",
-                    description: "Built complete IoT systems, from sensor data acquisition using Raspberry Pi and microcontrollers to cloud-based storage using Google Sheets and Google Cloud APIs. I’ve also trained industry clients on deploying these systems. I understand how to build, troubleshoot, and deploy scalable, real-time monitoring platforms.",
-                    learningPath: "Final Year Project, Integrated Design project, Internship (IoT workshops, Raspberry Pi training )"
-                },
-                {
-                    id: 4,
-                    name: "AI & Computer Vision Integration",
-                    proficiency: 75,
-                    image: "images/skill4.png",
-                    description: "I specialize in applying AI models such as YOLOv8 and OpenCV for real-world object detection tasks. My academic background in AI helped me understand both theory and practice. I’ve implemented models in Python that detect helmets, interpret hand gestures, and measure plant growth, combining vision and hardware control.",
-                    learningPath: "FYP: Used YOLOv8 segmentation to analyze palm tree growth IDP: Helmet detection using YOLOv8 object detection Robotic Arm: Used OpenCV to detect hand movement and interact through games"
-                },
-                {
-                    id: 5,
-                    name: "Embedded UI/UX & Display Systems",
-                    proficiency: 70,
-                    image: "images/skill5.png",
-                    description: "I’ve developed compact, intuitive interfaces using OLED screens and tactile buttons, allowing standalone systems to be monitored and controlled without a PC. My designs include animated displays, sensor feedback, and status messages. ",
-                    learningPath: "FYP: Designed a standalone system interface using a small OLED screen and buttons Displayed sensor values, Wi-Fi status, and control options Used LED and screen feedback for interactive debugging"
-                },
-                {
-                    id: 6,
-                    name: "3D Design & Printing",
-                    proficiency: 80,
-                    image: "images/skill6.png",
-                    description: "I’ve created functional and visually polished 3D-printed parts using CAD tools like SolidWorks and OnShape. My designs have supported both academic and external R&D projects. I also trained colleagues on 3D printing tools, showing my confidence in both technical skill and teamwork.",
-                    learningPath: "Designed enclosures, mounting systems, and sensor boxes Printed custom components for functional prototypes Provided 3D printing and design services to other students and staff"
-                }
-            ]
+            projects: [],
+            skills: [],
+            coursesProgress: null,
+            experience: null,
+            site: null,
+            about: null,
+            contact: null
         };
 
         async function loadData() {
             try {
-                const res = await fetch('data.json', { cache: 'no-cache' });
-                const json = await res.json();
-                portfolioData = json;
-                // Apply top-level content
+                console.log('Loading JSON data...');
+                
+                // Load all JSON files
+                const [siteRes, aboutRes, projectsRes, skillsRes, coursesRes, contactRes, experienceRes] = await Promise.all([
+                    fetch('data/site.json', { cache: 'no-cache' }),
+                    fetch('data/about.json', { cache: 'no-cache' }),
+                    fetch('data/projects.json', { cache: 'no-cache' }),
+                    fetch('data/skills.json', { cache: 'no-cache' }),
+                    fetch('data/courses-progress.json', { cache: 'no-cache' }),
+                    fetch('data/contact.json', { cache: 'no-cache' }),
+                    fetch('data/experience.json', { cache: 'no-cache' })
+                ]);
+
+                // Check if all requests were successful
+                if (!siteRes.ok || !aboutRes.ok || !projectsRes.ok || !skillsRes.ok || !coursesRes.ok || !contactRes.ok || !experienceRes.ok) {
+                    throw new Error('One or more JSON files failed to load');
+                }
+
+                // Parse JSON responses
+                portfolioData.site = (await siteRes.json()).site;
+                portfolioData.about = (await aboutRes.json()).about;
+                portfolioData.projects = (await projectsRes.json()).projects;
+                portfolioData.skills = (await skillsRes.json()).skills;
+                portfolioData.coursesProgress = (await coursesRes.json()).coursesProgress;
+                portfolioData.contact = (await contactRes.json()).contact;
+                portfolioData.experience = (await experienceRes.json()).experience;
+                
+                console.log('JSON data loaded successfully:', portfolioData);
+
+                // Apply site content
                 const titleEl = document.querySelector('#home .cover-content h1');
                 const subEl = document.querySelector('#home .cover-content p');
-                if (json.site) {
-                    if (json.site.heroTitle && titleEl) titleEl.textContent = json.site.heroTitle;
-                    if (json.site.heroSubtitle && subEl) subEl.textContent = json.site.heroSubtitle;
+                if (portfolioData.site) {
+                    if (portfolioData.site.heroTitle && titleEl) titleEl.textContent = portfolioData.site.heroTitle;
+                    if (portfolioData.site.heroSubtitle && subEl) subEl.textContent = portfolioData.site.heroSubtitle;
                 }
-                if (json.about) {
+
+                // Apply about content
+                if (portfolioData.about) {
                     const aboutH2 = document.querySelector('#about .about-text h2');
-                    if (json.about.greeting && aboutH2) aboutH2.textContent = json.about.greeting;
-                    if (Array.isArray(json.about.paragraphs)) {
+                    if (portfolioData.about.greeting && aboutH2) aboutH2.textContent = portfolioData.about.greeting;
+                    if (Array.isArray(portfolioData.about.paragraphs)) {
                         const aboutText = document.querySelector('#about .about-text');
                         const existingParas = aboutText.querySelectorAll('p');
                         existingParas.forEach(p => p.remove());
                         const anchor = aboutText.querySelector('h2');
-                        json.about.paragraphs.forEach(t => {
+                        portfolioData.about.paragraphs.forEach(t => {
                             const p = document.createElement('p');
                             p.textContent = t;
                             anchor.insertAdjacentElement('afterend', p);
                         });
                     }
-                    if (json.about.quote) {
+                    if (portfolioData.about.quote) {
                         const quoteBox = document.querySelector('#about .custom-text');
-                        if (quoteBox) quoteBox.innerHTML = `<strong>"${json.about.quote.text}" — ${json.about.quote.author}</strong><br><em>${json.about.quote.sub || ''}</em>`;
+                        if (quoteBox) quoteBox.innerHTML = `<strong>"${portfolioData.about.quote.text}" — ${portfolioData.about.quote.author}</strong><br><em>${portfolioData.about.quote.sub || ''}</em>`;
                     }
                 }
-                if (json.contact) {
+
+                // Apply contact content
+                if (portfolioData.contact) {
                     const emailLink = document.querySelector('#contact a[href^="mailto:"]');
                     const phoneLink = document.querySelector('#contact a[href^="tel:"]');
                     const linkedinLink = document.querySelector('#contact a[href*="linkedin"]');
                     const githubLink = document.querySelector('#contact a[href*="github.com"]');
                     const locSpan = document.querySelector('#contact .contact-item span');
                     const form = document.querySelector('#contact form.contact-form');
-                    if (json.contact.email && emailLink) { emailLink.href = `mailto:${json.contact.email}`; emailLink.textContent = json.contact.email; }
-                    if (json.contact.phone && phoneLink) { phoneLink.href = `tel:${json.contact.phone.replace(/\s+/g,'')}`; phoneLink.textContent = json.contact.phone; }
-                    if (json.contact.linkedin && linkedinLink) linkedinLink.href = json.contact.linkedin;
-                    if (json.contact.github && githubLink) githubLink.href = json.contact.github;
-                    if (json.contact.location && locSpan) locSpan.textContent = json.contact.location;
-                    if (json.contact.formEndpoint && form) form.action = json.contact.formEndpoint;
+                    if (portfolioData.contact.email && emailLink) { emailLink.href = `mailto:${portfolioData.contact.email}`; emailLink.textContent = portfolioData.contact.email; }
+                    if (portfolioData.contact.phone && phoneLink) { phoneLink.href = `tel:${portfolioData.contact.phone.replace(/\s+/g,'')}`; phoneLink.textContent = portfolioData.contact.phone; }
+                    if (portfolioData.contact.linkedin && linkedinLink) linkedinLink.href = portfolioData.contact.linkedin;
+                    if (portfolioData.contact.github && githubLink) githubLink.href = portfolioData.contact.github;
+                    if (portfolioData.contact.location && locSpan) locSpan.textContent = portfolioData.contact.location;
+                    if (portfolioData.contact.formEndpoint && form) form.action = portfolioData.contact.formEndpoint;
                 }
             } catch (err) {
-                console.error('Failed to load data.json', err);
+                console.error('Failed to load JSON data files', err);
+                // Fallback to embedded data
+                portfolioData = {
+                    projects: [
+                        {
+                            id: 1,
+                            title: "Robotic Arm: 6 Degree of Freedom Gesture-Controlled System",
+                            description: "A modern robotics project with advanced control systems and precision movement.",
+                            image: "images/project1.webp",
+                            category: "Robotics, Computer Vision, Embedded Systems",
+                            detailImages: ["images/project1.webp", "images/project1-detail2.webp", "images/project1-detail3.webp"],
+                            overview: "This robotics project showcases advanced control systems and precision engineering. The robot arm features multiple degrees of freedom and can perform complex tasks with high accuracy.",
+                            features: [
+                                "Developed a 6-DOF robotic arm controlled by real-time hand tracking.",
+                                "Implemented gesture detection using Python and OpenCV.",
+                                "Designed the interaction loop between visual input and arm movement.",
+                                "Demonstrated real-world application of computer vision in robotics.",
+                                "Built a scalable and modular structure for further development.",
+                                "Tested for responsiveness and accuracy in various lighting conditions."
+                            ],
+                            technologies: "Python, OpenCV, Arduino, Servo Motors, Robotics"
+                        }
+                        // Add more projects as needed
+                    ],
+                    skills: [
+                        {
+                            id: 1,
+                            name: "Microcontroller Programming & Hardware Integration",
+                            proficiency: 80,
+                            image: "images/skill1.png",
+                            description: "I've designed and built embedded systems using Arduino and Raspberry Pi, integrating sensors, displays, motors, and communication protocols.",
+                            learningPath: "Final Year Project, Integrated Design project, Robotic arm project"
+                        }
+                        // Add more skills as needed
+                    ]
+                };
             }
         }
 
@@ -1500,6 +1776,9 @@
             }
             if (sectionName === 'skills') {
                 loadSkills();
+            }
+            if (sectionName === 'courses-progress') {
+                loadCoursesProgress();
             }
 
             // Update navigation (based on #hash hrefs)
@@ -1694,6 +1973,81 @@
     animateSkill581192214bers();
 }
 
+// Load courses & progress section with roadmap design
+function loadCoursesProgress() {
+    const container = document.getElementById('roadmap-container');
+    const goalsContainer = document.getElementById('learning-goals-container');
+    
+    if (!portfolioData.coursesProgress) return;
+    
+    // Clear containers
+    container.innerHTML = '';
+    goalsContainer.innerHTML = '';
+    
+    const coursesData = portfolioData.coursesProgress;
+    
+    // Load roadmap items
+    coursesData.roadmapItems.forEach((item, index) => {
+        const roadmapItem = document.createElement('div');
+        roadmapItem.className = `roadmap-item ${item.position} ${item.status}`;
+        
+        const skillTagsHtml = item.skills.map(skill => 
+            `<span class="skill-tag">${skill}</span>`
+        ).join('');
+        
+        roadmapItem.innerHTML = `
+            <div class="roadmap-card ${item.status}">
+                <div class="course-icon">${item.icon}</div>
+                <div class="course-header">
+                    <h3>${item.title}</h3>
+                    <div class="course-platform">${item.platform}</div>
+                </div>
+                <div class="course-category">${item.category}</div>
+                <div class="course-description">${item.description}</div>
+                <div class="course-progress">
+                    <div class="progress-header">
+                        <span class="progress-text">Progress</span>
+                        <span class="progress-percentage">${item.progress}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="${item.progress}" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="course-skills">
+                    <div class="skills-label">Technologies & Skills</div>
+                    <div class="skill-tags">${skillTagsHtml}</div>
+                </div>
+                <div class="course-completion">Target: ${item.targetCompletion}</div>
+            </div>
+        `;
+        
+        container.appendChild(roadmapItem);
+    });
+    
+    // Load learning goals
+    const goalsHtml = coursesData.learningGoals.map(goal => 
+        `<li>${goal}</li>`
+    ).join('');
+    
+    goalsContainer.innerHTML = `
+        <h3>My Learning Goals</h3>
+        <ul class="goals-list">
+            ${goalsHtml}
+        </ul>
+    `;
+    
+    // Animate progress bars with staggered timing
+    setTimeout(() => {
+        const progressBars = container.querySelectorAll('.progress-fill');
+        progressBars.forEach((bar, index) => {
+            const targetWidth = bar.getAttribute('data-width');
+            setTimeout(() => {
+                bar.style.width = targetWidth + '%';
+            }, 200 * (index + 1)); // Staggered animation
+        });
+    }, 500);
+}
+
     document.getElementById('fullscreen-close').onclick = function(e) {
         e.stopPropagation(); // Prevent also closing by overlay
         document.getElementById('fullscreen-image-overlay').style.display = 'none';
@@ -1772,17 +2126,24 @@ function openModal(modalId) {
         });
 
         // Initialize the website
-        document.addEventListener('DOMContentLoaded', function() {
-            (async () => {
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // Load all data first
                 await loadData();
+                
+                // Then load all sections
                 loadProjects();
                 buildFilters();
                 loadSkills();
-            })();
-
-            // Navigate to section from hash on load
-            const initialSection = location.hash.replace('#','') || 'home';
-            showSection(initialSection);
+                loadCoursesProgress();
+                
+                // Navigate to section from hash on load
+                const initialSection = location.hash.replace('#','') || 'home';
+                showSection(initialSection);
+            } catch (error) {
+                console.error('Failed to initialize website:', error);
+                // Fallback to original static content if JSON fails
+            }
 
             
             // Set initial active nav link
