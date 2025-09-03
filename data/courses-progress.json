@@ -2,13 +2,13 @@
   "coursesProgress": {
     "title": "Courses & Progress",
     "subtitle": "This section is working on progress, all the data and texts here is placeholders",
-    "description": "I believe in continuous learning and staying updated with the latest technologies. Here's my structured learning roadmap:",
+    "description": "This section is working on progress, all the data and texts here is placeholders",
     "roadmapItems": [
       {
         "id": 1,
         "title": "Advanced Machine Learning",
         "platform": "Harvard CS50 AI",
-        "progress": 75,
+        "progress": 100,
         "category": "AI/ML",
         "description": "Diving deeper into neural networks, deep learning algorithms, and their practical applications in robotics and computer vision.",
         "skills": ["TensorFlow", "PyTorch", "Neural Networks", "Computer Vision"],
@@ -21,7 +21,7 @@
         "id": 2,
         "title": "Advanced C++ Programming",
         "platform": "Self-Study & Projects",
-        "progress": 60,
+        "progress": 100,
         "category": "Programming",
         "description": "Strengthening my C++ skills for real-time embedded systems and performance-critical robotics applications.",
         "skills": ["C++17/20", "STL", "Memory Management", "Real-time Systems"],
@@ -91,3 +91,4 @@
     ]
   }
 }
+
