@@ -168,6 +168,17 @@
             transition: all 0.3s ease;
             position: relative;
             padding: 0.5rem 0;
+            /* Improve touch targets for mobile devices */
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            /* Prevent text selection on touch */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* Improve touch responsiveness */
+            -webkit-tap-highlight-color: transparent;
         }
 
         .nav-links a:hover {
@@ -203,6 +214,18 @@
             flex-direction: column;
             cursor: pointer;
             gap: 4px;
+            /* Improve touch targets */
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+            justify-content: center;
+            align-items: center;
+            /* Prevent text selection and improve touch responsiveness */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .mobile-menu span {
@@ -1271,6 +1294,28 @@
         padding: 1rem 2rem;
         box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         gap: 1rem;
+        /* Improve touch handling on mobile */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* iPad specific improvements */
+    @media (max-width: 1024px) and (min-width: 768px) {
+        .nav-links a {
+            padding: 0.75rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .mobile-menu {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: none;
+        }
+        
+        .nav-links.active {
+            display: flex;
+        }
     }
 
     .nav-links.active {
@@ -1303,14 +1348,14 @@
     <div class="nav-container">
         <a href="#home" class="logo">Alward Hafez</a>
         <ul class="nav-links">
-            <li><a href="#home" class="nav-link" onclick="event.preventDefault(); showSection('home')" >Home</a></li>
-            <li><a href="#experience" class="nav-link" onclick="event.preventDefault(); showSection('experience')" >Experience</a></li>
-            <li><a href="#skills" class="nav-link" onclick="event.preventDefault(); showSection('skills')">Skills</a></li>
-            <li><a href="#courses-progress" class="nav-link" onclick="event.preventDefault(); showSection('courses-progress')">Courses & Progress</a></li>
-            <li><a href="#about" class="nav-link" onclick="event.preventDefault(); showSection('about')">About Me</a></li>
-            <li><a href="#contact" class="nav-link"onclick="event.preventDefault(); showSection('contact')">Contact</a></li>
+            <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+            <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+            <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+            <li><a href="#courses-progress" class="nav-link" data-section="courses-progress">Courses & Progress</a></li>
+            <li><a href="#about" class="nav-link" data-section="about">About Me</a></li>
+            <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
         </ul>
-        <div class="mobile-menu" onclick="toggleMobileMenu()">
+        <div class="mobile-menu" data-mobile-toggle="true">
             <span></span>
             <span></span>
             <span></span>
@@ -1732,6 +1777,65 @@
             const mobileMenu = document.querySelector('.mobile-menu');
             navLinks.classList.toggle('active');
             mobileMenu.classList.toggle('active');
+        }
+
+        // Enhanced navigation event handler for touch devices
+        function setupNavigationHandlers() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            navLinks.forEach(link => {
+                // Remove any existing event listeners
+                link.removeEventListener('click', handleNavClick);
+                link.removeEventListener('touchend', handleNavTouch);
+                
+                // Add click handler
+                link.addEventListener('click', handleNavClick);
+                
+                // Add touch handler for mobile devices
+                link.addEventListener('touchend', handleNavTouch, { passive: false });
+            });
+
+            // Set up mobile menu toggle
+            if (mobileMenu) {
+                mobileMenu.removeEventListener('click', handleMobileMenuClick);
+                mobileMenu.removeEventListener('touchend', handleMobileMenuTouch);
+                
+                mobileMenu.addEventListener('click', handleMobileMenuClick);
+                mobileMenu.addEventListener('touchend', handleMobileMenuTouch, { passive: false });
+            }
+        }
+
+        function handleMobileMenuClick(event) {
+            event.preventDefault();
+            toggleMobileMenu();
+        }
+
+        function handleMobileMenuTouch(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            toggleMobileMenu();
+        }
+
+        function handleNavClick(event) {
+            event.preventDefault();
+            const section = event.currentTarget.getAttribute('data-section');
+            if (section) {
+                showSection(section);
+            }
+        }
+
+        function handleNavTouch(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const section = event.currentTarget.getAttribute('data-section');
+            if (section) {
+                // Small delay to ensure touch is processed
+                setTimeout(() => {
+                    showSection(section);
+                }, 50);
+            }
         }
 
         // Navbar scroll effect
@@ -2252,6 +2356,9 @@ function openModal(modalId) {
                 
                 // Set up intersection observers for animations
                 setupAnimationObservers();
+                
+                // Set up navigation handlers for touch devices
+                setupNavigationHandlers();
                 
                 // Navigate to section from hash on load
                 const initialSection = location.hash.replace('#','') || 'home';
