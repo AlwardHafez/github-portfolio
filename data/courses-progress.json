@@ -34,7 +34,7 @@
         "id": 3,
         "title": "PCB Design & Electronics",
         "platform": "KiCad & Personal Projects",
-        "progress": 55,
+        "progress": 100,
         "category": "Hardware",
         "description": "Learning professional PCB design to create custom electronic solutions for my IoT and robotics projects.",
         "skills": ["KiCad", "Circuit Design", "SMD Components", "Signal Integrity"],
@@ -47,7 +47,7 @@
         "id": 4,
         "title": "Cloud Infrastructure",
         "platform": "AWS Certified Solutions Architect",
-        "progress": 45,
+        "progress": 85,
         "category": "Cloud",
         "description": "Learning to design and deploy scalable cloud solutions for IoT applications and data processing systems.",
         "skills": ["AWS", "Docker", "Kubernetes", "Microservices"],
@@ -91,4 +91,5 @@
     ]
   }
 }
+
 
