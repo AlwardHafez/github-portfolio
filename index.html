@@ -1303,12 +1303,12 @@
     <div class="nav-container">
         <a href="#home" class="logo">Alward Hafez</a>
         <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#courses-progress" class="nav-link">Courses & Progress</a></li>
-            <li><a href="#about" class="nav-link">About Me</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#home" class="nav-link" onclick="event.preventDefault(); showSection('home')" >Home</a></li>
+            <li><a href="#experience" class="nav-link" onclick="event.preventDefault(); showSection('experience')" >Experience</a></li>
+            <li><a href="#skills" class="nav-link" onclick="event.preventDefault(); showSection('skills')">Skills</a></li>
+            <li><a href="#courses-progress" class="nav-link" onclick="event.preventDefault(); showSection('courses-progress')">Courses & Progress</a></li>
+            <li><a href="#about" class="nav-link" onclick="event.preventDefault(); showSection('about')">About Me</a></li>
+            <li><a href="#contact" class="nav-link"onclick="event.preventDefault(); showSection('contact')">Contact</a></li>
         </ul>
         <div class="mobile-menu" onclick="toggleMobileMenu()">
             <span></span>
@@ -1744,78 +1744,89 @@
             }
         });
 
-        // Section navigation with hash routing
+                // Section navigation with hash routing
         function showSection(sectionName) {
-    // Hide all sections
-    const sections = document.querySelectorAll('.page-section');
-    sections.forEach(section => section.classList.remove('active'));
+     // Check if we're already on this section
+     const currentActive = document.querySelector('.page-section.active');
+     const isAlreadyActive = currentActive && currentActive.id === sectionName;
+     
+     // Hide all sections
+     const sections = document.querySelectorAll('.page-section');
+     sections.forEach(section => section.classList.remove('active'));
 
-    // Special: reset green bar if leaving courses section
-    const timeline = document.querySelector('.roadmap-timeline');
-    if (timeline) {
-        timeline.style.setProperty('--green-height', '0%');
-    }
+     // Special: reset green bar if leaving courses section
+     const timeline = document.querySelector('.roadmap-timeline');
+     if (timeline) {
+         timeline.style.setProperty('--green-height', '0%');
+     }
 
-    // Show selected section
-    const target = document.getElementById(sectionName);
-    if (target) {
-        target.classList.add('active');
-    }
+     // Show selected section
+     const target = document.getElementById(sectionName);
+     if (target) {
+         target.classList.add('active');
+     }
 
-    if (sectionName === 'skills') {
-        loadSkills();
-    }
+     if (sectionName === 'skills') {
+         loadSkills();
+     }
 
-    if (sectionName === 'courses-progress') {
-        loadCoursesProgress();
+     if (sectionName === 'courses-progress') {
+         loadCoursesProgress();
 
-        // Reset roadmap cards state
-        document.querySelectorAll('.roadmap-card').forEach(el => {
-            el.removeAttribute('data-animated');
-            const progressBar = el.querySelector('.progress-fill');
-            const progressText = el.querySelector('.progress-percentage');
-            if (progressBar) progressBar.style.width = '0%';
-            if (progressText) progressText.textContent = '0%';
-        });
+         // Reset roadmap cards state
+         document.querySelectorAll('.roadmap-card').forEach(el => {
+             el.removeAttribute('data-animated');
+             const progressBar = el.querySelector('.progress-fill');
+             const progressText = el.querySelector('.progress-percentage');
+             if (progressBar) progressBar.style.width = '0%';
+             if (progressText) progressText.textContent = '0%';
+         });
 
-        // Restart green bar animation
-        setTimeout(() => {
-            const completedCourses = portfolioData.coursesProgress.roadmapItems.filter(item => item.progress === 100);
-            const totalCourses = portfolioData.coursesProgress.roadmapItems.length;
+         // Restart green bar animation
+         setTimeout(() => {
+             const completedCourses = portfolioData.coursesProgress.roadmapItems.filter(item => item.progress === 100);
+             const totalCourses = portfolioData.coursesProgress.roadmapItems.length;
 
-            if (completedCourses.length > 0) {
-                const greenPercentage = (completedCourses.length / totalCourses) * 100;
+             if (completedCourses.length > 0) {
+                 const greenPercentage = (completedCourses.length / totalCourses) * 100;
 
-                if (timeline) {
-                    timeline.style.setProperty('--green-height', '0%');
-                    timeline.offsetHeight; // Force reflow
-                    requestAnimationFrame(() => {
-                        timeline.style.setProperty('--green-height', greenPercentage + '%');
-                    });
-                }
-            }
-        }, 200);
-    }
+                 if (timeline) {
+                     timeline.style.setProperty('--green-height', '0%');
+                     timeline.offsetHeight; // Force reflow
+                     requestAnimationFrame(() => {
+                         timeline.style.setProperty('--green-height', greenPercentage + '%');
+                     });
+                 }
+             }
+         }, 200);
+     }
 
-    // Update nav highlight
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => link.classList.remove('active'));
-    const currentLink = document.querySelector(`.nav-link[href="#${sectionName}"]`);
-    if (currentLink) currentLink.classList.add('active');
+     // Update nav highlight
+     const navLinks = document.querySelectorAll('.nav-link');
+     navLinks.forEach(link => link.classList.remove('active'));
+     const currentLink = document.querySelector(`.nav-link[href="#${sectionName}"]`);
+     if (currentLink) currentLink.classList.add('active');
 
-    // Close mobile menu if open
-    const navLinksContainer = document.querySelector('.nav-links');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    navLinksContainer.classList.remove('active');
-    mobileMenu.classList.remove('active');
+     // Close mobile menu if open
+     const navLinksContainer = document.querySelector('.nav-links');
+     const mobileMenu = document.querySelector('.mobile-menu');
+     navLinksContainer.classList.remove('active');
+     mobileMenu.classList.remove('active');
 
-    // Update hash
-    if (location.hash.replace('#','') !== sectionName) {
-        history.replaceState(null, '', `#${sectionName}`);
-    }
+     // Update hash
+     if (location.hash.replace('#','') !== sectionName) {
+         history.replaceState(null, '', `#${sectionName}`);
+     }
 
-    // Scroll to top
-    window.scrollTo(0, 0);
+     // Only scroll to top if we're switching to a different section
+     if (!isAlreadyActive) {
+         setTimeout(() => {
+             window.scrollTo({
+                 top: 0,
+                 behavior: 'smooth'
+             });
+         }, 100);
+     }
 }
 
         // Load projects dynamically
@@ -2061,11 +2072,7 @@ function loadCoursesProgress() {
             animationObserver.observe(el);
         });
         
-        // Reset timeline animation flag so it can animate again
-        const timeline = document.querySelector('.roadmap-timeline');
-        if (timeline) {
-            timeline.removeAttribute('data-timeline-animated');
-        }
+
     }, 100);
 
 
@@ -2198,26 +2205,7 @@ function openModal(modalId) {
                             }, 20);
                         }
                         
-                        // Start green timeline animation when first roadmap card becomes visible
-                        const timeline = document.querySelector('.roadmap-timeline');
-                        if (timeline && !timeline.hasAttribute('data-timeline-animated')) {
-                            timeline.setAttribute('data-timeline-animated', 'true');
-                            
-                            const completedCourses = portfolioData.coursesProgress.roadmapItems.filter(item => item.progress === 100);
-                            const totalCourses = portfolioData.coursesProgress.roadmapItems.length;
-                            
-                            if (completedCourses.length > 0) {
-                                const greenPercentage = (completedCourses.length / totalCourses) * 100;
-                                
-                                // Reset to 0 and animate
-                                timeline.style.setProperty('--green-height', '0%');
-                                timeline.offsetHeight; // Force reflow
-                                
-                                requestAnimationFrame(() => {
-                                    timeline.style.setProperty('--green-height', greenPercentage + '%');
-                                });
-                            }
-                        }
+
                     }
                     
                     // Handle project cards
