@@ -1,0 +1,38 @@
+{
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Roles, internships, and impactful contributions",
+    "timeline": [
+      {
+        "id": 1,
+        "title": "Research and Development Engineer",
+        "company": "Control Easy Technology Sdn Bhd",
+        "period": "2023",
+        "type": "Full-time",
+        "location": "Malaysia",
+        "achievements": [
+          "Delivered IoT training and built real-time monitoring demos with Raspberry Pi and Google Cloud.",
+          "Accelerated prototyping with reusable 3D-printed modular enclosures used across multiple projects."
+        ],
+        "skills": ["IoT", "Raspberry Pi", "Google Cloud", "3D Design", "Training", "Prototyping"]
+      },
+      {
+        "id": 2,
+        "title": "Mechatronics Projects",
+        "company": "UCSI University",
+        "period": "2019–2024",
+        "type": "Academic Projects",
+        "location": "Malaysia",
+        "achievements": [
+          "Built a 6-DOF gesture-controlled robotic arm using OpenCV and Arduino.",
+          "Developed AI helmet detection and smart palm tree monitoring with YOLOv8 and cloud dashboards."
+        ],
+        "skills": ["Robotics", "Computer Vision", "Arduino", "YOLOv8", "Python", "AI/ML"]
+      }
+    ],
+    "downloadLinks": {
+      "resume": "#",
+      "cv": "#"
+    }
+  }
+}

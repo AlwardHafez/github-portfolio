@@ -1,0 +1,52 @@
+{
+  "skills": [
+    {
+      "id": 1,
+      "name": "Microcontroller Programming & Hardware Integration",
+      "proficiency": 80,
+      "image": "images/skill1.png",
+      "description": "I've designed and built embedded systems using Arduino and Raspberry Pi, integrating sensors, displays, motors, and communication protocols. I've handled serial communication, real-time feedback, and sensor data processing across multiple projects.",
+      "learningPath": "Final Year Project, Integrated Design project, Robotic arm project"
+    },
+    {
+      "id": 2,
+      "name": "C++ & Python Programming for Embedded Systems",
+      "proficiency": 70,
+      "image": "images/skill2.png",
+      "description": "Python is my primary language for prototyping AI, IoT, and embedded logic. I've written full systems in Python for data logging, decision-making, and cloud comms. I'm growing stronger in C++ through Arduino projects and expect improvement through hands-on applications. I'm currently expanding my Python fundamentals by completing Harvard's CS50 course.",
+      "learningPath": "YOLOv8 integration, sensor control, UI systems, file handling"
+    },
+    {
+      "id": 3,
+      "name": "End-to-End IoT System Development",
+      "proficiency": 85,
+      "image": "images/skill3.png",
+      "description": "Built complete IoT systems, from sensor data acquisition using Raspberry Pi and microcontrollers to cloud-based storage using Google Sheets and Google Cloud APIs. I've also trained industry clients on deploying these systems. I understand how to build, troubleshoot, and deploy scalable, real-time monitoring platforms.",
+      "learningPath": "Final Year Project, Integrated Design project, Internship (IoT workshops, Raspberry Pi training )"
+    },
+    {
+      "id": 4,
+      "name": "AI & Computer Vision Integration",
+      "proficiency": 75,
+      "image": "images/skill4.png",
+      "description": "I specialize in applying AI models such as YOLOv8 and OpenCV for real-world object detection tasks. My academic background in AI helped me understand both theory and practice. I've implemented models in Python that detect helmets, interpret hand gestures, and measure plant growth, combining vision and hardware control.",
+      "learningPath": "FYP: Used YOLOv8 segmentation to analyze palm tree growth IDP: Helmet detection using YOLOv8 object detection Robotic Arm: Used OpenCV to detect hand movement and interact through games"
+    },
+    {
+      "id": 5,
+      "name": "Embedded UI/UX & Display Systems",
+      "proficiency": 70,
+      "image": "images/skill5.png",
+      "description": "I've developed compact, intuitive interfaces using OLED screens and tactile buttons, allowing standalone systems to be monitored and controlled without a PC. My designs include animated displays, sensor feedback, and status messages. ",
+      "learningPath": "FYP: Designed a standalone system interface using a small OLED screen and buttons Displayed sensor values, Wi-Fi status, and control options Used LED and screen feedback for interactive debugging"
+    },
+    {
+      "id": 6,
+      "name": "3D Design & Printing",
+      "proficiency": 80,
+      "image": "images/skill6.png",
+      "description": "I've created functional and visually polished 3D-printed parts using CAD tools like SolidWorks and OnShape. My designs have supported both academic and external R&D projects. I also trained colleagues on 3D printing tools, showing my confidence in both technical skill and teamwork.",
+      "learningPath": "Designed enclosures, mounting systems, and sensor boxes Printed custom components for functional prototypes Provided 3D printing and design services to other students and staff"
+    }
+  ]
+}
