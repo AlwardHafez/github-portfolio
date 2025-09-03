@@ -107,25 +107,7 @@
         "Designed with both functionality and visual appeal in mind."
       ],
       "technologies": "3D design, 3D printing"
-    },
-
-    {
-      "id": 7,
-      "title": "Modular Prototyping Box for Multi-Project Applications",
-      "description": "A reusable and customizable 3D-printed enclosure designed to accelerate prototyping for R&D.",
-      "image": "images/project6.webp",
-      "category": "3D design, R&D",
-      "detailImages": ["images/project6.webp", "images/project6-detail2.webp", "images/project6-detail3.webp"],
-      "overview": "From May 2023 to August 2024, I designed and 3D printed a modular enclosure to support rapid development and testing of electronic systems. The box accommodated various sensors, microcontrollers, and components, and was reused across five unique projects, proving its effectiveness and adaptability.",
-      "features": [
-        "3D printed a versatile and aesthetically pleasing modular box to house sensors, microcontrollers, and other components.",
-        "Expandable through modular design for different project needs.",
-        "Successfully used in five distinct electronics projects.",
-        "Saves prototyping time and improves workflow efficiency.",
-        "Tool-free assembly and easy internal reconfiguration.",
-        "Designed with both functionality and visual appeal in mind."
-      ],
-      "technologies": "3D design, 3D printing"
     }
   ]
 }
+
