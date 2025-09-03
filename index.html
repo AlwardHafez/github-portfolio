@@ -101,7 +101,7 @@
             background-attachment: fixed;
             min-height: 100vh;
             color: #333;
-            padding-top: 70px;
+            padding-top: 60px;
         }
 
         /* Sticky Navigation */
@@ -112,7 +112,7 @@
             right: 0;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
+            padding: 0.5rem 0;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             z-index: 999;
             transition: all 0.3s ease;
@@ -129,6 +129,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            /* Handle overflow better */
+            overflow: visible;
+            position: relative;
+            width: 100%;
+            padding: 0 1rem;
         }
 
         .quote-fade {
@@ -151,6 +156,13 @@
             font-weight: bold;
             color: #333;
             text-decoration: none;
+            /* Prevent text wrapping */
+            white-space: nowrap;
+            /* Ensure proper spacing */
+            margin: 0;
+            padding: 0.5rem 0;
+            /* Default spacing - no negative margin */
+            margin-left: 0;
         }
 
         .nav-links {
@@ -158,7 +170,13 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            gap: 2rem;
+            gap: 1.2rem;
+            flex-wrap: nowrap;
+            align-items: center;
+            min-width: 0;
+            flex-shrink: 1;
+            /* Default spacing - no negative margin */
+            margin-right: 0;
         }
 
         .nav-links a {
@@ -167,7 +185,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.5rem 0.15rem;
             /* Improve touch targets for mobile devices */
             min-height: 44px;
             display: flex;
@@ -179,6 +197,12 @@
             user-select: none;
             /* Improve touch responsiveness */
             -webkit-tap-highlight-color: transparent;
+            /* Prevent text wrapping */
+            white-space: nowrap;
+            /* Ensure proper spacing */
+            margin: 0;
+            /* Allow shrinking if needed */
+            flex-shrink: 1;
         }
 
         .nav-links a:hover {
@@ -613,18 +637,47 @@
             box-shadow: 0 10px 24px rgba(0,0,0,0.28);
         }
 
-        /* Social Media Footer */
-        .social-footer {
-            background: #1a252f;
-            color: white;
-            padding: 2rem;
-            text-align: center;
+        /* Unified Footer */
+        .unified-footer {
+            background: white;
+            color: #333;
+            padding: 3rem 2rem;
             margin-top: 3rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .footer-cta {
+            text-align: left;
+        }
+
+        .footer-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .footer-cta p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social {
+            text-align: right;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             gap: 2rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
@@ -634,13 +687,14 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: white;
+            color: #333;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .social-link:hover {
-            color: #3498db;
+            color: #2c3e50;
             transform: translateY(-2px);
         }
 
@@ -731,6 +785,7 @@
 
         /* Roadmap Timeline */
         .roadmap-timeline {
+            --green-height: 0%; /* default value so bar is not broken */
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
@@ -964,7 +1019,7 @@
         /* Learning Goals - keeping same style */
         .learning-goals {
             background: linear-gradient(145deg, #f8f9fa, #ffffff);
-            border-radius: 20px;
+            border-radius: 0;
             padding: 2rem;
             margin-top: 4rem;
             border-left: 5px solid #2c3e50;
@@ -989,7 +1044,7 @@
         .goals-list li {
             padding: 1rem;
             background: rgba(44, 62, 80, 0.05);
-            border-radius: 15px;
+            border-radius: 0;
             position: relative;
             padding-left: 3rem;
             color: #555;
@@ -1132,6 +1187,26 @@
         }
 
 
+    /* Very wide screens - full PC screens only */
+    @media (min-width: 1600px) {
+        .nav-links {
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            font-size: 1.1rem;
+            padding: 0.5rem 0.5rem;
+        }
+        
+        .logo {
+            margin-left: -1rem;
+        }
+        
+        .nav-links {
+            margin-right: -1rem;
+        }
+    }
+
     /* Responsive Design */
 @media (max-width: 768px) {
     .hero-carousel-desktop {
@@ -1227,9 +1302,31 @@
         align-items: center;
     }
 
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-cta {
+        text-align: center;
+    }
+
+    .footer-social {
+        text-align: center;
+    }
+
     .social-links {
+        justify-content: center;
         flex-direction: column;
         gap: 1rem;
+    }
+
+    /* Center mobile navigation links */
+    .nav-links a {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
     }
 
     .filter-bar { justify-content: center; }
@@ -1249,6 +1346,13 @@
     .roadmap-timeline::before {
         left: 2rem;
         width: 3px;
+        transform: none;
+    }
+
+    .roadmap-timeline::after {
+        left: 2rem;
+        width: 3px;
+        transform: none;
     }
 
     .roadmap-item {
@@ -1296,6 +1400,59 @@
         gap: 1rem;
         /* Improve touch handling on mobile */
         -webkit-overflow-scrolling: touch;
+        /* Center the navigation items */
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Large desktop screens */
+    @media (max-width: 1400px) and (min-width: 1201px) {
+        .nav-links {
+            gap: 1.1rem;
+        }
+        
+        .nav-links a {
+            padding: 0.5rem 0.1rem;
+            font-size: 0.98rem;
+        }
+
+        /* Ensure green line stays centered on large screens */
+        .roadmap-timeline::before {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .roadmap-timeline::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Tablet and medium screen improvements */
+    @media (max-width: 1200px) and (min-width: 769px) {
+        .nav-links {
+            gap: 0.8rem;
+        }
+        
+        .nav-links a {
+            padding: 0.5rem 0.1rem;
+            font-size: 0.9rem;
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+        }
+
+        /* Fix green line positioning on tablets */
+        .roadmap-timeline::before {
+            left: 2rem;
+            transform: none;
+        }
+
+        .roadmap-timeline::after {
+            left: 2rem;
+            transform: none;
+        }
     }
 
     /* iPad specific improvements */
@@ -1315,6 +1472,22 @@
         
         .nav-links.active {
             display: flex;
+        }
+    }
+
+    /* Small tablets and landscape phones */
+    @media (max-width: 900px) and (min-width: 600px) {
+        .nav-links {
+            gap: 0.75rem;
+        }
+        
+        .nav-links a {
+            padding: 0.5rem 0.1rem;
+            font-size: 0.9rem;
+        }
+        
+        .logo {
+            font-size: 1.2rem;
         }
     }
 
@@ -1403,15 +1576,6 @@
         </div>
     </div>
 
-    <!-- Call to Action -->
-    <div class="cta-section">
-        <h3>Get in Touch</h3>
-        <p>Let's create something special</p>
-        <div class="cta-buttons">
-            <a href="#contact" class="cta-button">Contact</a>
-            <a href="#about" class="cta-button">About Me</a>
-        </div>
-    </div>
 </div>
 
 <!-- Courses & Progress Section -->
@@ -1436,15 +1600,6 @@
         </div>
     </div>
 
-    <!-- Call to Action -->
-    <div class="cta-section">
-        <h3>Let's Learn Together</h3>
-        <p>Interested in collaborating on learning projects or sharing knowledge?</p>
-        <div class="cta-buttons">
-            <a href="#contact" class="cta-button">Connect With Me</a>
-            <a href="#skills" class="cta-button">View My Skills</a>
-        </div>
-    </div>
 </div>
 
     <!-- About Section -->
@@ -1479,15 +1634,6 @@
             </div>
         </div>
 
-        <!-- Call to Action -->
-        <div class="cta-section">
-            <h3>Get in Touch</h3>
-            <p>Check out my skills and experience, or get in touch to discuss potential collaborations.</p>
-            <div class="cta-buttons">
-                <a href="#skills" class="cta-button">View My Skills</a>
-                <a href="#contact" class="cta-button">Contact Me</a>
-            </div>
-        </div>
     </div>
 
     <!-- Experience Section -->
@@ -1519,14 +1665,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="cta-section">
-                <h3>Download Resume</h3>
-                <p>Get the full story of my experience and skills.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="cta-button">Download PDF</a>
-                    <a href="#contact" class="cta-button">Hire Me</a>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1546,15 +1684,6 @@
             </div>
         </div>
 
-        <!-- Call to Action -->
-        <div class="cta-section">
-            <h3>Let's Build Something Great</h3>
-            <p>Let's discuss how I can help bring your ideas to life.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="cta-button">Start a Project</a>
-                <a href="#home" class="cta-button">View My Projects</a>
-            </div>
-        </div>
     </div>
 
     <!-- Contact Section -->
@@ -1600,37 +1729,40 @@
             </div>
         </div>
 
-        <!-- Call to Action -->
-        <div class="cta-section">
-            <h3>Ready to Start?</h3>
-            <p>Have a project in mind I'd love to hear from you.</p>
-            <div class="cta-buttons">
-                <a href="mailto:Alward.hafez.01@gmail.com" class="cta-button">Send Email</a>
-                <a href="#home" class="cta-button">View My Projects</a>
-            </div>
-        </div>
     </div>
 
-    <!-- Social Media Footer -->
-    <div class="social-footer">
-        <div class="social-links">
-            <a href="mailto:Alward.hafez.01@gmail.com" class="social-link">
-                <span>Email</span>
-            </a>
-            <a href="https://www.linkedin.com/in/Alward-Hafez-24b1541b1/" target="_blank" class="social-link">
-                <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/AlwardHafez" target="_blank" class="social-link">
-                <span>GitHub</span>
-            </a>
-        </div>
-
-        <!-- Credit line with only Icons8 underlined, not blue -->
-        <div class="credit-line">
-            <span>
-                Designed by Alward Hafez. Icons by 
-                <a href="https://icons8.com/" target="_blank" style="color: inherit; text-decoration: underline;">Icons8</a>
-            </span>
+    <!-- Unified Footer -->
+    <div class="unified-footer">
+        <div class="footer-content">
+            <div class="footer-cta">
+                <h3>Let's Build Something Great</h3>
+                <p>Let's discuss how I can help bring your ideas to life.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-button">Start a Project</a>
+                    <a href="#home" class="cta-button">View My Projects</a>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <div class="social-links">
+                    <a href="mailto:Alward.hafez.01@gmail.com" class="social-link">
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/Alward-Hafez-24b1541b1/" target="_blank" class="social-link">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/AlwardHafez" target="_blank" class="social-link">
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                
+                <div class="credit-line">
+                    <span>
+                        Designed by Alward Hafez. Icons by 
+                        <a href="https://icons8.com/" target="_blank" style="color: inherit; text-decoration: underline;">Icons8</a>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1908,7 +2040,7 @@
      // Update nav highlight
      const navLinks = document.querySelectorAll('.nav-link');
      navLinks.forEach(link => link.classList.remove('active'));
-     const currentLink = document.querySelector(`.nav-link[href="#${sectionName}"]`);
+     const currentLink = document.querySelector(`.nav-link[data-section="${sectionName}"]`);
      if (currentLink) currentLink.classList.add('active');
 
      // Close mobile menu if open
@@ -2369,9 +2501,10 @@ function openModal(modalId) {
             }
 
             
-            // Set initial active nav link
-            const homeLink = document.querySelector(`.nav-link[href="#home"]`);
-            if (homeLink) homeLink.classList.add('active');
+            // Set initial active nav link based on current section
+            const initialSection = location.hash.replace('#','') || 'home';
+            const initialLink = document.querySelector(`.nav-link[data-section="${initialSection}"]`);
+            if (initialLink) initialLink.classList.add('active');
             
 
             
