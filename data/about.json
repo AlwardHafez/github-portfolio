@@ -1,0 +1,15 @@
+{
+  "about": {
+    "greeting": "Hello, I'm Alward Hafez",
+    "paragraphs": [
+      "Through my projects, you’ll see how much I value creative problem-solving, finding new paths where others might stop, and always pushing further to reach a better solution. I live by a line that guides me every day: “Nothing's scary if you face it first.” – GT. That’s why I don’t turn away from challenges—I chase them, knowing that every obstacle holds something to learn.",
+      "A Mechatronics Engineer from UCSI University in Malaysia. My journey has led me across many fields—from AI and embedded systems to 3D design and smart controls. "
+    ],
+    "quote": {
+      "text": "Nothing's scary if you face it first.",
+      "author": "GT",
+      "sub": "Fear only lives in what we haven't faced yet"
+    }
+  }
+}
+

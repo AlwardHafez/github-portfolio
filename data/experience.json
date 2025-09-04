@@ -1,0 +1,60 @@
+{
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Roles, internships, and impactful contributions",
+    "timeline": [
+      {
+        "id": 1,
+        "title": "Second Internship - Research & Development Engineer",
+        "company": "Control Easy Technology Sdn Bhd - Malaysia",
+        "period": "2023",
+        "type": "Full-time",
+        "location": "Malaysia",
+        "achievements": [
+          "Developed a quality control system using a VS40 Zebra camera to detect defects such as scratches and bent pins.",
+          "Diagnosed and repaired PCB issues through testing, soldering, and alternative servicing methods.",
+          "Designed and produced educational PCBs for university clients to support hands-on learning.",
+          "Created custom 3D-printed housings and covers for various electronics projects.",
+          "Designed and delivered IoT training sessions with real-time demos using Raspberry Pi and Google Cloud.",
+          "Trained colleagues on 3D printer operation and supported them in designing and printing components.",
+          "Prepared detailed technical documentation and project reports summarizing results and methodologies."
+        ],
+        "skills": ["IoT", "Raspberry Pi", "Google Cloud", "3D Design", "Training", "Prototyping"]
+      },
+      {
+        "id": 2,
+        "title": "First Internship - Mechatronics Engineer",
+        "company": "Alwareef Contracting Company - Saudi Arabia",
+        "period": "2021",
+        "type": "Full-time",
+        "location": "Saudi Arabia",
+        "achievements": [
+          "Designed a lightning arrester system in AutoCAD to protect buildings from lightning strikes.",
+          "Gained practical experience with WinCC SCADA software for PLC applications.",
+          "Analyzed technical data and project results to support system development.",
+          "Prepared detailed project reports and technical documentation."
+        ],
+        "skills": ["Robotics", "Computer Vision", "Arduino", "YOLOv8", "Python", "AI/ML"]
+      },
+      {
+        "id": 3,
+        "title": "Mechatronics Projects",
+        "company": "UCSI University - Malaysia",
+        "period": "2019–2024",
+        "type": "Academic Projects",
+        "location": "Malaysia/Saudi Arabia",
+        "achievements": [
+          "Built a 6-DOF gesture-controlled robotic arm using OpenCV and Arduino.",
+          "Developed a holistic smart system for safeguarding Motorcyclists with YOLOv8 and various sensors",
+          "smart palm tree monitoring with YOLOv8 and cloud dashboards."
+        ],
+        "skills": ["Robotics", "Computer Vision", "Arduino", "YOLOv8", "Python", "AI/ML"]
+      }
+    ],
+    "downloadLinks": {
+      "resume": "#",
+      "cv": "#"
+    }
+  }
+}
+

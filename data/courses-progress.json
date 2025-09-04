@@ -1,0 +1,68 @@
+{
+  "coursesProgress": {
+    "title": "Courses & Progress",
+    "subtitle": "This section is working on progress, all the data and texts here is placeholders",
+    "description": "This section is working on progress, all the data and texts here is placeholders",
+    "roadmapItems": [
+      {
+        "id": 1,
+        "title": "CS50’s Introduction to Python",
+        "platform": "Harvard University",
+        "progress": 90,
+        "category": "Programming Foundations",
+        "description": "Builds a solid base in modern programming through problem-solving and algorithmic thinking. Python is a key tool for AI, automation, and robotics.",
+        "skills": ["Python", "algorithms", "debugging", "data handling", "automation basics"],
+        "targetCompletion": "September 2025",
+        "status": "in-progress",
+        "icon": "completed",
+        "position": "left"
+      },
+      {
+        "id": 2,
+        "title": "CS50’s Introduction to C++",
+        "platform": "Harvard University",
+        "progress": 0,
+        "category": "Systems & Embedded Programming",
+        "description": "Learn performance-focused programming for embedded systems and robotics. Covers memory management, OOP, and system-level control.",
+        "skills": ["C++", "OOP", "Memory Optimization", "Robotics Software Foundations"],
+        "targetCompletion": "October 2025",
+        "status": "in-progress",
+        "icon": "💻",
+        "position": "right"
+      },
+      {
+        "id": 3,
+        "title": "Robot Operating System (ROS) for Engineers",
+        "platform": "The Construct / Coursera / Udemy",
+        "progress": 0,
+        "category": "Robotics & R&D",
+        "description": "Hands-on introduction to building robotic applications with ROS, from simulation to real-world deployment. Bridges the gap between research and prototyping.",
+        "skills": ["ROS", "Linux", "Gazebo", "Python", "C++", "Control Nodes"],
+        "targetCompletion": "November 2025",
+        "status": "planning",
+        "icon": "🦾",
+        "position": "left"
+      },
+      {
+        "id": 4,
+        "title": "PLC Programming & Industrial Automation",
+        "platform": "Siemens TIA Portal Academy / Udemy / LinkedIn Learning",
+        "progress": 0,
+        "category": "Industrial Automation",
+        "description": "Practical training in PLC programming, ladder logic, and SCADA integration, essential for industrial and building automation.",
+        "skills": ["PLCs", "Ladder Logic", "SCADA", "HMI", "Industrial Protocols", "Automation Reliability"],
+        "targetCompletion": "TBA",
+        "status": "planning",
+        "icon": "⚡",
+        "position": "right"
+      }
+    ],
+    "learningGoals": [
+      "I am focused on building a strong foundation in both automation and robotics",
+      "My goal is to become a versatile and reliable engineer, capable of improving real-world systems", 
+      "Contribute to open-source robotics projects",
+      "I want to develop solutions that are practical, efficient, and well-executed, while continuing to grow my skills to stay at the forefront of automation and robotics technologies."
+    ]
+  }
+}
+
