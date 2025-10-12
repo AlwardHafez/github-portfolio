@@ -1984,9 +1984,137 @@
 
     <script>
 
-        // Portfolio data will be loaded from JSON files
+        // Portfolio data - projects embedded directly for performance
         let portfolioData = {
-            projects: [],
+            projects: [
+                {
+                    "id": 1,
+                    "title": "Robotic Arm: 6 Degree of Freedom Gesture-Controlled System",
+                    "description": "A modern robotics project with advanced control systems and precision movement.",
+                    "image": "images/project1.webp",
+                    "category": "Robotics, Computer Vision , R&D",
+                    "detailImages": ["images/project1.webp", "images/project1-detail2.webp", "images/project1-detail3.webp"],
+                    "overview": "This robotics project showcases advanced control systems and precision engineering. The robot arm features multiple degrees of freedom and can perform complex tasks with high accuracy.",
+                    "features": [
+                        "Developed a 6-DOF robotic arm controlled by real-time hand tracking.",
+                        "Implemented gesture detection using Python and OpenCV.",
+                        "Designed the interaction loop between visual input and arm movement.",
+                        "Demonstrated real-world application of computer vision in robotics.",
+                        "Built a scalable and modular structure for further development.",
+                        "Tested for responsiveness and accuracy in various lighting conditions."
+                    ],
+                    "technologies": "Python, OpenCV, Arduino, Servo Motors, Robotics"
+                },
+                {
+                    "id": 7,
+                    "title": "Interactive Modular Dashboard for IoT and Smart Control",
+                    "description": "A unified and adaptive web-based dashboard for IoT monitoring, smart control, and service management.",
+                    "image": "images/project7.webp",
+                    "category": "IoT",
+                    "detailImages": ["images/project7.webp", "images/project7-detail2.webp", "images/project7-detail3.webp","images/project7-detail4.webp","images/project7-detail5.webp","images/project7-detail6.webp","images/project7-detail7.webp"],
+                    "overview": "This dashboard was designed to unify control and monitoring across different projects, from car detailing booking systems to IoT and robotics applications. Built with modular widgets and scalable architecture, it enables users to visualize sensor data, manage operations, and control connected devices in real time. Its flexibility makes it suitable for both commercial and engineering use cases.  Additional features, including integrated device control for robotics and a scalable backend with full IoT protocol support, are under development",
+                    "features": [
+                        "Modular widget system adapts to different usage scenarios, or even just user preferences.",
+                        "Real-time data visualization and interactive charts for sensor monitoring.",
+                        "Built-in booking and scheduling logic for business or customer oriented workflows.",
+                        "Secure restricted mode for privacy and controlled access.",
+                        "Unified and responsive UI designed for both desktop and mobile use.",
+                        "Integrated device control interface for robotics and automation systems (in progress).",
+                        "Scalable backend architecture supporting API and IoT protocol integration (in progress)."
+                    ],
+                    "technologies": "Web development, IoT integration, UI/UX design"
+                },
+                {
+                    "id": 2,
+                    "title": "Portable Real-Time Monitoring System for Palm Tree",
+                    "description": "A smart agriculture system for monitoring palm tree health and growth using AI and IoT.",
+                    "image": "images/project3.webp",
+                    "category": "IoT, Computer Vision, 3D design, R&D, Smart Agriculture",
+                    "detailImages": ["images/project3.webp", "images/project3-detail2.webp", "images/project3-detail3.webp", "images/project3-detail4.webp", "images/project3-detail5.webp", "images/project3-detail6.webp"],
+                    "overview": "In August 2024, I developed a portable real-time monitoring system focused on palm trees for smart agriculture applications. The system collects environmental and growth data and provides alerts to caretakers. It also uses a YOLOv8 segmentation model to analyze plant growth from images and integrates with a cloud-based IoT platform for live monitoring and management.",
+                    "features": [
+                        "Developed a portable real-time system to monitor palm tree environmental and growth parameters.",
+                        "Trained and deployed a YOLOv8 segmentation model to analyze plant growth through pixel analysis.",
+                        "Designed an interactive IoT dashboard using Google Cloud for live monitoring and alerts.",
+                        "Integrated Raspberry Pi with multiple sensors for real-time data acquisition.",
+                        "Enabled remote plant management with visual insights and alert thresholds.",
+                        "Focused on supporting sustainable smart agriculture practices."
+                    ],
+                    "technologies": "YOLOv8, Raspberry Pi, Google Cloud, Python, IoT, Computer Vision"
+                },
+                {
+                    "id": 3,
+                    "title": "Holistic and Integrated Smart System for Safeguarding Motorcyclists",
+                    "description": "An AI and IoT-based safety system to monitor helmet use and riding behavior for improved motorcyclist safety.",
+                    "image": "images/project2.webp",
+                    "category": "IoT, Computer Vision,3D design,  R&D, Safety Systems",
+                    "detailImages": ["images/project2-detail1.webp", "images/project2-detail2.webp", "images/project2-detail3.webp"],
+                    "overview": "In April 2024, I worked on a smart safety system for motorcyclists combining object detection, sensor integration, and IoT. A YOLOv8 model was trained to detect helmet usage in real-time, while onboard sensors monitored riding behavior such as acceleration, braking, and lean angle. The system provided employers with actionable insights through a live IoT dashboard.",
+                    "features": [
+                        "Trained a YOLOv8 object detection model to ensure motorcyclists are wearing helmets.",
+                        "Monitored acceleration, braking, and lean angle using integrated sensors.",
+                        "Developed an IoT platform for real-time data collection and analysis.",
+                        "Visualized riding performance through interactive dashboards.",
+                        "Enabled employers to track and promote safer riding behavior.",
+                        "Contributed to reducing risks and improving road safety for motorcyclists."
+                    ],
+                    "technologies": "YOLOv8, IoT, Embedded Systems, Python, Sensor Integration"
+                },
+                {
+                    "id": 4,
+                    "title": "IMechE Training Series: Hands-On Robotics for University Students",
+                    "description": "Led a robotics training series to teach students how to build and program a gesture-controlled robotic arm.",
+                    "image": "images/project4.webp",
+                    "category": "STEM Education, Robotics",
+                    "detailImages": ["images/project4.webp", "images/project4-detail2.webp", "images/project4-detail3.webp"],
+                    "overview": "Alongside the development of the robotic arm, I conducted a hands-on robotics training series in May 2023 at UCSI University. The series guided students through each stage of building the robotic system — from hardware to software — and helped them understand core principles of vision-based control and mechatronics.",
+                    "features": [
+                        "Prepared and delivered a structured robotics training series for students.",
+                        "Explained key concepts like servo control, OpenCV tracking, and motion mapping.",
+                        "Engaged participants with live demonstrations and build-along sessions.",
+                        "Encouraged student experimentation and adaptation of the original project.",
+                        "Used the robotic arm project as an educational tool and engineering mascot.",
+                        "Strengthened my communication and mentoring skills in technical topics."
+                    ],
+                    "technologies": "Python, OpenCV, Arduino, Robotics, Presentation Tools"
+                },
+                {
+                    "id": 5,
+                    "title": "IoT Training Series: Real-Time Monitoring with Raspberry Pi and Google Cloud",
+                    "description": "Co-led an IoT training series focused on building real-time sensor-based monitoring systems using Raspberry Pi and Google Sheets.",
+                    "image": "images/project5.webp",
+                    "category": "STEM Education, IoT ",
+                    "detailImages": ["images/project5.webp", "images/project5-detail2.webp"],
+                    "overview": "As part of my internship at Control Easy Technology in late 2023, I collaborated with my supervisor to design and deliver an IoT training program for external clients. The training focused on building real-time monitoring systems using Raspberry Pi, various sensors, and integration with Google Cloud and Google Sheets. I created instructional materials and led hands-on sessions to guide participants through system setup, data flow, and cloud-based visualization.",
+                    "features": [
+                        "Designed and delivered IoT training sessions using Raspberry Pi and sensors.",
+                        "Demonstrated real-time data collection and cloud integration with Google Sheets.",
+                        "Created clear and engaging instructional materials for technical and non-technical audiences.",
+                        "Conducted live sessions, assisting participants in building and testing their systems.",
+                        "Enabled attendees to deploy their own monitoring systems for practical use.",
+                        "Focused on low-cost, scalable IoT solutions for beginners and professionals alike."
+                    ],
+                    "technologies": "Raspberry Pi, Sensors, Google Sheets, Google Cloud, Python"
+                },
+                {
+                    "id": 6,
+                    "title": "Modular Prototyping Box for Multi-Project Applications",
+                    "description": "A reusable and customizable 3D-printed enclosure designed to accelerate prototyping for R&D.",
+                    "image": "images/project6.webp",
+                    "category": "3D design, R&D",
+                    "detailImages": ["images/project6.webp", "images/project6-detail2.webp", "images/project6-detail3.webp"],
+                    "overview": "From May 2023 to August 2024, I designed and 3D printed a modular enclosure to support rapid development and testing of electronic systems. The box accommodated various sensors, microcontrollers, and components, and was reused across five unique projects, proving its effectiveness and adaptability.",
+                    "features": [
+                        "3D printed a versatile and aesthetically pleasing modular box to house sensors, microcontrollers, and other components.",
+                        "Expandable through modular design for different project needs.",
+                        "Successfully used in five distinct electronics projects.",
+                        "Saves prototyping time and improves workflow efficiency.",
+                        "Tool-free assembly and easy internal reconfiguration.",
+                        "Designed with both functionality and visual appeal in mind."
+                    ],
+                    "technologies": "3D design, 3D printing"
+                }
+            ],
             skills: [],
             coursesProgress: null,
             experience: null,
@@ -1999,11 +2127,10 @@
             try {
                 console.log('Loading JSON data...');
                 
-                // Load all JSON files
-                const [siteRes, aboutRes, projectsRes, skillsRes, coursesRes, contactRes, experienceRes] = await Promise.all([
+                // Load JSON files (projects already embedded in page)
+                const [siteRes, aboutRes, skillsRes, coursesRes, contactRes, experienceRes] = await Promise.all([
                     fetch('data/site.json', { cache: 'no-cache' }),
                     fetch('data/about.json', { cache: 'no-cache' }),
-                    fetch('data/projects.json', { cache: 'no-cache' }),
                     fetch('data/skills.json', { cache: 'no-cache' }),
                     fetch('data/courses-progress.json', { cache: 'no-cache' }),
                     fetch('data/contact.json', { cache: 'no-cache' }),
@@ -2011,14 +2138,14 @@
                 ]);
 
                 // Check if all requests were successful
-                if (!siteRes.ok || !aboutRes.ok || !projectsRes.ok || !skillsRes.ok || !coursesRes.ok || !contactRes.ok || !experienceRes.ok) {
+                if (!siteRes.ok || !aboutRes.ok || !skillsRes.ok || !coursesRes.ok || !contactRes.ok || !experienceRes.ok) {
                     throw new Error('One or more JSON files failed to load');
                 }
 
                 // Parse JSON responses
                 portfolioData.site = (await siteRes.json()).site;
                 portfolioData.about = (await aboutRes.json()).about;
-                portfolioData.projects = (await projectsRes.json()).projects;
+                // portfolioData.projects already embedded in page
                 portfolioData.skills = (await skillsRes.json()).skills;
                 portfolioData.coursesProgress = (await coursesRes.json()).coursesProgress;
                 portfolioData.contact = (await contactRes.json()).contact;
@@ -2069,6 +2196,21 @@
                     if (portfolioData.contact.github && githubLink) githubLink.href = portfolioData.contact.github;
                     if (portfolioData.contact.location && locSpan) locSpan.textContent = portfolioData.contact.location;
                     if (portfolioData.contact.formEndpoint && form) form.action = portfolioData.contact.formEndpoint;
+                }
+
+                // Preload all project images in the background immediately
+                if (portfolioData.projects && Array.isArray(portfolioData.projects)) {
+                    console.log('Preloading project images...');
+                    portfolioData.projects.forEach(project => {
+                        if (project.image) {
+                            preloadImage(project.image).catch(() => {});
+                        }
+                        if (project.detailImages && Array.isArray(project.detailImages)) {
+                            project.detailImages.forEach(img => {
+                                preloadImage(img).catch(() => {});
+                            });
+                        }
+                    });
                 }
             } catch (err) {
                 console.error('Failed to load JSON data files', err);
@@ -2388,12 +2530,8 @@
         async function loadProjectImages() {
             const images = document.querySelectorAll('.project-image[data-src]');
             
-            // Load first 4 images immediately (visible on most screens)
-            const priorityImages = Array.from(images).slice(0, 4);
-            const remainingImages = Array.from(images).slice(4);
-            
-            // Load priority images first
-            for (const imageEl of priorityImages) {
+            // Load ALL images immediately without staggering
+            const loadPromises = Array.from(images).map(async (imageEl) => {
                 const url = imageEl.dataset.src;
                 if (url && !imageEl.classList.contains('loaded')) {
                     try {
@@ -2405,23 +2543,10 @@
                         console.warn('Failed to load image:', url);
                     }
                 }
-            }
-            
-            // Load remaining images in background (don't await)
-            remainingImages.forEach((imageEl, index) => {
-                const url = imageEl.dataset.src;
-                if (url && !imageEl.classList.contains('loaded')) {
-                    setTimeout(() => {
-                        preloadImage(url).then(() => {
-                            imageEl.style.backgroundImage = `url('${url}')`;
-                            imageEl.classList.remove('lazy');
-                            imageEl.classList.add('loaded');
-                        }).catch(e => {
-                            console.warn('Failed to load image:', url);
-                        });
-                    }, index * 200); // Stagger remaining loads
-                }
             });
+            
+            // Wait for all images to load
+            await Promise.all(loadPromises);
         }
 
         // Load projects dynamically with optimized rendering
@@ -2510,29 +2635,19 @@
             container.appendChild(fragment);
             modalsContainer.appendChild(modalFragment);
 
-            // Start loading images progressively
-            requestAnimationFrame(() => {
-                loadProjectImages();
+            // Start loading images and make cards visible immediately without animation
+            requestAnimationFrame(async () => {
+                // Load all images first
+                await loadProjectImages();
 
-                // Check if mobile - use different animation approach
-                if (isMobileDevice()) {
-                    // Setup mobile observer for scroll-based animation
-                    setupMobileCardObserver();
-                    observeCardsForMobile();
-                } else {
-                    // Desktop: Stagger card appearance for smooth initial load
-                    const cards = document.querySelectorAll('.project-card');
-                    cards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                            card.dataset.initiallyLoaded = 'true';
-                            // Remove will-change after animation completes to free up resources
-                            setTimeout(() => {
-                                card.classList.add('animation-complete');
-                            }, 500);
-                        }, index * 80);
-                    });
-                }
+                // Make all cards visible instantly without animation on initial load
+                const cards = document.querySelectorAll('.project-card');
+                cards.forEach((card) => {
+                    card.classList.add('visible');
+                    card.classList.add('in-viewport');
+                    card.classList.add('animation-complete');
+                    card.dataset.initiallyLoaded = 'true';
+                });
             });
         }
 
@@ -2622,30 +2737,16 @@
                             }
                         });
                         
-                        // Stagger fade-in animation only for cards being shown
-                        if (isMobileDevice()) {
-                            // On mobile, re-observe cards for scroll animation
-                            visible.forEach(c => {
-                                c.classList.remove('visible', 'in-viewport', 'animation-complete');
-                                if (mobileCardObserver) {
-                                    mobileCardObserver.observe(c);
-                                }
-                            });
-                        } else {
-                            // Desktop: immediate staggered animation
-                            visible.forEach((c, index) => {
-                                setTimeout(() => {
-                                    requestAnimationFrame(() => {
-                                        c.classList.remove('animation-complete');
-                                        c.classList.add('visible');
-                                        // Remove will-change after animation completes
-                                        setTimeout(() => {
-                                            c.classList.add('animation-complete');
-                                        }, 500);
-                                    });
-                                }, index * 80); // Faster animation for filters
-                            });
-                        }
+                        // Stagger fade-in animation for filtered cards (mobile and desktop)
+                        visible.forEach((c, index) => {
+                            setTimeout(() => {
+                                requestAnimationFrame(() => {
+                                    c.classList.add('visible');
+                                    c.classList.add('in-viewport');
+                                    c.classList.add('animation-complete');
+                                });
+                            }, index * 60); // Gentle stagger for smooth appearance
+                        });
                     });
                 }, 300); // Shorter wait time
             });
