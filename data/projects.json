@@ -19,6 +19,28 @@
       "technologies": "Python, OpenCV, Arduino, Servo Motors, Robotics"
     },
       {
+
+        "id": 7,
+        "title": "Interactive Modular Dashboard for IoT and Smart Control",
+        "description": "A unified and adaptive web-based dashboard for IoT monitoring, smart control, and service management.",
+        "image": "images/project7.webp",
+        "category": "IoT",
+        "detailImages": ["images/project7.webp", "images/project7-detail2.webp", "images/project7-detail3.webp","images/project7-detail4.webp","images/project7-detail5.webp","images/project7-detail6.webp","images/project7-detail7.webp"],
+        "overview": "This dashboard was designed to unify control and monitoring across different projects, from car detailing booking systems to IoT and robotics applications. Built with modular widgets and scalable architecture, it enables users to visualize sensor data, manage operations, and control connected devices in real time. Its flexibility makes it suitable for both commercial and engineering use cases.  Additional features, including integrated device control for robotics and a scalable backend with full IoT protocol support, are under development",
+        "features": [
+          "Modular widget system adapts to different usage scenarios, or even just user preferences.",
+          "Real-time data visualization and interactive charts for sensor monitoring.",
+          "Built-in booking and scheduling logic for business or customer oriented workflows.",
+          "Secure restricted mode for privacy and controlled access.",
+          "Unified and responsive UI designed for both desktop and mobile use.",
+          "Integrated device control interface for robotics and automation systems (in progress).",
+          "Scalable backend architecture supporting API and IoT protocol integration (in progress)."
+  
+        ],
+        "technologies": "Web development, IoT integration, UI/UX design"
+
+    },
+    {
       "id": 2,
       "title": "Portable Real-Time Monitoring System for Palm Tree",
       "description": "A smart agriculture system for monitoring palm tree health and growth using AI and IoT.",
