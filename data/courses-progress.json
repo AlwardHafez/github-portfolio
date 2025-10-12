@@ -8,7 +8,7 @@
         "id": 1,
         "title": "CS50’s Introduction to Python",
         "platform": "Harvard University",
-        "progress": 90,
+        "progress": 75,
         "category": "Programming Foundations",
         "description": "Builds a solid base in modern programming through problem-solving and algorithmic thinking. Python is a key tool for AI, automation, and robotics.",
         "skills": ["Python", "algorithms", "debugging", "data handling", "automation basics"],
