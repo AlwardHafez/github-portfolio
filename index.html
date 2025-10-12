@@ -1337,14 +1337,15 @@
         display: block;
         }
 
-    /* Transparent navbar on mobile */
+    /* Opaque navbar at top, transparent when scrolled on mobile */
     .navbar {
-        background: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 1);
+        backdrop-filter: blur(10px);
     }
 
     .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.54);
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(15px);
     }
 
     .container,
