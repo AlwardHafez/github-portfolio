@@ -1432,6 +1432,11 @@
         padding: 0 !important;
         box-shadow: none !important;
         overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .modal-body {
+        padding: 2rem 1.5rem 4rem 1.5rem !important; /* Extra bottom padding for mobile */
     }
 
     .modal .close {
@@ -1722,6 +1727,7 @@
         /* Apply blur to page sections when menu is open */
         .page-section {
             transition: filter 0.4s ease;
+            min-height: 100vh; /* Prevent background shift when content changes */
         }
 
         body.mobile-menu-open .page-section {
@@ -2919,8 +2925,12 @@ function loadCoursesProgress() {
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+    
+    // On mobile, don't lock body scroll - let modal scroll naturally
+    if (!isMobileDevice()) {
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+    }
 }
 
 
