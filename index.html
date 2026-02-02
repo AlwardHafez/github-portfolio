@@ -967,20 +967,34 @@
         }
 
         /* Status indicators */
-        .roadmap-card.in-progress {
+        .roadmap-card.active {
             border-left: 5px solid #2c3e50;
         }
 
-        .roadmap-card.planning {
+        .roadmap-card.upcoming {
+            border-left: 5px solid #3498db;
+        }
+
+        .roadmap-card.planned {
             border-left: 5px solid #5d6d7e;
         }
 
-        .roadmap-card.ongoing {
-            border-left: 5px solid #34495e;
+        .roadmap-card.tbd {
+            border-left: 5px solid #5d6d7e;
         }
 
-        .roadmap-card.completed {
-            border: 3px solid #28a745;
+        .roadmap-card-tbd {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        .roadmap-card-tbd .tbd-content {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #5d6d7e;
+            letter-spacing: 0.15em;
         }
 
         /* Timeline dot */
@@ -998,13 +1012,24 @@
             z-index: 2;
         }
 
-        .roadmap-item.completed::before {
-            background: #28a745;
-            border-color: #28a745;
-            box-shadow: 0 0 15px rgba(40, 167, 69, 0.3);
+        .roadmap-item.active::before {
+            background: #2c3e50;
+            border-color: #2c3e50;
+            box-shadow: 0 0 15px rgba(44, 62, 80, 0.3);
         }
 
-        .roadmap-item.planning::before {
+        .roadmap-item.upcoming::before {
+            background: #3498db;
+            border-color: #3498db;
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .roadmap-item.planned::before {
+            background: #5d6d7e;
+            border-color: #5d6d7e;
+        }
+
+        .roadmap-item.tbd::before {
             background: #5d6d7e;
             border-color: #5d6d7e;
         }
@@ -1053,42 +1078,33 @@
             margin-bottom: 1.5rem;
         }
 
-        .course-progress {
+        .course-status {
             margin-bottom: 1.5rem;
         }
 
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .progress-text {
+        .status-badge {
+            display: inline-block;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #2c3e50;
+            text-transform: capitalize;
         }
 
-        .progress-percentage {
-            font-size: 0.9rem;
-            color: #666;
-            text-align: right;
+        .status-badge.status-active {
+            background: #2c3e50;
+            color: white;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            margin-bottom: 0.5rem;
-            position: relative;
+        .status-badge.status-upcoming {
+            background: #3498db;
+            color: white;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(45deg, #2c3e50, #34495e);
+        .status-badge.status-planned {
+            background: #5d6d7e;
+            color: white;
         }
-
-
 
         .course-skills {
             margin-bottom: 1.5rem;
@@ -1120,15 +1136,6 @@
         .skill-tag:hover {
             background: rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
-        }
-
-        .course-completion {
-            font-size: 0.9rem;
-            color: #5d6d7e;
-            font-weight: 600;
-            text-align: right;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(44, 62, 80, 0.1);
         }
 
         .credit-line {
@@ -1180,7 +1187,7 @@
         }
 
         .goals-list li::before {
-            content: '🎯';
+            content: '';
             position: absolute;
             left: 1rem;
             font-size: 1.5rem;
@@ -2392,32 +2399,10 @@
      if (sectionName === 'courses-progress') {
          loadCoursesProgress();
 
-         // Reset roadmap cards state
+         // Reset roadmap cards state for re-animation
          document.querySelectorAll('.roadmap-card').forEach(el => {
              el.removeAttribute('data-animated');
-             const progressBar = el.querySelector('.progress-fill');
-             const progressText = el.querySelector('.progress-percentage');
-             if (progressBar) progressBar.style.width = '0%';
-             if (progressText) progressText.textContent = '0%';
          });
-
-         // Restart green bar animation
-         setTimeout(() => {
-             const completedCourses = portfolioData.coursesProgress.roadmapItems.filter(item => item.progress === 100);
-             const totalCourses = portfolioData.coursesProgress.roadmapItems.length;
-
-             if (completedCourses.length > 0) {
-                 const greenPercentage = (completedCourses.length / totalCourses) * 100;
-
-                 if (timeline) {
-                     timeline.style.setProperty('--green-height', '0%');
-                     timeline.offsetHeight; // Force reflow
-                     requestAnimationFrame(() => {
-                         timeline.style.setProperty('--green-height', greenPercentage + '%');
-                     });
-                 }
-             }
-         }, 200);
      }
 
      // Update nav highlight
@@ -2842,37 +2827,38 @@ function loadCoursesProgress() {
     // Load roadmap items
     coursesData.roadmapItems.forEach((item, index) => {
         const roadmapItem = document.createElement('div');
-        const cardClass = item.progress === 100 ? 'completed' : item.status;
-        roadmapItem.className = `roadmap-item ${item.position} ${item.status}`;
+        const cardClass = item.showAsTbd ? 'tbd' : (item.status || 'planned');
+        roadmapItem.className = `roadmap-item ${item.position || 'left'} ${cardClass}`;
         
-        const skillTagsHtml = item.skills.map(skill => 
-            `<span class="skill-tag">${skill}</span>`
-        ).join('');
-        
-        roadmapItem.innerHTML = `
-            <div class="roadmap-card ${cardClass}">
-                <div class="course-header">
-                    <h3>${item.title}</h3>
-                    <div class="course-platform">${item.platform}</div>
+        if (item.showAsTbd) {
+            roadmapItem.innerHTML = `
+                <div class="roadmap-card roadmap-card-tbd ${cardClass}">
+                    <div class="tbd-content">TBD</div>
                 </div>
-                <div class="course-category">${item.category}</div>
-                <div class="course-description">${item.description}</div>
-                <div class="course-progress">
-                    <div class="progress-header">
-                        <span class="progress-text">Progress</span>
-                        <span class="progress-percentage">${item.progress}%</span>
+            `;
+        } else {
+            const skillTagsHtml = (item.skills || []).map(skill => 
+                `<span class="skill-tag">${skill}</span>`
+            ).join('');
+            const statusLabel = (item.status || 'planned').charAt(0).toUpperCase() + (item.status || 'planned').slice(1);
+            roadmapItem.innerHTML = `
+                <div class="roadmap-card ${cardClass}">
+                    <div class="course-header">
+                        <h3>${item.title}</h3>
+                        <div class="course-platform">${item.platform}</div>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="${item.progress}" style="width: 0%"></div>
+                    <div class="course-category">${item.category}</div>
+                    <div class="course-description">${item.description}</div>
+                    <div class="course-status">
+                        <span class="status-badge status-${cardClass}">${statusLabel}</span>
+                    </div>
+                    <div class="course-skills">
+                        <div class="skills-label">Technologies & Skills</div>
+                        <div class="skill-tags">${skillTagsHtml}</div>
                     </div>
                 </div>
-                <div class="course-skills">
-                    <div class="skills-label">Technologies & Skills</div>
-                    <div class="skill-tags">${skillTagsHtml}</div>
-                </div>
-                <div class="course-completion">Target: ${item.targetCompletion}</div>
-            </div>
-        `;
+            `;
+        }
         
         container.appendChild(roadmapItem);
     });
@@ -2892,16 +2878,9 @@ function loadCoursesProgress() {
     // Set up intersection observers for roadmap cards after they're loaded
     setTimeout(() => {
         document.querySelectorAll('.roadmap-card').forEach(el => {
-            const progressBar = el.querySelector('.progress-fill');
-            if (progressBar) {
-                progressBar.style.width = '0%';
-            }
-            // Remove any existing animation flags to allow re-animation
             el.removeAttribute('data-animated');
             animationObserver.observe(el);
         });
-        
-
     }, 100);
 
 
@@ -3012,33 +2991,9 @@ function openModal(modalId) {
                         }
                     }
                     
-                    // Handle courses progress bars animation
+                    // Roadmap cards: mark as animated (no progress bar)
                     if (element.classList.contains('roadmap-card')) {
-                        const progressBar = element.querySelector('.progress-fill');
-                        const progressText = element.querySelector('.progress-percentage');
-                        
-                        if (progressBar && progressText) {
-                            const targetWidth = progressBar.getAttribute('data-width');
-                            const target = parseInt(targetWidth);
-                            
-                            // Reset to 0
-                            progressBar.style.width = '0%';
-                            progressText.textContent = '0%';
-                            
-                            // Animate both bar and number (same speed as skills)
-                            let count = 0;
-                            const interval = setInterval(() => {
-                                if (count >= target) {
-                                    clearInterval(interval);
-                                } else {
-                                    count++;
-                                    progressBar.style.width = count + '%';
-                                    progressText.textContent = count + '%';
-                                }
-                            }, 20);
-                        }
-                        
-
+                        // Card visible; status badge is static
                     }
                     
                     // Handle project cards
