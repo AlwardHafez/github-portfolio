@@ -2352,6 +2352,13 @@
      const target = document.getElementById(sectionName);
      if (target) {
          target.classList.add('active');
+         target.querySelectorAll('.fade-in, .fade-in-delayed, .fade-in-slow').forEach(el => {
+             el.removeAttribute('data-animated');
+             el.style.animation = 'none';
+             el.offsetHeight;
+             el.style.animation = '';
+             el.style.animationPlayState = 'running';
+         });
      }
 
      if (sectionName === 'skills') {
