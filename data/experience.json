@@ -35,22 +35,7 @@
           "Prepared detailed project reports and technical documentation."
         ],
         "skills": ["Robotics", "Computer Vision", "Arduino", "YOLOv8", "Python", "AI/ML"]
-      },
-      {
-        "id": 3,
-        "title": "Mechatronics Projects",
-        "company": "UCSI University - Malaysia",
-        "period": "2019–2024",
-        "type": "Academic Projects",
-        "location": "Malaysia/Saudi Arabia",
-        "achievements": [
-          "Built a 6-DOF gesture-controlled robotic arm using OpenCV and Arduino.",
-          "Developed a holistic smart system for safeguarding Motorcyclists with YOLOv8 and various sensors",
-          "smart palm tree monitoring with YOLOv8 and cloud dashboards."
-        ],
-        "skills": ["Robotics", "Computer Vision", "Arduino", "YOLOv8", "Python", "AI/ML"]
-      }
-    ],
+      }    ],
     "downloadLinks": {
       "resume": "#",
       "cv": "#"
